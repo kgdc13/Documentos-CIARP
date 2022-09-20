@@ -243,58 +243,7 @@ public class GeneracionCartas {
     }
     
     public void LeerArchivo() {
-//     ControlArchivo contArchivo = new ControlArchivo(ruta);
-//        contArchivo.LeerArchivo();
-//        BufferedReader br = contArchivo.getBuferDeLectura();
-//
-//        String[] keys = new String[]{};
-//        int nkey = 0;
-//        int cont = 0;
-//        if (br != null) {
-//            try {
-//                while ((lineaDeTexto = br.readLine()) != null) {
-//                    cont++;
-//                    System.out.println("linea texto ////"+lineaDeTexto);
-//                    if (nkey == 0) {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        listaDatosacta.put("No ACTA", d[1]);
-//                        listaDatosacta.put("FECHA_ACTA", d[3]);
-//                        listaDatosacta.put("HORA_INICIO", d[5]);
-//                        listaDatosacta.put("HORA_FIN", d[7]);
-//                        listaDatosacta.put("ACTA_ANTERIOR", d[9]);
-//                        listaDatosacta.put("FECHA_ACTA_ANTERIOR", d[11]);
-//                        nkey = 1;
-//                    } else if (nkey == 1) {
-//                        keys = lineaDeTexto.split("\\t");
-//                        System.out.println("keys.l--->"+keys.length);
-//                        nkey = 2;
-//                    } else {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        
-//                        //if(d.length == keys.length && d[1].equals(semestre) && !d[3].toUpperCase().equals("N/A")){
-////                            System.out.println("****lineaDeTexto--->\n"+lineaDeTexto);
-////                            for (int k = 0; k < d.length; k++) {
-////                                System.out.println(" K = " + k + "Valor " + d[k]);
-////                            }
-//                            Map<String, String> mapeado = new HashMap<>();
-////                            System.out.println(" Size KEYS= " + keys.length + "Size D=  " + d.length);
-//                            for (int i = 0; i < keys.length; i++) {
-//                                mapeado.put(keys[i], d[i].trim());
-//                            }
-//                            listaDatos.add(mapeado);
-////                        }
-//                    }
-//
-//                    //GENERACION DOCUMENTO
-//                    //                    
-//                    //                    
-//                    //</editor-fold>
-//                }
-//                System.out.println("cont-->"+cont);
-//            } catch (IOException ex) {
-//                Logger.getLogger(GeneracionActas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+
         this.ruta = ruta;
         this.consecutivo = consecutivo;
         ControlArchivo contArchivo = new ControlArchivo(ruta);
@@ -302,51 +251,7 @@ public class GeneracionCartas {
         BufferedReader br = contArchivo.getBuferDeLectura();
         String lineaDeTexto;
         
-//        String[] keys = new String[]{};
-//        int nkey = 0;
-//        if (br != null) {
-//            try {
-//                while ((lineaDeTexto = br.readLine()) != null) {
-//                    if (nkey == 0) {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        listaDatosacta.put("No_ACTA", d[1]);
-//                        listaDatosacta.put("FECHA_ACTA", d[3]);
-//                        listaDatosacta.put("HORA_INICIO", d[5]);
-//                        listaDatosacta.put("HORA_FIN", d[7]);
-//                        listaDatosacta.put("ACTA_ANTERIOR", d[9]);
-//                        listaDatosacta.put("FECHA_ACTA_ANTERIOR", d[11]);
-//                        nkey = 1;
-//                    } else if (nkey == 1) {
-//                        keys = lineaDeTexto.split("\\t");
-//                        nkey = 2;
-//                    } else {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        if (d.length > 0) {
-////                            for (int k = 0; k < d.length; k++) {
-////                                System.out.println(" K = " + k + "Valor " + d[k]);
-////                            }
-//                            Map<String, String> mapeado = new HashMap<>();
-//                            System.out.println(" Size KEYS= " + keys.length + "Size D=  " + d.length);
-//                            for (int i = 0; i < keys.length; i++) {
-//                                mapeado.put(keys[i], d[i]);
-//                            }
-//                            listaDatos.add(mapeado);
-//                        }
-//                    }
-//                    URL = "C:\\CIARP\\Cartas_Sesión_" + listaDatosacta.get("No_ACTA") + ".rtf";
-//                    //String d[] = lineaDeTexto.split("\\t");
-//                    //GENERACION DOCUMENTO
-////                    
-////                    
-//                    //</editor-fold>
-//                }
-//                System.out.println("Finalizo Lectura de Archivo");
-//                
-//            } catch (IOException ex) {
-//                Logger.getLogger(GeneracionActas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-        
+
     }
     
     public Map<String, String> Generarcartas(String ruta, String consecutivo, String anio) throws DocumentException, IOException, Exception {
@@ -685,14 +590,14 @@ public class GeneracionCartas {
                         }
                         return respuesta;
                     }
-                    if (listaDocentes.get(j).get("RETROACTIVIDAD").equals(listaDatosacta.get("FECHA_ACTA")) || listaDocentes.get(j).get("RETROACTIVIDAD").equals("N/A")) {
-                        System.out.print("ESTO EN IF DE RETROATIVIDAD " + listaDocentes.get(j).get("RETROACTIVIDAD") + "///////" + listaDatosacta.get("FECHA_ACTA"));
+                    if (Utilidades.Utilidades.decodificarElemento(listaDocentes.get(j).get("RETROACTIVIDAD")).equals(listaDatosacta.get("FECHA_ACTA")) || Utilidades.Utilidades.decodificarElemento(listaDocentes.get(j).get("RETROACTIVIDAD")).equals("N/A")) {
+                        System.out.print("ESTO EN IF DE RETROATIVIDAD " + Utilidades.Utilidades.decodificarElemento(listaDocentes.get(j).get("RETROACTIVIDAD")) + "///////" + listaDatosacta.get("FECHA_ACTA"));
                         retroactividad += " a partir de la fecha de la presente sesión.";
-                    } else if (listaDocentes.get(j).get("RETROACTIVIDAD").length() > 10) {
-                        retroactividad += listaDocentes.get(j).get("RETROACTIVIDAD") + ".";
+                    } else if (Utilidades.Utilidades.decodificarElemento(listaDocentes.get(j).get("RETROACTIVIDAD")).length() > 10) {
+                        retroactividad += Utilidades.Utilidades.decodificarElemento(listaDocentes.get(j).get("RETROACTIVIDAD")) + ".";
                     } else {
                         try{
-                        retroactividad += " a partir de " + fechaEnletras(listaDocentes.get(j).get("RETROACTIVIDAD"), 0) + ".";
+                        retroactividad += " a partir de " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDocentes.get(j).get("RETROACTIVIDAD")), 0) + ".";
                         }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
@@ -1016,9 +921,7 @@ public class GeneracionCartas {
         gi.iniciar();
         
         System.out.println("documento.getPageNumber()--->" + documento);
-//            catch (IOException ex) {
-//                Logger.getLogger(GeneracionActas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+//          
         return respuesta;
     }
     
@@ -1181,7 +1084,7 @@ public class GeneracionCartas {
         int banderasuma = 0;
         String articulo = "";
         try {
-            //        for (int f = 0; f < listaProductosxJerarquia.size(); f++) {
+         
             sumatoria_puntos += Double.parseDouble(ValidarNumero(listaProductosxJerarquia.get("PUNTOS").replace(",", ".")));
         } catch (Exception ex) {
             Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -1189,10 +1092,7 @@ public class GeneracionCartas {
         }
         banderasuma = 1;
         articulo = getArticuloxTipoProducto(listaProductosxJerarquia.get("TIPO_PRODUCTO"));
-//            respuestaxEstado += listaProductosxJerarquia.size() > 1 ? " por " + articulo + " "
-//                    + (getNombreNumero((1 + 1), getDatoJerarquiaProducto(listaProductosxJerarquia.get("TIPO PRODUCTO"), "PRODUCTO", "ARTICULO")) + " "
-//                    + getDatoJerarquiaProducto(listaProductosxJerarquia.get("TIPO_PRODUCTO"), "PRODUCTO", "NPRODUCTO") //+ listadatosdocentexTipoProducto.get(f).get("TIPO PRODUCTO").replaceAll("_", " ")
-//                    );
+//        
         if (listaProductosxJerarquia.get("RESPUESTA_CIARP").equals("Aprobado")) {
             if (listaProductosxJerarquia.get("TIPO_PRODUCTO").equals("Ascenso_en_el_Escalafon_Docente")) {
                 
@@ -1231,11 +1131,11 @@ public class GeneracionCartas {
             } else if (listaProductosxJerarquia.get("TIPO_PRODUCTO").equals("Titulacion")) {
                 respuestaxEstado += Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("DECISION"));
             } else {
-                //System.out.println("hello aqui voy?....." + listadatosdocentexTipoProducto.get(f).get("TIPO PUNTAJE"));
+              
                 boolean cond = listaProductosxJerarquia.get("TIPO_PUNTAJE").equals("puntos salariales");
                 if (cond) {
                     try {
-                        //                        System.out.println("ENTRE?....." + listadatosdocentexTipoProducto.get(f).get("TIPO PUNTAJE"));
+                     
                         respuestaxEstado += "asignarle "
                                 + getNumeroDecimal(listaProductosxJerarquia.get("PUNTOS"))
                                 + " (" + ValidarNumeroDec(listaProductosxJerarquia.get("PUNTOS")) + ") "
@@ -1245,13 +1145,13 @@ public class GeneracionCartas {
                         throw new Exception(" "+ex.getMessage());
                     }
                     
-                    if (listaProductosxJerarquia.get("RETROACTIVIDAD").equals(listaDatosacta.get("FECHA_ACTA")) || Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("RETROACTIVIDAD")).equals("N/A")) {
+                    if (Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("RETROACTIVIDAD")).equals(listaDatosacta.get("FECHA_ACTA")) || Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("RETROACTIVIDAD")).equals("N/A")) {
                         respuestaxEstado += " a partir de la fecha de la presente sesión";
-                    } else if (listaProductosxJerarquia.get("RETROACTIVIDAD").length() > 10) {
-                        respuestaxEstado += " " + listaProductosxJerarquia.get("RETROACTIVIDAD") + ".";
+                    } else if (Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("RETROACTIVIDAD")).length() > 10) {
+                        respuestaxEstado += " " + Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("RETROACTIVIDAD")) + ".";
                     } else {
                         try {
-                        respuestaxEstado += " a partir del " + fechaEnletras(listaProductosxJerarquia.get("RETROACTIVIDAD"), 0) + ".";
+                        respuestaxEstado += " a partir del " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("RETROACTIVIDAD")), 0) + ".";
                         }
                         catch (Exception ex) {
                         Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -1263,13 +1163,13 @@ public class GeneracionCartas {
                     if (!Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("NORMA")).equals("#N/D") && !Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("NORMA")).equals("#N/A")) {
                         respuestaxEstado += " considerando que " + articulo + " "
                                 + getDatoJerarquiaProducto(listaProductosxJerarquia.get("TIPO_PRODUCTO"), "PRODUCTO", "NPRODUCTO")
-                                //+ listadatosdocentexTipoProducto.get(f).get("TIPO PRODUCTO").replaceAll("_", " ")
+                           
 
                                 + " corresponde a un(a) "
                                 + (Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("SUBTIPO_PRODUCTO")).equals("N/A")
                                 ? "producto "
                                 : Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("SUBTIPO_PRODUCTO")))
-                                //+ listadatosdocentexTipoProducto.get(f).get("SUBTIPO PRODUCTO")
+                            
                                 + (!Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("NACIONAL/INTERNACIONAL/REGIONAL")).equals("N/A")
                                 ? " de carácter " + listaProductosxJerarquia.get("NACIONAL/INTERNACIONAL/REGIONAL")
                                 : "")
@@ -1302,12 +1202,12 @@ public class GeneracionCartas {
                     if (!Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("NORMA")).equals("#N/D") && !listaProductosxJerarquia.get("NORMA").equals("#N/A")) {
                         respuestaxEstado += " considerando que " + articulo + " "
                                 + getDatoJerarquiaProducto(listaProductosxJerarquia.get("TIPO_PRODUCTO"), "PRODUCTO", "NPRODUCTO")
-                                //+ listadatosdocentexTipoProducto.get(f).get("TIPO PRODUCTO").replaceAll("_", " ")
+                              
                                 + " corresponde a un(a) "
                                 + (Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("SUBTIPO_PRODUCTO")).equals("N/A")
                                 ? "producto "
                                 : Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("SUBTIPO_PRODUCTO")))
-                                //+ listadatosdocentexTipoProducto.get(f).get("SUBTIPO PRODUCTO")
+                              
                                 + (!Utilidades.Utilidades.decodificarElemento(listaProductosxJerarquia.get("NACIONAL/INTERNACIONAL/REGIONAL")).equals("N/A")
                                 ? " de carácter " + listaProductosxJerarquia.get("NACIONAL/INTERNACIONAL/REGIONAL")
                                 : "")
@@ -1342,23 +1242,8 @@ public class GeneracionCartas {
             respuestaxEstado += listaProductosxJerarquia.get("DECISION");
         }
 
-//        }
-//        String add = (listaProductosxJerarquia.size() > 1
-//                ? " Para un total de " + getNumeroDecimal("" + formateador.format(sumatoria_puntos)) + " (" + formateador.format(sumatoria_puntos) + ") "
-//                + listaProductosxJerarquia.get("TIPO_PUNTAJE")
-//                + " por la productividad presentada."
-//                : "");
+
         respuesta = respuestaxEstado;
-//        if (banderasuma==1) {
-//            respuesta += ((!listaProductosxJerarquia.get("TIPO_PRODUCTO").equals("Ascenso_en_el_Escalafon _Docente")
-//                    && !listaProductosxJerarquia.get("TIPO_PRODUCTO").equals("Titulacion")
-//                    && listaProductosxJerarquia.get("TIPO_PUNTAJE").equals("puntos salariales"))
-//                    ? add + ", de conformidad con lo establecido en el Numeral 22 del Artículo Primero del Acuerdo de Seguimiento N° 001 de 2004 y al Parágrafo III del Artículo 12 del Decreto 1279 de 2002"
-//                    : listaProductosxJerarquia.get("TIPO_PUNTAJE").equals("puntos de bonificacion") ? add : "");
-//        }
-//        else if (listadatosdocentexTipoProducto.get(0).get("RESPUESTA CIARP").equals("Aprobado")&& listadatosdocentexTipoProducto.get(0).get("TIPO PUNTAJE").equals("puntos de bonificacion")){
-//            respuesta+= add;
-//    }
         return respuesta;
     }
     
@@ -1502,38 +1387,7 @@ public class GeneracionCartas {
                 agregado = "";
             }
             Resultado = Centenas[numero / 100] + agregado;
-//        } else if (numero >= 1000 && numero <= 1999) {
-//            String agregado = "";
-//            if (numero % 1000 != 0) {
-//                agregado = " " + numeroOrdinales(numero % 1000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = "Mil" + agregado;
-//        } else if (numero >= 2000 && numero <= 999999) {
-//            String agregado = "";
-//            if (numero % 1000 != 0) {
-//                agregado = " " + numeroOrdinales(numero % 1000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = numeroEnLetras(numero / 1000) + " Mil" + agregado;
-//        } else if (numero >= 1000000 && numero <= 1999999) {
-//            String agregado = "";
-//            if (numero % 1000000 != 0) {
-//                agregado = " " + numeroEnLetras(numero % 1000000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = "Un Millón" + agregado;
-//        } else if (numero >= 2000000 && numero <= 1999999999) {
-//            String agregado = "";
-//            if (numero % 1000000 != 0) {
-//                agregado = " " + numeroEnLetras(numero % 1000000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = numeroEnLetras(numero / 1000000) + " Millones" + agregado;
+
         }
         return Resultado.toLowerCase();
     }
@@ -1730,18 +1584,7 @@ public class GeneracionCartas {
     }
     
     public String ValidarNumeroDec(String valor) throws Exception{
-//        String ret = formateador.format(""+valor);
-//        System.out.println("************************ValidarNumeroDec****************************");
-//        System.out.println("valorform---->"+ret);
-//        if(valor.indexOf(".")>-1){
-//            String[] dat = valor.replace(".", ":").split(":");
-//            if(dat[1].equals("00")){
-//                ret = dat[0];
-//            }else{
-//                ret = ret.replace(".", ",");
-//            }
-//        }
-//        System.out.println("ret--------->"+ret);
+
         String retorno = "";
         System.out.println("numero----->" + valor);
         if (valor.indexOf(",") > -1) {
@@ -1763,12 +1606,7 @@ public class GeneracionCartas {
             valor = valor.replace(".", ",");
             String[] daot = valor.split(",");
             System.out.println("DAOT [0]" + daot[0]);
-//            if (daot[0].equals("")){
-//                daot[0]= "0";
-//                valor = daot[0]+valor;
-//                System.out.println("DAO[0] = "+daot[0]);
-//                System.out.println("DAO[1] = "+daot[1]);
-//            }
+
             if (daot[1].equals("0")) {
                 retorno = daot[0];
             } else {
@@ -1777,42 +1615,24 @@ public class GeneracionCartas {
             System.out.println("numero final------>" + retorno);
         }
 
-//        if (!numero.equals("N/A")) {
-//            if (numero.indexOf(",") > -1) {
-//                String[] numrs = numero.replace(",", "::").split("::");
-//                retorno = numeroEnLetras(Integer.parseInt(numrs[0].equals("")?"0":numrs[0]));
-//                if(Integer.parseInt(numrs[1]) > 0){
-//                    retorno += " coma ";
-//                    retorno += numeroEnLetras(Integer.parseInt(numrs[1]));// + " (" + numero + ")";
-//                }
-//            } else {
-//                retorno = numeroEnLetras(Integer.parseInt(numero));// + "(" + numero + ")";
-//            }
-//        }
+
         return retorno;
 
-//        return ret;
+
     }
     
     private String getNOMBREPRODUCTO(Map<String, String> datos) {
         String datosProducto = "";
         try {
             switch (datos.get("TIPO_PRODUCTO")) {
-//            case "Ingreso_a_la_Carrera_Docente":
-//                datosSoporte = ComillasSoporte(listadatosdocentexTipoProducto.get(k).get("SOPORTES"));
-//                respuestaSoporte = datosSoporte;
-//                break;
-//            case "Ascenso_en_el_Escalafon_Docente":
-//                datosSoporte = ComillasSoporte(listadatosdocentexTipoProducto.get(k).get("SOPORTES"));
-//                respuestaSoporte = datosSoporte;
-//                break;
+
                 case "Articulo":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                             + "\"; de la " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
                             + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
                             + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
                             + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                            + "); " + datos.get("No._AUTORES") + " autor(es).";
+                            + "); " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Art_Col":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
@@ -1820,32 +1640,32 @@ public class GeneracionCartas {
                             + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
                             + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
                             + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                            + "); " + datos.get("No._AUTORES") + " autor(es).";
+                            + "); " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Libro":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                             + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
                             + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                            + "; " + datos.get("No._AUTORES") + " autor(es).";
+                            + "; " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Capitulo_de_Libro":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                             + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
                             + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                            + "; " + datos.get("No._AUTORES") + " autor(es).";
+                            + "; " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Ponencias_en_Eventos_Especializados":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                             + "\"; en el " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
                             + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                            + "; " + datos.get("No._AUTORES") + " autor(es).";
+                            + "; " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Publicaciones_Impresas_Universitarias":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                             + "\"; de la  " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
                             + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
                             + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                            + "; " + datos.get("No._AUTORES") + " autor(es).";
+                            + "; " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Reseñas_Críticas":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
@@ -1853,7 +1673,7 @@ public class GeneracionCartas {
                             + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
                             + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
                             + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                            + "); " + datos.get("No._AUTORES") + " autor(es).";
+                            + "); " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Traducciones":
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
@@ -1861,7 +1681,7 @@ public class GeneracionCartas {
                             + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
                             + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
                             + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                            + "); " + datos.get("No._AUTORES") + " autor(es).";
+                            + "); " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     break;
                 case "Direccion_de_Tesis":
                     datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "") + " ";
@@ -1869,7 +1689,7 @@ public class GeneracionCartas {
                 default:
                     if (!Utilidades.Utilidades.decodificarElemento(datos.get("No._AUTORES")).equals("N/A")) {
                         datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                                + ", " + datos.get("No._AUTORES") + " autor(es).";
+                                + ", " + ValidarNumeroDec(datos.get("No._AUTORES")) + " autor(es).";
                     } else {
                         datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                                 + " ";

@@ -125,8 +125,7 @@ public class GeneracionCuadros {
         for(Map<String, String> docente : listaInfoDocentes){
             System.out.println("************************************************************************************************");
             System.out.println("*************************DOCENTE*******************"+docente.get("CEDULA")+"**************");
-//            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + listaInfoDocentes.get(0).get("CEDULA"));
-//            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 444444" + listaInfoDocentes.get(0).get("NOMBRE_DEL_DOCENTE"));
+
             List<Map<String, String>> listaDatosDocente = new ArrayList<>();
             listaDatosDocente = data_list(3, listaInfoPuntos, new String[]{"CEDULA<->" + docente.get("CEDULA")});
             System.out.println("-----------------------------listaDatosDocente.size()-->"+listaDatosDocente.size()+"------------------------------------------------------");

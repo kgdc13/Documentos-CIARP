@@ -238,49 +238,7 @@ public class GeneracionResoluciones {
         String[] keys = new String[]{};
         int nkey = 0;
         int cont = 0;
-//        if (br != null) {
-//            try {
-//                while ((lineaDeTexto = br.readLine()) != null) {
-//                    cont++;
-////                    System.out.println("linea texto ////"+lineaDeTexto);
-//                    if (nkey == 0) {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        listaProyecto.put("PROYECTO", d[1]);
-//                        listaProyecto.put("REVISO", d[3]);
-//                        listaProyecto.put("REVISO_JEFE", d[5]);
-//                        listaProyecto.put("RECTOR", d[7]);
-//                        nkey = 1;
-//                    } else if (nkey == 1) {
-//                        keys = lineaDeTexto.split("\\t");
-//                        System.out.println("keys.l--->"+keys.length);
-//                        nkey = 2;
-//                    } else {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        
-//                        if(d.length == keys.length && d[1].equals(semestre) && !d[3].toUpperCase().equals("N/A")){
-////                            System.out.println("****lineaDeTexto--->\n"+lineaDeTexto);
-////                            for (int k = 0; k < d.length; k++) {
-////                                System.out.println(" K = " + k + "Valor " + d[k]);
-////                            }
-//                            Map<String, String> mapeado = new HashMap<>();
-////                            System.out.println(" Size KEYS= " + keys.length + "Size D=  " + d.length);
-//                            for (int i = 0; i < keys.length; i++) {
-//                                mapeado.put(keys[i], d[i].trim());
-//                            }
-//                            listaDatos.add(mapeado);
-//                        }
-//                    }
-//
-//                    //GENERACION DOCUMENTO
-//                    //                    
-//                    //                    
-//                    //</editor-fold>
-//                }
-//                System.out.println("cont-->"+cont);
-//            } catch (IOException ex) {
-//                Logger.getLogger(GeneracionActas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+
     }
 
     public Map<String, String> CrearResoluciones(String ruta, String semestre) throws IOException, DocumentException {
@@ -302,11 +260,10 @@ public class GeneracionResoluciones {
         }
         
 //</editor-fold>
-//        leerArchivo();
+
         System.out.println("LECTURA ARCHIVO-NEW-->"+listaDatos.size());
         GenerarResolucion(); 
-//        respuesta.put("ESTADO", "OK");
-//        respuesta.put("MENSAJE", "Las resoluciones se generaron correctamente.");
+
         return respuesta;
     }
 
@@ -484,7 +441,7 @@ public class GeneracionResoluciones {
                     || listaTipoResolucion.get(i).get("TIPO_RESOLUCION").toUpperCase().equals("SALARIAL"))) {
                 System.out.println("****************************SALARIAL**********************************");
                 List<Map<String, String>> listaDatosAcad = new ArrayList<>();
-//                System.out.println("-->"+listaCargoAcademicoAdminSalarial.size());
+
                 for (Map<String, String> datos : listaCargoAcademicoAdminSalarial) {
                     listaDocentesTipoResolucionAuxiliar = new ArrayList<>();
                     listaDocentesTipoResolucionAuxiliar = data_list(1, listaDatos, new String[]{"CEDULA"}, new String[]{"TIPO_RESOLUCION<->Cargo_acad_admin", "TIPO_PRODUCTO<->" + datos.get("TIPO_PRODUCTO")});
@@ -493,7 +450,7 @@ public class GeneracionResoluciones {
                         listaDatosAcad.addAll(listaDocentesTipoResolucionAuxiliar);
                     }
                 }
-                //System.out.println("listaDAtos--_>"+listaDatosAcad.size());
+               
                 if (listaDatosAcad.size() > 0) {
                     listaDatosAcad.addAll(listaDocentesTipoResolucion);
 
@@ -512,7 +469,7 @@ public class GeneracionResoluciones {
                 RtfWriter2.getInstance(documento, new FileOutputStream(URL));
 
                 documento.open();
-//                System.out.println("listaTipoResolucion.get(i).get(\"TIPO_RESOLUCION\")-->"+listaTipoResolucion.get(i).get("TIPO_RESOLUCION"));
+
                 if (listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equals("Salarial") || listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equals("Salarial_colciencias")) {
                     GenerarResolSalarial(documento, listaDocentesTipoResolucion.get(j).get("CEDULA"), listaTipoResolucion.get(i).get("TIPO_RESOLUCION"));
                 }else if(listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equals("Ascenso_en_el_escalafon")){
@@ -532,7 +489,7 @@ public class GeneracionResoluciones {
                 documento.close();
                 File f = new File(URL);
                 f.createNewFile();
-                //Desktop.getDesktop().open(new File(URL));
+                
             }
         }
         DatosNumeralesResoluciones.add(datos2);
@@ -542,14 +499,14 @@ public class GeneracionResoluciones {
         gi.iniciar();
         respuesta.put("ESTADO", "OK");
         respuesta.put("MENSAJE", "Las resoluciones se generaron correctamente.");
-//        JOptionPane.showMessageDialog(null, "La operación fue realizda con exito.");
+
         System.out.println("he terminado");
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("erro->"+e.getMessage());
             respuesta.put("ESTADO", "ERROR");
             respuesta.put("MENSAJE", e.getMessage());
-            //JOptionPane.showMessageDialog(null, "Ocurrio un error al momento de realizar la operación.\n Por favor verifique que el archivo no contenga saltos de linea(Enter), celdas vacias o que el separador decimal sea una coma(,) e intentelo nuevamente.");
+            
         }
         return respuesta;
     }
@@ -752,7 +709,7 @@ public class GeneracionResoluciones {
         fh4.setSize(8);
         fh4.setColor(Color.BLACK);
         fh4.setStyle("bold");
-            //fh2.setStyle("bold");
+     
 
         Font af10 = new Font(arialFont);
         af10.setSize(10);
@@ -783,7 +740,7 @@ public class GeneracionResoluciones {
         Table headerTable;
         Table headerTableTxt;
 
-//        System.out.println("$$$$$$$$$$$$$$$$ PAGINA N°"+);
+
         Image imgL = Image.getInstance("C:\\CIARP\\escudo.png");
          Image imgM = Image.getInstance("C:\\CIARP\\under.png");
 
@@ -856,28 +813,27 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
-        //        celda.setColspan(1);
+      
         footertable.addCell(celda);
         celda = new Cell(new RtfPageNumber(fh4));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        //celda.setBorderWidthTop(2);
+     
         footertable.addCell(celda);
 
         celda = new Cell(new Paragraph("de", fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+      
         footertable.addCell(celda);
 
         celda = new Cell(new RtfTotalPageNumber(fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+      
         footertable.addCell(celda);
             //</editor-fold>
 
@@ -895,7 +851,7 @@ public class GeneracionResoluciones {
 
         documento.setHeader(headerg);
         documento.setFooter(footer);
-            //documento.setFooter(footer);
+      
         //</editor-fold>
 
         p = new Paragraph(10);
@@ -1083,7 +1039,7 @@ public class GeneracionResoluciones {
                         && !listadatosxActasxTp.get(h).get("TIPO_PRODUCTO").toUpperCase().equals("ART_COL")) {
                     numerales += (numerales.equals("")?"":", ")+"ítem "+ 
                             getPosicionesNumeral(listadatosxActasTP)+
-                            //numeroOrdinales(Integer.parseInt((listadatosxActasxTp.get(h).get("POSICION_ACTA").equals("N/A")?"0":""+listadatosxActasxTp.get(h).get("POSICION_ACTA"))))+
+                      
                             " del numeral "+listadatosxActasxTp.get(h).get("NUMERAL_ACTA_CIARP");
                     norma += (norma.equals("")?"":", ")+Utilidades.Utilidades.decodificarElemento(listadatosxActasxTp.get(h).get("NORMA"));
                 } else {
@@ -1091,7 +1047,7 @@ public class GeneracionResoluciones {
                             && !listadatosxActasxTp.get(h).get("TIPO_PRODUCTO").toUpperCase().equals("ART_COL")) {
                         numerales += (numerales.equals("")?"":", ")+"Ítem "+ 
                                 getPosicionesNumeral(listadatosxActasTP)+
-                                //numeroOrdinales(Integer.parseInt((listadatosxActasxTp.get(h).get("POSICION_ACTA").equals("N/A")?"0":""+listadatosxActasxTp.get(h).get("POSICION_ACTA"))))+
+                               
                                 " del numeral "+listadatosxActasxTp.get(h).get("NUMERAL_ACTA_CIARP");    
                         norma += (norma.equals("")?"":", ")+getNormaProducto(listadatosxActasxTp.get(h).get("TIPO_PRODUCTO"));
                     } else {//ARTICULOS
@@ -1103,15 +1059,15 @@ public class GeneracionResoluciones {
                         for (int hh = 0; hh < listaxcategoria.size(); hh++) {
                             System.out.println(" VALOR HHHHHHHHHHHHHHHHHHHHHHH "+ hh);
                             if(hh > 0 && hh < listaxcategoria.size()-1){
-                                //num += ", ";
+                        
                                 norm +=", ";
                             }else if(hh> 0 && hh == listaxcategoria.size()-1){
-                                //num += " e ";
+                               
                                 norm +=" y " +(norma.equals("")?"":", ")+getNormaProducto(listadatosxActasxTp.get(h).get("TIPO_PRODUCTO"));;
                             }
                             
                             
-//                                    numeroOrdinales(Integer.parseInt((listaxcategoria.get(hh).get("POSICION_ACTA").equals("N/A")?"0":""+listaxcategoria.get(hh).get("POSICION_ACTA"))));
+
                             System.out.println("listaxcategoria.get(hh).get(\"CATEGORIA\")-->"+listaxcategoria.get(hh).get("CATEGORIA"));
                             if(listaxcategoria.get(hh).get("CATEGORIA").equals("A1")) {
                                 if( Utilidades.Utilidades.decodificarElemento(listaxcategoria.get(hh).get("SUBTIPO_PRODUCTO")).equals("Revision de tema")||
@@ -1168,13 +1124,13 @@ public class GeneracionResoluciones {
             p = new Paragraph(10);
             p.setFont(af10);
             p.setAlignment(justificado);
-//            p.add("\n");
+
             String numeroletras = getNumeroDecimal(""+listadatosxActas.size());
             System.out.println("$$$$$$$$##$#$#$#$$#$#$#$$#$#$ nuemro en letras "+ numeroletras);
             try{
             p.add("Que en virtud de lo anterior y conforme a lo señalado en "
                 + norma
-                //+ "el Numeral I, Literal a) A. A.1., A.3., y Numeral III, Literal a) del Artículo 10 del Decreto 1279 de 2002,  "//TODAS LAS NORMAS DEL ACTA
+            
                 +" el Comité Interno de Asignación y Reconocimiento de Puntaje en sesión realizada el día "+fechaEnletras(listaActas.get(j).get("FECHA_ACTA"),0)+", "
                 +"mediante Acta N° "+listaActas.get(j).get("ACTA")+" decidió asignar "+(listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al docente " : "a la docente "));
            } catch (Exception ex) {
@@ -1195,7 +1151,7 @@ public class GeneracionResoluciones {
             try{
             p.add(
                 getNumeroDecimal(""+totalp)+" ("+ValidarNumeroDec(""+totalp)+")"
-                //+"noventa y dos (92)"
+               
                 +" puntos salariales, "
                 +"distribuidos en " +(listadatosxActas.size()>1 ? "los " + numeroletras:((listadatosxActas.size()== 1?numeroletras.substring(0, 2):numeroletras)))
                     
@@ -1244,7 +1200,7 @@ public class GeneracionResoluciones {
         p.add("Reconocer y pagar "+(listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al " : "a la ")+listaDatosDocentes.get(0).get("TIPO_VINCULACION")+" ");
         c = new Chunk("" + NOM_DOCENTE + ",", af10b);
         p.add(c);
-        //p.add("identificado con cédula de Ciudadanía N° " + FormatoCedula(identificacion) + "Expedida en " + listaDatosDocentes.get(0).get("C_EXPEDICION") + ", ");
+       
         p.add((listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? " identificado con " : " identificada con "));
         if (listaDatosDocentes.get(0).get("TIPO_DOC").equals("CC")) {
             p.add("cédula de ciudadanía N° " + FormatoCedula(listaDatosDocentes.get(0).get("CEDULA")) + " expedida en " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("C_EXPEDICION")) + ", ");
@@ -1627,7 +1583,7 @@ public class GeneracionResoluciones {
         Table headerTable;
         Table headerTableTxt;
 
-//        System.out.println("$$$$$$$$$$$$$$$$ PAGINA N°"+);
+//      
         Image imgL = Image.getInstance("C:\\CIARP\\escudo.png");
          Image imgM = Image.getInstance("C:\\CIARP\\under.png");
          
@@ -1698,28 +1654,28 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
-        //        celda.setColspan(1);
+        
+        
         footertable.addCell(celda);
         celda = new Cell(new RtfPageNumber(fh4));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        //celda.setBorderWidthTop(2);
+       
         footertable.addCell(celda);
 
         celda = new Cell(new Paragraph("de", fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+       
         footertable.addCell(celda);
 
         celda = new Cell(new RtfTotalPageNumber(fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
         //</editor-fold>
 
@@ -2274,7 +2230,7 @@ public class GeneracionResoluciones {
         Table headerTable;
         Table headerTableTxt;
 
-//        System.out.println("$$$$$$$$$$$$$$$$ PAGINA N°"+);
+
         Image imgL = Image.getInstance("C:\\CIARP\\escudo.png");
          Image imgM = Image.getInstance("C:\\CIARP\\under.png");
 
@@ -2348,28 +2304,27 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
-        //        celda.setColspan(1);
+        
         footertable.addCell(celda);
         celda = new Cell(new RtfPageNumber(fh4));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        //celda.setBorderWidthTop(2);
+      
         footertable.addCell(celda);
 
         celda = new Cell(new Paragraph("de", fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+       
         footertable.addCell(celda);
 
         celda = new Cell(new RtfTotalPageNumber(fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+       
         footertable.addCell(celda);
         //</editor-fold>
 
@@ -2560,7 +2515,7 @@ public class GeneracionResoluciones {
                     norma +=(norma.equals("")?"":", ")+ getNormaProducto(listadatosxActasxTp.get(k).get("TIPO_PRODUCTO"));
                     System.out.println("RETORNA DE GETPOSICION ACTA en la resolucion"+numerales+" ///// "+listadatosxActasxTp.get(k).get("TIPO_PRODUCTO"));
                 }
-//                numeralActas[k]=listadatosxActasxTp.get(k).get("NUMERAL_ACTA_CIARP");
+
             }
             for (int k = 0; k < listadatosxActas.size(); k++) {
                 totalPuntosxActas += Double.parseDouble(listadatosxActas.get(k).get("PUNTOS").replace(",", "."));
@@ -3008,7 +2963,7 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
         Table headerTable;
         Table headerTableTxt;
 
-//        System.out.println("$$$$$$$$$$$$$$$$ PAGINA N°"+);
+
         Image imgL = Image.getInstance("C:\\CIARP\\escudo.png");
          Image imgM = Image.getInstance("C:\\CIARP\\under.png");
 
@@ -3063,15 +3018,6 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
         celda.setHorizontalAlignment(Cell.ALIGN_LEFT);
         headerTableTxt.addCell(celda);
 
-
-//           headerDif.setHeaderFooter(new RtfHeaderFooter(headerTable), RtfHeaderFooter.DISPLAY_FIRST_PAGE);
-//        headerTable = new Table(1, 1);
-//        headerTable.setWidth(100);
-//        
-//        celda = new Cell(new Paragraph("UNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº \n", fh4));
-//        celda.setBorder(0);
-//        celda.setHorizontalAlignment(Cell.ALIGN_LEFT);
-//        headerTable.addCell(celda);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="FOOTER">
         float[] tam = new float[4];
@@ -3090,28 +3036,27 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
-        //        celda.setColspan(1);
+        
         footertable.addCell(celda);
         celda = new Cell(new RtfPageNumber(fh4));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        //celda.setBorderWidthTop(2);
+      
         footertable.addCell(celda);
 
         celda = new Cell(new Paragraph("de", fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+      
         footertable.addCell(celda);
 
         celda = new Cell(new RtfTotalPageNumber(fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+       
         footertable.addCell(celda);
         //</editor-fold>
 
@@ -3647,7 +3592,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         Table headerTable;
         Table headerTableTxt;
 
-//        System.out.println("$$$$$$$$$$$$$$$$ PAGINA N°"+);
+
         Image imgL = Image.getInstance("C:\\CIARP\\escudo.png");
          Image imgM = Image.getInstance("C:\\CIARP\\under.png");
 
@@ -3701,14 +3646,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         celda.setHorizontalAlignment(Cell.ALIGN_LEFT);
         headerTableTxt.addCell(celda);
 
-//           headerDif.setHeaderFooter(new RtfHeaderFooter(headerTable), RtfHeaderFooter.DISPLAY_FIRST_PAGE);
-//        headerTable = new Table(1, 1);
-//        headerTable.setWidth(100);
-//        
-//        celda = new Cell(new Paragraph("UNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº \n", fh4));
-//        celda.setBorder(0);
-//        celda.setHorizontalAlignment(Cell.ALIGN_LEFT);
-//        headerTable.addCell(celda);
+
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="FOOTER">
         float[] tam = new float[4];
@@ -3727,28 +3665,27 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
-        //        celda.setColspan(1);
+        
         footertable.addCell(celda);
         celda = new Cell(new RtfPageNumber(fh4));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
 
         celda = new Cell(new Paragraph("de", fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
 
         celda = new Cell(new RtfTotalPageNumber(fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
         //</editor-fold>
 
@@ -4271,7 +4208,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         Table headerTableTxt;
        
 
-//        System.out.println("$$$$$$$$$$$$$$$$ PAGINA N°"+);
+
         Image imgL = Image.getInstance("C:\\CIARP\\escudo.png");
         Image imgM = Image.getInstance("C:\\CIARP\\under.png");
        
@@ -4346,28 +4283,27 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
-        //        celda.setColspan(1);
+        
         footertable.addCell(celda);
         celda = new Cell(new RtfPageNumber(fh4));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
 
         celda = new Cell(new Paragraph("de", fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
 
         celda = new Cell(new RtfTotalPageNumber(fh4));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
-        //celda.setBorderWidthTop(2);
+        
         footertable.addCell(celda);
         //</editor-fold>
        
@@ -4903,69 +4839,129 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         switch (datos.get("TIPO_PRODUCTO")) {
 
             case "Articulo":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                        + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                        + "); " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
+                            + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
+                            + "); " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
                 case "Art_Col":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                        + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                        + "); " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
+                            + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
+                            + "); " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Libro":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD").replace("\"", ""))
-                        + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD").replace("\"", ""))
+                            + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Capitulo_de_Libro":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Ponencias_en_Eventos_Especializados":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; en el " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                        + "; " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; en el " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
+                            + "; " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Publicaciones_Impresas_Universitarias":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; de " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISSN/ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                        + "; " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; de " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISSN/ISBN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
+                            + "; " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Reseñas_Críticas":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                        + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                        + "); " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
+                            + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
+                            + "); " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Traducciones":
-                datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                        + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
-                        + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
-                        + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
-                        + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
-                        + "); " + datos.get("N_AUTORES") + " autor(es).";
+            {
+                try {
+                    datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                            + "\"; de la revista " + Utilidades.Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))
+                            + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(datos.get("ISSN/ISBN"))
+                            + "; " + Utilidades.Utilidades.decodificarElemento(datos.get("FECHA_PUBLICACION/REALIZACION"))
+                            + " (" + Utilidades.Utilidades.decodificarElemento(datos.get("PUBLINDEX"))
+                            + "); " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+                } catch (Exception ex) {
+                    Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Direccion_de_Tesis":
                 datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "") + " ";
                 break;
             default:
                 if (!Utilidades.Utilidades.decodificarElemento(datos.get("N_AUTORES")).equals("N/A")) {
-                    datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
-                            + ", " + datos.get("N_AUTORES") + " autor(es).";
+            try {
+                datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
+                        + ", " + ValidarNumeroDec(datos.get("N_AUTORES")) + " autor(es).";
+            } catch (Exception ex) {
+                Logger.getLogger(GeneracionResoluciones.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 } else {
                     datosProducto = " " + Utilidades.Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD")).replace("\"", "")
                             + " ";
@@ -5044,38 +5040,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
                 agregado = "";
             }
             Resultado = Centenas[numero / 100] + agregado;
-//        } else if (numero >= 1000 && numero <= 1999) {
-//            String agregado = "";
-//            if (numero % 1000 != 0) {
-//                agregado = " " + numeroOrdinales(numero % 1000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = "Mil" + agregado;
-//        } else if (numero >= 2000 && numero <= 999999) {
-//            String agregado = "";
-//            if (numero % 1000 != 0) {
-//                agregado = " " + numeroOrdinales(numero % 1000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = numeroEnLetras(numero / 1000) + " Mil" + agregado;
-//        } else if (numero >= 1000000 && numero <= 1999999) {
-//            String agregado = "";
-//            if (numero % 1000000 != 0) {
-//                agregado = " " + numeroEnLetras(numero % 1000000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = "Un Millón" + agregado;
-//        } else if (numero >= 2000000 && numero <= 1999999999) {
-//            String agregado = "";
-//            if (numero % 1000000 != 0) {
-//                agregado = " " + numeroEnLetras(numero % 1000000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = numeroEnLetras(numero / 1000000) + " Millones" + agregado;
+
         }
         return Resultado.toLowerCase();
     }
@@ -5139,7 +5104,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
                     retorno += ","+ numrs[1];//
                 }
             } else {
-                retorno = numero;// + "(" + numero + ")";
+                retorno = numero;
             }
         }
         return retorno;
@@ -5197,18 +5162,9 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
     }
    
     public String ValidarNumeroDec(String valor)throws Exception{
-//        String ret = formateador.format(""+valor);
+
  System.out.println("************************ValidarNumeroDec****************************");
-//        System.out.println("valorform---->"+ret);
-//        if(valor.indexOf(".")>-1){
-//            String[] dat = valor.replace(".", ":").split(":");
-//            if(dat[1].equals("00")){
-//                ret = dat[0];
-//            }else{
-//                ret = ret.replace(".", ",");
-//            }
-//        }
-//        System.out.println("ret--------->"+ret);
+
         String retorno = "";
         System.out.println("numero----->"+valor);
         if(valor.indexOf(",") > -1){
@@ -5231,12 +5187,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             valor = valor.replace(".", ",");
             String[] daot= valor.split(",");
             System.out.println("DAOT [0]" +daot[0]);
-//            if (daot[0].equals("")){
-//                daot[0]= "0";
-//                valor = daot[0]+valor;
-//                System.out.println("DAO[0] = "+daot[0]);
-//                System.out.println("DAO[1] = "+daot[1]);
-//            }
+
             if(daot[1].equals("0")){
                 retorno = daot[0];
             }else{
@@ -5244,23 +5195,9 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             }
             System.out.println("numero final------>"+retorno);
         }
-        
-//        if (!numero.equals("N/A")) {
-//            if (numero.indexOf(",") > -1) {
-//                String[] numrs = numero.replace(",", "::").split("::");
-//                retorno = numeroEnLetras(Integer.parseInt(numrs[0].equals("")?"0":numrs[0]));
-//                if(Integer.parseInt(numrs[1]) > 0){
-//                    retorno += " coma ";
-//                    retorno += numeroEnLetras(Integer.parseInt(numrs[1]));// + " (" + numero + ")";
-//                }
-//            } else {
-//                retorno = numeroEnLetras(Integer.parseInt(numero));// + "(" + numero + ")";
-//            }
-//        }
-
         return retorno;
  
-//        return ret;
+
     }
      
 }

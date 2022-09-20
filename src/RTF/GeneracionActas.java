@@ -96,13 +96,14 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Titulacion");
         auxiliarJerarquia.put("NPRODUCTO", "Titulación");
-        auxiliarJerarquia.put("NORMA", "Artículo 7 del Decreto 1279 del 2002, Artículo Primero del Acuerdo 001 de 2004 del Grupo de Seguimiento al Decreto 1279 de 2002");
+        auxiliarJerarquia.put("NORMA", "Artículo 7 del Decreto 1279 delpp 2002, Artículo Primero del Acuerdo 001 de 2004 del Grupo de Seguimiento al Decreto 1279 de 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
 
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Articulo");
         auxiliarJerarquia.put("NPRODUCTO", "Artículo");
+        auxiliarJerarquia.put("NPRODUCTOS", "Artículos");
         auxiliarJerarquia.put("NORMA", "Literal a. numeral I, Artículo 10 y literal a. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "el");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -110,6 +111,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Produccion_de_Video_Cinematograficas_o_Fonograficas");
         auxiliarJerarquia.put("NPRODUCTO", "Producción de Video Cinematográfica o Fonográfica");
+        auxiliarJerarquia.put("NPRODUCTOS", "Producciones de Video Cinematográficas o Fonográficas");
         auxiliarJerarquia.put("NORMA", "Literal b. numeral I, Artículo 10; literal b. numeral I, Artículo 24; literal a. numeral I; literal a. numeral II, Articulo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -117,6 +119,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Libro");
         auxiliarJerarquia.put("NPRODUCTO", "Libro");
+        auxiliarJerarquia.put("NPRODUCTOS", "Libros");
         auxiliarJerarquia.put("NORMA", "Literales c, d, e, Artículo 10 y literales c, d, e. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "el");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -124,6 +127,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Capitulo_de_Libro");
         auxiliarJerarquia.put("NPRODUCTO", "Capítulo de Libro");
+        auxiliarJerarquia.put("NPRODUCTOS", "Capítulos de Libro");
         auxiliarJerarquia.put("NORMA", "Literales c, d, e, Artículo 10 y literales c, d, e. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "el");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -131,6 +135,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Premios_Nacionales_e_Internacionales");
         auxiliarJerarquia.put("NPRODUCTO", "Premio Nacional o Internacional");
+        auxiliarJerarquia.put("NPRODUCTOS", "Premios Nacionales o Internacionales");
         auxiliarJerarquia.put("NORMA", "Literal f. numeral I, Artículo 10 y literal g. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "el");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -138,6 +143,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Patente");
         auxiliarJerarquia.put("NPRODUCTO", "Patente");
+        auxiliarJerarquia.put("NPRODUCTOS", "Patentes");
         auxiliarJerarquia.put("NORMA", "Literal g. numeral I, Artículo 10 y literal h. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -145,6 +151,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Traduccion_de_Libros");
         auxiliarJerarquia.put("NPRODUCTO", "Traducción de Libro");
+        auxiliarJerarquia.put("NPRODUCTOS", "Traducciones de Libro");
         auxiliarJerarquia.put("NORMA", "Literal h. numeral I, Artículo 10 y literal f. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -152,6 +159,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Obra_Artistica");
         auxiliarJerarquia.put("NPRODUCTO", "Obra Artística");
+        auxiliarJerarquia.put("NPRODUCTOS", "Obras Artísticas");
         auxiliarJerarquia.put("NORMA", "Literal i. numeral I, Artículo 10; literal i. numeral I, Artículo 24; literal b. numeral I; literal g. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -159,6 +167,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Produccion_Tecnica");
         auxiliarJerarquia.put("NPRODUCTO", "Producción Técnica");
+        auxiliarJerarquia.put("NPRODUCTOS", "Producciones Técnicas");
         auxiliarJerarquia.put("NORMA", "Literal j. numeral I, Artículo 10 y literal j. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -166,6 +175,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Produccion_de_Software");
         auxiliarJerarquia.put("NPRODUCTO", "Producción de Software");
+        auxiliarJerarquia.put("NPRODUCTOS", "Producciones de Software");
         auxiliarJerarquia.put("NORMA", "Literal k. numeral I, Artículo 10 y literal k. numeral I, Artículo 24 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -173,6 +183,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Ponencias_en_Eventos_Especializados");
         auxiliarJerarquia.put("NPRODUCTO", "Ponencia en Evento Especializado");
+        auxiliarJerarquia.put("NPRODUCTOS", "Ponencias en Eventos Especializados");
         auxiliarJerarquia.put("NORMA", "Literal c. numeral I, literal b. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -180,6 +191,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Publicaciones_Impresas_Universitarias");
         auxiliarJerarquia.put("NPRODUCTO", "Publicación Impresa Universitaria");
+        auxiliarJerarquia.put("NPRODUCTOS", "Publicaciones Impresas Universitarias");
         auxiliarJerarquia.put("NORMA", "Literal d. numeral I, literal c. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -187,6 +199,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Estudios_Posdoctorales");
         auxiliarJerarquia.put("NPRODUCTO", "Estudio Posdoctoral");
+        auxiliarJerarquia.put("NPRODUCTOS", "Estudios Posdoctorales");
         auxiliarJerarquia.put("NORMA", "Literal e. numeral I, literal d. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "el");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -194,6 +207,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Reseñas_Críticas");
         auxiliarJerarquia.put("NPRODUCTO", "Reseña Crítica");
+        auxiliarJerarquia.put("NPRODUCTOS", "Reseñas Críticas");
         auxiliarJerarquia.put("NORMA", "Literal f. numeral I, literal e. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -201,6 +215,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Traducciones");
         auxiliarJerarquia.put("NPRODUCTO", "Traducción");
+        auxiliarJerarquia.put("NPRODUCTOS", "Traducciones");
         auxiliarJerarquia.put("NORMA", "Literal g. numeral I, literal f. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -208,6 +223,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Direccion_de_Tesis");
         auxiliarJerarquia.put("NPRODUCTO", "Dirección de Tesis");
+        auxiliarJerarquia.put("NPRODUCTOS", "Direcciones de Tesis");
         auxiliarJerarquia.put("NORMA", "Literal h. numeral I, literal h. numeral II, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -215,6 +231,7 @@ Map<String, String> respuestaerr = new HashMap<>();
         auxiliarJerarquia = new HashMap<>();
         auxiliarJerarquia.put("PRODUCTO", "Evaluacion_como_par");
         auxiliarJerarquia.put("NPRODUCTO", "Evaluación como par");
+        auxiliarJerarquia.put("NPRODUCTOS", "Evaluaciones como par");
         auxiliarJerarquia.put("NORMA", "Literal i. numeral I, Artículo 20 del Decreto 1279 del 2002");
         auxiliarJerarquia.put("ARTICULO", "la");
         jerarquiaProducto.add(auxiliarJerarquia);
@@ -257,56 +274,18 @@ Map<String, String> respuestaerr = new HashMap<>();
         
         String encode = Encode();
         
-//        String[] keys = new String[]{};
-//        int nkey = 0;
-//        if (br != null) {
-//            try {
-//                while ((lineaDeTexto = br.readLine()) != null) {
-//                    if (nkey == 0) {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        listaDatosacta.put("No_ACTA", d[1]);
-//                        listaDatosacta.put("FECHA_ACTA", d[3]);
-//                        listaDatosacta.put("HORA_INICIO", d[5]);
-//                        listaDatosacta.put("HORA_FIN", d[7]);
-//                        listaDatosacta.put("ACTA_ANTERIOR", d[9]);
-//                        listaDatosacta.put("FECHA_ACTA_ANTERIOR", d[11]);
-//                        nkey = 1;
-//                    } else if (nkey == 1) {
-//                        keys = lineaDeTexto.split("\\t");
-//                        nkey = 2;
-//                    } else {
-//                        String d[] = lineaDeTexto.split("\\t");
-//                        if(d.length>0){
-//                        for (int k = 0; k < d.length; k++) {
-//                            System.out.println(" K = " + k + "Valor " + d[k]);
-//                        }
-//                        Map<String, String> mapeado = new HashMap<>();
-//                        System.out.println(" Size KEYS= " + keys.length + "Size D=  " + d.length);
-//                        for (int i = 0; i < keys.length; i++) {
-//                            mapeado.put(keys[i], d[i]);
-//                        }
-//                        listaDatos.add(mapeado);
-//                        }
-//                    }
-//
-//                    //String d[] = lineaDeTexto.split("\\t");
-//                    //GENERACION DOCUMENTO
-////                    
-////                    
-//                    //</editor-fold>
-//                }
                 URL = "C:\\CIARP\\acta_" + listaDatosacta.get("No_ACTA") + ".rtf";
                 GeneracionDocumentoActa(listaDatos, documento);
                 for (int j = 0; j < listaDatos.size(); j++) {
-                    // System.out.println("***********************inicio j: "+j+"***************************************");
+         
 
                     for (Map.Entry<String, String> entry : listaDatos.get(j).entrySet()) {
                         String key = entry.getKey();
                         String value = entry.getValue();
-                        //  System.out.println("KEY= "+key+", valor= "+value);
+         
 
                     }
-                    //System.out.println("*************************finalizacion J ="+j+"*************************************");
+         
                 }
 
                 documento.close();
@@ -430,27 +409,19 @@ Map<String, String> respuestaerr = new HashMap<>();
         //documento.setFooter(footer);
         //</editor-fold>
 
-//            fh1 = new Font(fh2);
-//            fh1.setSize(11);
-//            fh1.setStyle(Font.NORMAL);
-//            fh1.setColor(Color.black);
-//
-//            fh2.setSize(11);
-//            fh2.setStyle(Font.BOLD);
-//            fh2.setColor(Color.black);
+
         p = new Paragraph(10);
         justificado = Paragraph.ALIGN_JUSTIFIED;
         centrado = Paragraph.ALIGN_CENTER;
 
-        //<editor-fold defaultstate="collapsed" desc="CONTENIDO DEL DOCUMENTO">
-        //<editor-fold defaultstate="collapsed" desc="CUERPO ACTA">
+
         p.setAlignment(centrado);
         p.setFont(fh2);
         
         String[] año = listaDatosacta.get("FECHA_ACTA").split("/");
        p.add("\nACTA " + listaDatosacta.get("No_ACTA") + " DE "+ año[2]);
         
-        //p.add("\nACTA " + listaDatosacta.get("No ACTA") + " DE 2019 ");
+
         documento.add(p);
 
         p = new Paragraph(10);
@@ -638,13 +609,13 @@ Map<String, String> respuestaerr = new HashMap<>();
                     c = new Chunk("Tipo de solicitud: ", fh2);
                     p.add(c);
                     System.out.println(" PROBANDO A VER QUE PASA AQUI  "+listadatosdocentexTipoProducto.get(0).get("TIPO_PRODUCTO"));
-                    p.add((listadatosxTipoProducto.get(0).get("TIPO_PRODUCTO").equals("Ascenso_en_el_Escalafon_Docente")||listadatosxTipoProducto.get(0).get("TIPO_PRODUCTO").equals("Ingreso_a_la_Carrera_Docente")?
+                    p.add((Utilidades.Utilidades.decodificarElemento(listadatosxTipoProducto.get(0).get("TIPO_PRODUCTO")).equals("Ascenso_en_el_Escalafon_Docente")||Utilidades.Utilidades.decodificarElemento(listadatosxTipoProducto.get(0).get("TIPO_PRODUCTO")).equals("Ingreso_a_la_Carrera_Docente")?
                             "Puntos por":"Puntos por la publicación de " + listadatosdocentexTipoProducto.size()) + " " +
                             (listadatosdocentexTipoProducto.size()>1?
-                                    jerarquiaProducto.get(i).get("PRODUCTO").replaceAll("_", " "):
+                                    jerarquiaProducto.get(i).get("NPRODUCTOS"):
                                     jerarquiaProducto.get(i).get("NPRODUCTO"))
                             + ". (" + jerarquiaProducto.get(i).get("NORMA") + ").\n");
-                    //documento.add(p);
+                  
 
                     for (int k = 0; k < listadatosdocentexTipoProducto.size(); k++) {
                         //<editor-fold defaultstate="collapsed" desc="Datos para Excel">
@@ -659,7 +630,7 @@ Map<String, String> respuestaerr = new HashMap<>();
                             datos1.put("POS", ""+(k+1));
                             datos2.add(datos1);
                         //</editor-fold>
-                        //p= new Paragraph();
+                     
                         p.setFont(fh3);
                         p.setAlignment(justificado);
                         c = new Chunk("Soporte" + (listadatosdocentexTipoProducto.size() > 1 ? 
@@ -669,7 +640,7 @@ Map<String, String> respuestaerr = new HashMap<>();
                         p.add(c);
                         String soportes = getSoportes(listadatosdocentexTipoProducto, k);
                         p.add(soportes + "\n");
-                        //documento.add(p);
+                       
                     }
 
                     String decision;
@@ -679,8 +650,8 @@ Map<String, String> respuestaerr = new HashMap<>();
                     p.setAlignment(justificado);
                     c = new Chunk("Decisión: ", fh2);
                     p.add(c);
-                    p.add("Revisada la documentación y después de analizar lo establecido en las normas, el Comité decide" + decision + "\n");
-                    //documento.add(p);
+                    p.add("Revisada la documentación y después de analizar lo establecido en las normas, el Comité decide " + decision + "\n");
+                   
                     } catch (Exception ex) {
                         Logger.getLogger(GeneracionActas.class.getName()).log(Level.SEVERE, null, ex);
                         respuestaerr.put("ESTADO", "ERROR");
@@ -695,8 +666,7 @@ Map<String, String> respuestaerr = new HashMap<>();
                         }
                         return respuestaerr;
                     }
-                    //p= new Paragraph();
-                   
+                                      
 
                     if (!Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("NOTA")).equals("N/A")) {
                         p.setFont(fh3);
@@ -765,14 +735,14 @@ Map<String, String> respuestaerr = new HashMap<>();
                             datos1.put("POS", ""+(k+1));
                             datos2.add(datos1);
                         //</editor-fold>
-                    //p= new Paragraph();
+                
                     p.setFont(fh3);
                     p.setAlignment(justificado);
                     c = new Chunk("Artículo "+(listainfoDocentesColciencias.size() > 1 ? "N° "+(k + 1)+": " : ": "), fh2);
                     p.add(c);
                     String soportes = getSoportesColciencias(listainfoDocentesColciencias, k);
                     p.add(soportes + "");
-                    //documento.add(p);
+                 
                 }
                                 
                 c = new Chunk("DECISIÓN: ", fh2);
@@ -1346,7 +1316,7 @@ return respuestaerr;
             respuestaxEstado += (listadatosdocentexTipoProducto.size() > 1 ? " por "+articulo+" " 
                     + (getNombreNumero((f + 1), getDatoJerarquiaProducto(listadatosdocentexTipoProducto.get(f).get("TIPO_PRODUCTO"), "PRODUCTO", "ARTICULO")) + " " 
                                    +getDatoJerarquiaProducto(listadatosdocentexTipoProducto.get(f).get("TIPO_PRODUCTO"), "PRODUCTO", "NPRODUCTO")+ " "
-                                //+ listadatosdocentexTipoProducto.get(f).get("TIPO PRODUCTO").replaceAll("_", " ")
+                               
                                 ) : "");
             if (listadatosdocentexTipoProducto.get(f).get("RESPUESTA_CIARP").equals("Aprobado")) {
                 if (listadatosdocentexTipoProducto.get(f).get("TIPO_PRODUCTO").equals("Ascenso_en_el_Escalafon_Docente")) {
@@ -1360,12 +1330,12 @@ return respuestaerr;
                                         + " y asignar " + getNumeroDecimal(listadatosdocentexTipoProducto.get(f).get("PUNTOS")) + " ("
                                         + ValidarNumeroDec(listadatosdocentexTipoProducto.get(f).get("PUNTOS")) + ") " + listadatosdocentexTipoProducto.get(f).get("TIPO_PUNTAJE");    
                     
-                    if (listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD").equals(listaDatosacta.get("FECHA_ACTA"))||Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).equals("N/A")) {
+                    if (Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).equals(listaDatosacta.get("FECHA_ACTA"))||Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).equals("N/A")) {
                         respuestaxEstado += " a partir de la fecha de la presente sesión";
-                    } else if(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD").length()>10){
-                        respuestaxEstado +=  listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD") + ".";
+                    } else if(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).length()>10){
+                        respuestaxEstado +=  Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")) + ".";
                     }else{
-                        respuestaxEstado += " a partir de " + fechaEnletras(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD"), 0) + "";
+                        respuestaxEstado += " a partir de " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")), 0) + "";
                     }
                     
                 } else if (listadatosdocentexTipoProducto.get(f).get("TIPO_PRODUCTO").equals("Ingreso_a_la_Carrera_Docente")) {
@@ -1373,10 +1343,10 @@ return respuestaerr;
                 } else if (listadatosdocentexTipoProducto.get(f).get("TIPO_PRODUCTO").equals("Titulacion")) {
                     respuestaxEstado += Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("DECISION"));
                 } else {
-                    //System.out.println("hello aqui voy?....." + listadatosdocentexTipoProducto.get(f).get("TIPO PUNTAJE"));
+                   
                     boolean cond = listadatosdocentexTipoProducto.get(f).get("TIPO_PUNTAJE").equals("puntos salariales");
                     if (cond) {
-//                        System.out.println("ENTRE?....." + listadatosdocentexTipoProducto.get(f).get("TIPO PUNTAJE"));
+
                         respuestaxEstado += "asignarle "
                                     + (listadatosdocentexTipoProducto.get(f).get("SEXO").toUpperCase().equals("M")?
                                     "al":"a la")+" "
@@ -1385,12 +1355,12 @@ return respuestaerr;
                                     + " (" + ValidarNumeroDec(listadatosdocentexTipoProducto.get(f).get("PUNTOS")) + ") " 
                                     + listadatosdocentexTipoProducto.get(f).get("TIPO_PUNTAJE") ;
                         
-                        if (listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD").equals(listaDatosacta.get("FECHA_ACTA"))||Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).equals("N/A"))  {
+                        if (Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).equals(listaDatosacta.get("FECHA_ACTA"))||Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).equals("N/A"))  {
                             respuestaxEstado += " a partir de la fecha de la presente sesión";
-                        }else if(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD").length()>10){
-                            respuestaxEstado += " "+ listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD") + ".";
+                        }else if(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")).length()>10){
+                            respuestaxEstado += " "+ Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")) + ".";
                         }else {
-                            respuestaxEstado += " a partir del " + fechaEnletras(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD"), 0) + "";
+                            respuestaxEstado += " a partir del " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("RETROACTIVIDAD")), 0) + "";
                         }
 
                         if (!Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("NORMA")).equals("#N/D") && !Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("NORMA")).equals("#N/A")) {
@@ -1432,12 +1402,12 @@ return respuestaerr;
                         if (!Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("NORMA")).equals("#N/D")  && !Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("NORMA")).equals("#N/A")) {
                             respuestaxEstado += " considerando que "+articulo+" " 
                                     +getDatoJerarquiaProducto(listadatosdocentexTipoProducto.get(f).get("TIPO_PRODUCTO"), "PRODUCTO", "NPRODUCTO")
-                                    //+ listadatosdocentexTipoProducto.get(f).get("TIPO PRODUCTO").replaceAll("_", " ")
+                                   
                                     + " corresponde a un(a) " 
                                     + (Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("SUBTIPO_PRODUCTO")).equals("N/A")?
                                         "producto":
                                         Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("SUBTIPO_PRODUCTO"))+" ")
-                                    //+ listadatosdocentexTipoProducto.get(f).get("SUBTIPO PRODUCTO")
+                                    
                                     + (!Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(f).get("NACIONAL/INTERNACIONAL/REGIONAL")).equals("N/A")
                                     ? " de carácter " + listadatosdocentexTipoProducto.get(f).get("NACIONAL/INTERNACIONAL/REGIONAL")
                                     : "")
@@ -1474,7 +1444,7 @@ return respuestaerr;
         }
 
         String add = (listadatosdocentexTipoProducto.size() > 1
-                ? " Para un total de "+getNumeroDecimal(""+formateador.format(sumatoria_puntos))+" (" + formateador.format(sumatoria_puntos) + ") " + 
+                ? "\nPara un total de "+getNumeroDecimal(""+formateador.format(sumatoria_puntos))+" (" + formateador.format(sumatoria_puntos) + ") " + 
                 listadatosdocentexTipoProducto.get(0).get("TIPO_PUNTAJE") 
                 + " por la productividad presentada"
                 : "");
@@ -1491,9 +1461,7 @@ return respuestaerr;
             System.out.println(" ADDD a ver que tiene "+ add+" "+ listadatosdocentexTipoProducto.get(0).get("NOMBRE_DOCENTE") );
         }
         
-//        else if (listadatosdocentexTipoProducto.get(0).get("RESPUESTA CIARP").equals("Aprobado")&& listadatosdocentexTipoProducto.get(0).get("TIPO PUNTAJE").equals("puntos de bonificacion")){
-//            respuesta+= add;
-//    }
+
         return respuesta;
     }
 
@@ -1519,36 +1487,36 @@ return respuestaerr;
                         + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("ISSN/ISBN"))
                         + "; " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("FECHA_PUBLICACION/REALIZACION"))
                         + " (" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("PUBLINDEX"))
-                        + "); " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia del artículo "+ datosProducto+"; "+datosSoporte;
+                        + "); " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia del artículo"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Libro":
                 datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
                 datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("NOMBRE_SOLICITUD"))
                         + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("REVISTA/EVENTO/EDITORIAL"))
                         + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("ISSN/ISBN"))
-                        + "; " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia de la libro "+ datosProducto+"; "+datosSoporte;
+                        + "; " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia del libro"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Capitulo_de_Libro":
                 datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
                 datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("NOMBRE_SOLICITUD"))
                         + "\"; editorial " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("REVISTA/EVENTO/EDITORIAL"))
                         + "; ISBN: " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("ISSN/ISBN"))
-                        + "; " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia del capitulo "+ datosProducto+"; "+datosSoporte;
+                        + "; " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia del capitulo"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Ponencias_en_Eventos_Especializados":
                 datosSoporte =ComillasSoporte( Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
                 datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("NOMBRE_SOLICITUD"))
                         + "\"; en el " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("REVISTA/EVENTO/EDITORIAL"))
                         + "; " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("FECHA_PUBLICACION/REALIZACION"))
-                        + "; " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia de la ponencia "+ datosProducto+"; "+datosSoporte;
+                        + "; " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia de la ponencia"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Publicaciones_Impresas_Universitarias":
                 datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
@@ -1556,9 +1524,9 @@ return respuestaerr;
                         + "\"; de " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("REVISTA/EVENTO/EDITORIAL"))
                         + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("ISSN/ISBN"))
                         + "; " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("FECHA_PUBLICACION/REALIZACION"))
-                        + "; " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia de la publicación impresa universitaria "+ datosProducto+"; "+datosSoporte;
+                        + "; " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia de la publicación impresa universitaria"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Reseñas_Críticas":
                 datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
@@ -1567,9 +1535,9 @@ return respuestaerr;
                         + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("ISSN/ISBN"))
                         + "; " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("FECHA_PUBLICACION/REALIZACION"))
                         + " (" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("PUBLINDEX"))
-                        + "); " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia de la reseña "+ datosProducto+"; "+datosSoporte;
+                        + "); " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia de la reseña"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Traducciones":
                 datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
@@ -1578,30 +1546,30 @@ return respuestaerr;
                         + "; ISSN: " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("ISSN/ISBN"))
                         + "; " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("FECHA_PUBLICACION/REALIZACION"))
                         + " (" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("PUBLINDEX"))
-                        + "); " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                repl = getReplaceSoporteArticulo(datosSoporte);
-                respuestaSoporte = "Copia de la traducción "+ datosProducto+"; "+datosSoporte;
+                        + "); " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                respuestaSoporte = "Copia de la traducción"+ datosProducto+"; "+datosSoporte;
                 break;
             case "Direccion_de_Tesis":
                 datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
                 datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("NOMBRE_SOLICITUD")) + "\" ";
-//                
-                respuestaSoporte = "Copia del acta de sustentación de la "+ datosProducto +"; "+ datosSoporte;
+
+                respuestaSoporte = "Copia del acta de sustentación de la"+ datosProducto +"; "+ datosSoporte;
                 break;
             default:
                 if (!Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")).equals( "N/A")) {
                     datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
                     datosProducto = " \"" + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("NOMBRE_SOLICITUD"))
-                            + "\" " + listadatosdocentexTipoProducto.get(k).get("No._AUTORES") + " autor(es)";
-//                    repl = getReplaceSoporteArticulo(datosSoporte);
-                    respuestaSoporte = "Copia de "+listadatosdocentexTipoProducto.get(k).get("TIPO_PRODUCTO") + datosProducto +", "+ datosSoporte;
+                            + "\" " + ValidarNumeroDec(listadatosdocentexTipoProducto.get(k).get("No._AUTORES")) + " autor(es)";
+
+                    respuestaSoporte = "Copia de"+listadatosdocentexTipoProducto.get(k).get("TIPO_PRODUCTO") + datosProducto +", "+ datosSoporte;
                 } else {
                     datosSoporte = ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("SOPORTES")));
                     datosProducto = " " + Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("NOMBRE_SOLICITUD"))
                             + " ";
-//                    repl = getReplaceSoporteArticulo(datosSoporte);
-                    respuestaSoporte = "Copia de " +Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("TIPO_PRODUCTO")) + datosProducto+ ", "+ datosSoporte;
-    //                respuestaSoporte = datosSoporte.replaceFirst("Copia de", "Copia de " + listadatosdocentexTipoProducto.get(k).get("TIPO PRODUCTO").replaceAll("_", " ") + " " + datosProducto);
+
+                    respuestaSoporte = "Copia de" +Utilidades.Utilidades.decodificarElemento(listadatosdocentexTipoProducto.get(k).get("TIPO_PRODUCTO")) + datosProducto+ ", "+ datosSoporte;
+    
                 }
                 break;
         }
@@ -1635,10 +1603,10 @@ return respuestaerr;
                 retorno = numeroEnLetras(Integer.parseInt(numrs[0].equals("")?"0":numrs[0]));
                 if(Integer.parseInt(numrs[1]) > 0){
                     retorno += " coma ";
-                    retorno += numeroEnLetras(Integer.parseInt(numrs[1]));// + " (" + numero + ")";
+                    retorno += numeroEnLetras(Integer.parseInt(numrs[1]));
                 }
             } else {
-                retorno = numeroEnLetras(Integer.parseInt(numero));// + "(" + numero + ")";
+                retorno = numeroEnLetras(Integer.parseInt(numero));
             }
         }
 
@@ -1747,38 +1715,7 @@ return respuestaerr;
                 agregado = "";
             }
             Resultado = Centenas[numero / 100] + agregado;
-//        } else if (numero >= 1000 && numero <= 1999) {
-//            String agregado = "";
-//            if (numero % 1000 != 0) {
-//                agregado = " " + numeroOrdinales(numero % 1000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = "Mil" + agregado;
-//        } else if (numero >= 2000 && numero <= 999999) {
-//            String agregado = "";
-//            if (numero % 1000 != 0) {
-//                agregado = " " + numeroOrdinales(numero % 1000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = numeroEnLetras(numero / 1000) + " Mil" + agregado;
-//        } else if (numero >= 1000000 && numero <= 1999999) {
-//            String agregado = "";
-//            if (numero % 1000000 != 0) {
-//                agregado = " " + numeroEnLetras(numero % 1000000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = "Un Millón" + agregado;
-//        } else if (numero >= 2000000 && numero <= 1999999999) {
-//            String agregado = "";
-//            if (numero % 1000000 != 0) {
-//                agregado = " " + numeroEnLetras(numero % 1000000);
-//            } else {
-//                agregado = "";
-//            }
-//            Resultado = numeroEnLetras(numero / 1000000) + " Millones" + agregado;
+
         }
         return Resultado.toLowerCase();
     }
@@ -1946,139 +1883,9 @@ return respuestaerr;
         return ret;
     }
 
-//    private String getReplaceSoporteArticulo(String datosSoporte) {
-//        String ret = "";
-//        
-//        if(listadatosdocentexTipoProducto.get(k).get("TIPO_PRODUCTO").equ){
-//            ret = "articulo";
-//        }else if(datosSoporte.indexOf("artículo")>-1){
-//            ret = "artículo";
-//        }else if(datosSoporte.indexOf("Articulo")>-1){
-//            ret = "Articulo";
-//        }else if(datosSoporte.indexOf("Artículo")>-1){
-//            ret = "Artículo";
-//        }else if(datosSoporte.indexOf("ARTICULO")>-1){
-//            ret = "ARTICULO";
-//        }else if(datosSoporte.indexOf("ARTÍCULO")>-1){
-//            ret = "ARTÍCULO";
-//        }else if(datosSoporte.indexOf("Libro")>-1){
-//            ret = "Libro";
-//        }else if(datosSoporte.indexOf("libro")>-1){
-//            ret = "libro";
-//        }else if(datosSoporte.indexOf("LIBRO")>-1){
-//            ret = "LIBRO";
-//        }else if(datosSoporte.indexOf("capitulo de libro")>-1){
-//            ret = "capitulo de libro";
-//        }else if(datosSoporte.indexOf("capítulo de libro")>-1){
-//            ret = "capítulo de libro";
-//        }else if(datosSoporte.indexOf("Capítulo de libro")>-1){
-//            ret = "Capítulo de libro";
-//        }else if(datosSoporte.indexOf("Capitulo de libro")>-1){
-//            ret = "Capitulo de libro";
-//        }else if(datosSoporte.indexOf("Capitulo De Libro")>-1){
-//            ret = "Capitulo De Libro";
-//        }else if(datosSoporte.indexOf("Capítulo De Libro")>-1){
-//            ret = "Capítulo De Libro";
-//        }else if(datosSoporte.indexOf("Capitulo de Libro")>-1){
-//            ret = "Capitulo de Libro";
-//        }else if(datosSoporte.indexOf("Capítulo de Libro")>-1){
-//            ret = "Capítulo de Libro";
-//        }else if(datosSoporte.indexOf("CAPITULO DE LIBRO")>-1){
-//            ret = "CAPITULO DE LIBRO";
-//        }else if(datosSoporte.indexOf("CAPÍTULO DE LIBRO")>-1){
-//            ret = "CAPÍTULO DE LIBRO";
-//        }else if(datosSoporte.indexOf("PONENCIA")>-1){
-//            ret = "PONENCIA";
-//        }else if(datosSoporte.indexOf("ponencia")>-1){
-//            ret = "ponencia";
-//        }else if(datosSoporte.indexOf("Ponencia")>-1){
-//            ret = "Ponencia";
-//        }else if(datosSoporte.indexOf("impresa universitaria")>-1){
-//            ret = "impresa universitaria";
-//        }else if(datosSoporte.indexOf("Impresa universitaria")>-1){
-//            ret = "Impresa universitaria";
-//        }else if(datosSoporte.indexOf("impresa Universitaria")>-1){
-//            ret = "impresa Universitaria";
-//        }else if(datosSoporte.indexOf("Impresa Universitaria")>-1){
-//            ret = "Impresa Universitaria";
-//        }else if(datosSoporte.indexOf("IMPRESA UNIVERSITARIA")>-1){
-//            ret = "IMPRESA UNIVERSITARIA";
-//        }else if(datosSoporte.indexOf("RESEÑA CRITICA")>-1){
-//            ret = "RESEÑA CRITICA";
-//        }else if(datosSoporte.indexOf("RESEÑA CRÍTICA")>-1){
-//            ret = "RESEÑA CRÍTICA";
-//        }else if(datosSoporte.indexOf("reseña critica")>-1){
-//            ret = "reseña critica";
-//        }else if(datosSoporte.indexOf("reseña crítica")>-1){
-//            ret = "reseña crítica";
-//        }else if(datosSoporte.indexOf("Reseña Crítica")>-1){
-//            ret = "Reseña Crítica";
-//        }else if(datosSoporte.indexOf("Reseña crítica")>-1){
-//            ret = "Reseña crítica";
-//        }else if(datosSoporte.indexOf("Reseña critica")>-1){
-//            ret = "Reseña critica";
-//        }else if(datosSoporte.indexOf("reseña Crítica")>-1){
-//            ret = "reseña Crítica";
-//        }else if(datosSoporte.indexOf("reseña Critica")>-1){
-//            ret = "reseña Critica";
-//        }else if(datosSoporte.indexOf("TRADUCCION DEL ARTICULO")>-1){
-//            ret = "TRADUCCION DEL ARTICULO";
-//        }else if(datosSoporte.indexOf("TRADUCCIÓN DEL ARTÍCULO")>-1){
-//            ret = "TRADUCCIÓN DEL ARTÍCULO";
-//        }else if(datosSoporte.indexOf("TRADUCCIÓN DEL ARTICULO")>-1){
-//            ret = "TRADUCCIÓN DEL ARTICULO";
-//        }else if(datosSoporte.indexOf("TRADUCCION DEL ARTÍCULO")>-1){
-//            ret = "TRADUCCION DEL ARTÍCULO";
-//        }else if(datosSoporte.indexOf("traduccion del articulo")>-1){
-//            ret = "traduccion del articulo";
-//        }else if(datosSoporte.indexOf("traducción del articulo")>-1){
-//            ret = "traducción del articulo";
-//        }else if(datosSoporte.indexOf("traduccion del artículo")>-1){
-//            ret = "traduccion del artículo";
-//        }else if(datosSoporte.indexOf("traducción del artículo")>-1){
-//            ret = "traducción del artículo";
-//        }else if(datosSoporte.indexOf("Traducción del Artículo")>-1){
-//            ret = "Traducción del Artículo";
-//        }else if(datosSoporte.indexOf("Traduccion del Articulo")>-1){
-//            ret = "Traduccion del Articulo";
-//        }else if(datosSoporte.indexOf("Traducción del artículo")>-1){
-//            ret = "Traducción del artículo";
-//        }else if(datosSoporte.indexOf("Traduccion del articulo")>-1){
-//            ret = "Traduccion del articulo";
-//        }else if(datosSoporte.indexOf("de sustentación")>-1){
-//            ret = "de sustentación";
-//        }else if(datosSoporte.indexOf("de Sustentación")>-1){
-//            ret = "de Sustentación";
-//        }else if(datosSoporte.indexOf("de sustentacion")>-1){
-//            ret = "de sustentacion";
-//        }else if(datosSoporte.indexOf("de Sustentacion")>-1){
-//            ret = "de Sustentacion";
-//        }else if(datosSoporte.indexOf("Copia de")>-1){
-//            ret = "Copia de";
-//        }else if(datosSoporte.indexOf("copia de")>-1){
-//            ret = "copia de";
-//        }
-//        
-//        
-//        
-//        
-//        
-//        return ret;
-//    }
+
    
     public String ValidarNumeroDec(String valor){
-//        String ret = formateador.format(""+valor);
-//        System.out.println("************************ValidarNumeroDec****************************");
-//        System.out.println("valorform---->"+ret);
-//        if(valor.indexOf(".")>-1){
-//            String[] dat = valor.replace(".", ":").split(":");
-//            if(dat[1].equals("00")){
-//                ret = dat[0];
-//            }else{
-//                ret = ret.replace(".", ",");
-//            }
-//        }
-//        System.out.println("ret--------->"+ret);
         String retorno = "";
         System.out.println("numero ini----->"+valor);
         if(valor.indexOf(",") > -1){
@@ -2101,12 +1908,7 @@ return respuestaerr;
             valor = valor.replace(".", ",");
             String[] daot= valor.split(",");
             System.out.println("DAOT [0]" +daot[0]);
-//            if (daot[0].equals("")){
-//                daot[0]= "0";
-//                valor = daot[0]+valor;
-//                System.out.println("DAO[0] = "+daot[0]);
-//                System.out.println("DAO[1] = "+daot[1]);
-//            }
+           
             if(daot[1].equals("0")){
                 retorno = daot[0];
             }else{
@@ -2115,22 +1917,9 @@ return respuestaerr;
             System.out.println("numero final------>"+retorno);
         }
         
-//        if (!numero.equals("N/A")) {
-//            if (numero.indexOf(",") > -1) {
-//                String[] numrs = numero.replace(",", "::").split("::");
-//                retorno = numeroEnLetras(Integer.parseInt(numrs[0].equals("")?"0":numrs[0]));
-//                if(Integer.parseInt(numrs[1]) > 0){
-//                    retorno += " coma ";
-//                    retorno += numeroEnLetras(Integer.parseInt(numrs[1]));// + " (" + numero + ")";
-//                }
-//            } else {
-//                retorno = numeroEnLetras(Integer.parseInt(numero));// + "(" + numero + ")";
-//            }
-//        }
-
         return retorno;
  
-//        return ret;
+
     }
     
 }
