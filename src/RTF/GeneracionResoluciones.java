@@ -45,7 +45,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author PCHAN
+ * @author rjulio, rramos, kdelosreyes
  */
 public class GeneracionResoluciones {
 
@@ -248,9 +248,6 @@ public class GeneracionResoluciones {
          
          //<editor-fold defaultstate="collapsed" desc="Lectura Puntos Todos">
         String extP = ruta.substring(ruta.lastIndexOf(".") + 1);
-        System.out.println("************************EMPIEZA LECTURA de PUNTOS TODOS");
-        System.out.println("rutaPuntos--->"+ruta);
-        System.out.println("extP--->"+extP);
         if (extP.equals("xlsx")) {
             listaDatos = con.LeerExcelDesdeAct(ruta, 2, "PUNTOS TODOS");
             listaProyecto = con.LeerExcelParametrosAct(ruta, 1, 1,"PUNTOS TODOS");
@@ -261,7 +258,7 @@ public class GeneracionResoluciones {
         
 //</editor-fold>
 
-        System.out.println("LECTURA ARCHIVO-NEW-->"+listaDatos.size());
+        
         GenerarResolucion(); 
 
         return respuesta;
@@ -277,26 +274,26 @@ public class GeneracionResoluciones {
         List<Map<String, String>> listaCargoAcademicoAdministrativoxtipoProducto = data_list(1, listaCargoAcademicoAdministrativo, new String[]{"TIPO_PRODUCTO"});
         List<Map<String, String>> listaCargoAcademicoAdminSalarial = getTipoProductoSalarial(listaCargoAcademicoAdministrativoxtipoProducto);
         List<Map<String, String>> listaDocentesTipoResolucion = new ArrayList<>();
-        System.out.println("listaCargoAcademicoAdminSalarial--->"+listaCargoAcademicoAdminSalarial.size());
+        
             
         int vvv = 0;
         for(Map<String, String> map : listaTipoResolucion){
             vvv++;
-            System.out.println("Tipo Resolucion("+vvv+"): "+map.get("TIPO_RESOLUCION"));
+            
         }
         
-            System.out.println("***************************************************");
+            
         
         DatosResoluciones.put("NOMBRE_ARCHIVO", "numerales_resoluciones_");
         DatosResoluciones.put("NUMACTA", ""+semestre);
         
         //<editor-fold defaultstate="collapsed" desc="Tipo de resoluciones Cargo Acad Admin por tipoProducto sin Resolucion">
             List<Map<String, String>> ListaSinTipoResol = getSinTipoResolucion(listaTipoResolucion, listaCargoAcademicoAdministrativoxtipoProducto);
-            System.out.println("ListaSinTipoResol-->"+ListaSinTipoResol.size());
+            
             if(ListaSinTipoResol.size()>0){
                 for(Map<String, String> lst:ListaSinTipoResol){
                     String tipoRel = getResolucionxProducto(lst.get("TIPO_PRODUCTO"));
-                    System.out.println("tipoRel------>"+tipoRel);
+                    
                     //<editor-fold defaultstate="collapsed" desc="Listado Docentes x Tipos de Resolucion">
                     if (tipoRel.toUpperCase().equals("CONVALIDACION")) {
                         listaDocentesTipoResolucion = new ArrayList<>();
@@ -311,10 +308,10 @@ public class GeneracionResoluciones {
                         listaDocentesTipoResolucion = data_list(1, listaCargoAcademicoAdministrativo, new String[]{"CEDULA"}, new String[]{"TIPO_RESOLUCION<->Cargo_acad_admin", "TIPO_PRODUCTO<->Ascenso_en_el_Escalafon_Docente"});
                         
                     } else if (tipoRel.toUpperCase().equals("SALARIAL")) {
-                        System.out.println("****************************SALARIAL**********************************");
+                        
                         List<Map<String, String>> listaDatosAcad = new ArrayList<>();
                         List<Map<String, String>> listaDocentesTipoResolucionAuxiliar = new ArrayList<>();
-        //                System.out.println("-->"+listaCargoAcademicoAdminSalarial.size());
+        
                         for (Map<String, String> datos : listaCargoAcademicoAdminSalarial) {
                             listaDocentesTipoResolucionAuxiliar = new ArrayList<>();
                             listaDocentesTipoResolucionAuxiliar = data_list(1, listaCargoAcademicoAdministrativo, new String[]{"CEDULA"}, new String[]{"TIPO_RESOLUCION<->Cargo_acad_admin", "TIPO_PRODUCTO<->" + datos.get("TIPO_PRODUCTO")});
@@ -323,25 +320,19 @@ public class GeneracionResoluciones {
                                 listaDocentesTipoResolucion.addAll(listaDocentesTipoResolucionAuxiliar);
                             }
                         }
-//                        //System.out.println("listaDAtos--_>"+listaDatosAcad.size());
-//                        if (listaDatosAcad.size() > 0) {
-//                            listaDatosAcad.addAll(listaDocentesTipoResolucion);
-//
-//                            listaDocentesTipoResolucion = new ArrayList<>();
-//                            listaDocentesTipoResolucion = data_list(1, listaDatosAcad, new String[]{"CEDULA"});
-//                        }
+
                     }
 //</editor-fold>
                     
                     for (int j = 0; j < listaDocentesTipoResolucion.size(); j++) {
                         URL = "C:\\CIARP\\RESOLUCIONES\\" + tipoRel + "\\" + listaDocentesTipoResolucion.get(j).get("NOMBRE_DEL_DOCENTE") + ".rtf";
-                        System.out.println("url-->" + URL);
+                        
                         Document documento = new Document(new Rectangle(612, 936));
                         documento.setMargins(70, 70, 69, 55);
                         RtfWriter2.getInstance(documento, new FileOutputStream(URL));
 
                         documento.open();
-        //                System.out.println("listaTipoResolucion.get(i).get(\"TIPO_RESOLUCION\")-->"+listaTipoResolucion.get(i).get("TIPO_RESOLUCION"));
+        
                         if (tipoRel.equals("Salarial")) {
                             GenerarResolSalarial(documento, listaDocentesTipoResolucion.get(j).get("CEDULA"), tipoRel);
                         }else if(tipoRel.equals("Ascenso_en_el_escalafon")){
@@ -359,7 +350,7 @@ public class GeneracionResoluciones {
                         documento.close();
                         File f = new File(URL);
                         f.createNewFile();
-                        //Desktop.getDesktop().open(new File(URL));
+                        
                     }
                     
                     
@@ -371,7 +362,7 @@ public class GeneracionResoluciones {
         
         // # DOCENTES:   10   ,      2          6         
         for (int i = 0; i < listaTipoResolucion.size(); i++) {//ARTICULO, TITULACION, PONENCIA
-            System.out.println("::::>>Tipo de resolucion "+ listaTipoResolucion.get(i).get("TIPO_RESOLUCION"));
+            
             if (listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equals("Cargo_acad_admin")) {
                 continue;
             }
@@ -439,7 +430,7 @@ public class GeneracionResoluciones {
 
             } else if ((listaTipoResolucion.get(i).get("TIPO_RESOLUCION").toUpperCase().equals("SALARIAL_COLCIENCIAS")
                     || listaTipoResolucion.get(i).get("TIPO_RESOLUCION").toUpperCase().equals("SALARIAL"))) {
-                System.out.println("****************************SALARIAL**********************************");
+                
                 List<Map<String, String>> listaDatosAcad = new ArrayList<>();
 
                 for (Map<String, String> datos : listaCargoAcademicoAdminSalarial) {
@@ -463,7 +454,7 @@ public class GeneracionResoluciones {
 
             for (int j = 0; j < listaDocentesTipoResolucion.size(); j++) {
                 URL = "C:\\CIARP\\RESOLUCIONES\\" + listaTipoResolucion.get(i).get("TIPO_RESOLUCION") + "\\" + Utilidades.Utilidades.decodificarElemento(listaDocentesTipoResolucion.get(j).get("NOMBRE_DEL_DOCENTE")) + ".rtf";
-                System.out.println("url-->" + URL);
+                
                 Document documento = new Document(new Rectangle(612, 936));
                 documento.setMargins(70, 70, 69, 55);
                 RtfWriter2.getInstance(documento, new FileOutputStream(URL));
@@ -479,7 +470,7 @@ public class GeneracionResoluciones {
                 }else if(listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equalsIgnoreCase("Convalidacion")){
                     GenerarResolConvalidacion(documento, listaDocentesTipoResolucion.get(j));
                 }else if(listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equals("Ingreso_carrera_docente")){
-                    System.out.println("++++++++++++++++++++ME MANDARON A INGRESAR++++++++++++++++");
+                    
                     GenerarResolIngreso(documento, listaDocentesTipoResolucion.get(j));
                 }else if(listaTipoResolucion.get(i).get("TIPO_RESOLUCION").equals("Titulacion")){
                     GenerarResolTitulacion(documento, listaDocentesTipoResolucion.get(j));
@@ -493,14 +484,13 @@ public class GeneracionResoluciones {
             }
         }
         DatosNumeralesResoluciones.add(datos2);
-        System.out.println("DatosResoluciones-->"+DatosResoluciones.size());
-        System.out.println("DatosNumeralesResoluciones-->"+DatosNumeralesResoluciones.size());
+       
         gestorInformes gi = new gestorInformes(DatosResoluciones, DatosNumeralesResoluciones);
         gi.iniciar();
         respuesta.put("ESTADO", "OK");
         respuesta.put("MENSAJE", "Las resoluciones se generaron correctamente.");
 
-        System.out.println("he terminado");
+        
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("erro->"+e.getMessage());
@@ -668,7 +658,7 @@ public class GeneracionResoluciones {
     private Map<String, String> GenerarResolSalarial(Document documento, String identificacion, String tipo_resolucion) throws DocumentException, IOException {
         try{
         String NOM_DOCENTE = "";
-        System.out.println("identificacion--->" + identificacion);
+        
         List<Map<String, String>> listaDatosDocentes = data_list(3, listaDatos, new String[]{"TIPO_RESOLUCION<->Salarial", "CEDULA<->" + identificacion});
 
         List<Map<String, String>> listaDatosDocentesAux = data_list(3, listaDatos, new String[]{"TIPO_RESOLUCION<->Salarial_colciencias", "CEDULA<->" + identificacion});
@@ -684,7 +674,7 @@ public class GeneracionResoluciones {
         Map<String, String> datos1 = new HashMap<>();
         
         
-        System.out.println("listaDatosDocentes-->" + listaDatosDocentes.size());
+        
         List<Map<String, String>> listaActas = data_list(1, listaDatosDocentes, new String[]{"ACTA"});
 
         NOM_DOCENTE = Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"));
@@ -1023,9 +1013,9 @@ public class GeneracionResoluciones {
         String numerales= "";
         Double totalp = 0.0;
         for (int j = 0; j < listaActas.size(); j++) {
-            System.out.println("ACTA<->" + listaActas.get(j).get("ACTA"));
+            
             List<Map<String, String>> listadatosxActas = data_list(3, listaDatosDocentes, new String[]{"ACTA<->" + listaActas.get(j).get("ACTA")});
-            System.out.println("listadatosxActas-->"+listadatosxActas.size());
+            
             List<Map<String, String>> listadatosxActasxTp = data_list(1, listaDatosDocentes, new String[]{"TIPO_PRODUCTO"}, new String[]{"ACTA<->" + listaActas.get(j).get("ACTA")});
             norma = "";
             numerales = "";
@@ -1051,13 +1041,13 @@ public class GeneracionResoluciones {
                                 " del numeral "+listadatosxActasxTp.get(h).get("NUMERAL_ACTA_CIARP");    
                         norma += (norma.equals("")?"":", ")+getNormaProducto(listadatosxActasxTp.get(h).get("TIPO_PRODUCTO"));
                     } else {//ARTICULOS
-                        System.out.println("listadatosxActas--<"+listadatosxActas.size());
+                        
                         List<Map<String, String>> listaxcategoria = data_list(10, listadatosxActas, new String[]{"TIPO_PRODUCTO", "CATEGORIA"}, new String[]{"ACTA<->" + listaActas.get(j).get("ACTA")});
                         String norm = "";
                         String num = "";
-                        System.out.println("listaxcategoria-->"+listaxcategoria.size());
+                        
                         for (int hh = 0; hh < listaxcategoria.size(); hh++) {
-                            System.out.println(" VALOR HHHHHHHHHHHHHHHHHHHHHHH "+ hh);
+                            
                             if(hh > 0 && hh < listaxcategoria.size()-1){
                         
                                 norm +=", ";
@@ -1068,7 +1058,7 @@ public class GeneracionResoluciones {
                             
                             
 
-                            System.out.println("listaxcategoria.get(hh).get(\"CATEGORIA\")-->"+listaxcategoria.get(hh).get("CATEGORIA"));
+                            
                             if(listaxcategoria.get(hh).get("CATEGORIA").equals("A1")) {
                                 if( Utilidades.Utilidades.decodificarElemento(listaxcategoria.get(hh).get("SUBTIPO_PRODUCTO")).equals("Revision de tema")||
                                         Utilidades.Utilidades.decodificarElemento(listaxcategoria.get(hh).get("SUBTIPO_PRODUCTO")).equals("Articulo corto")||
@@ -1120,13 +1110,13 @@ public class GeneracionResoluciones {
                     }
                 }
             }
-            System.out.println("totalp-->"+totalp);
+            
             p = new Paragraph(10);
             p.setFont(af10);
             p.setAlignment(justificado);
 
             String numeroletras = getNumeroDecimal(""+listadatosxActas.size());
-            System.out.println("$$$$$$$$##$#$#$#$$#$#$#$$#$#$ nuemro en letras "+ numeroletras);
+            
             try{
             p.add("Que en virtud de lo anterior y conforme a lo señalado en "
                 + norma
@@ -1173,7 +1163,7 @@ public class GeneracionResoluciones {
             documento.add(p);
             norma="";
         }
-            System.out.println("Total puntos ><<<<<<<<<<<<<<<<<>" +totalpuntos);
+            
         p = new Paragraph(10);
         p.setFont(af10);
         p.setAlignment(justificado);
@@ -1232,7 +1222,7 @@ public class GeneracionResoluciones {
             ///TABLA
         //<editor-fold defaultstate="collapsed" desc="TABLA">
         int cols = (listaDatosDocentesCargoAcad.size() > 0 ? 5 : 6);
-        System.out.println("cols---->"+cols);
+        
         float[] tamy = new float[]{5f, 13f, 50f, 8f, 13f, 20f};
         if (listaDatosDocentesCargoAcad.size() > 0) {
             tamy = new float[]{8f, 15f, 55f, 10f, 15f};
@@ -1308,7 +1298,7 @@ public class GeneracionResoluciones {
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
-            System.out.println("////////////////////////////////////////--->"+ValidarNumeroDec(listaDatosDocentes.get(i).get("PUNTOS")));
+            
             try{
             celdaProductos = new Cell(new Paragraph("" + getNumeroDecimal(listaDatosDocentes.get(i).get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get(i).get("PUNTOS")) + ") puntos", af7b));
             } catch (Exception ex) {
@@ -1457,7 +1447,7 @@ public class GeneracionResoluciones {
         p.setAlignment(centrado);
         c = new Chunk("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n", af10b);
         p.add(c);
-//        p.add("\n\n");
+
         documento.add(p);
 
         p = new Paragraph(10);
@@ -1510,7 +1500,7 @@ public class GeneracionResoluciones {
     }
     
     private Map<String, String> GenerarResolAscenso(Document documento, Map<String, String> listaDatosDocentes) throws BadElementException, IOException, DocumentException {
-        System.out.println("***********ENTRE A Ascenso");
+        
         int band = 0;
         Double totalPuntos = 0.0;
         Double totalPuntosxActas = 0.0;
@@ -1572,7 +1562,7 @@ public class GeneracionResoluciones {
         int centrado = Paragraph.ALIGN_CENTER;
         int derecha = Paragraph.ALIGN_RIGHT;
 //</editor-fold>
-        System.out.println("''''''''''''entre a encabezado");
+        
                 //<editor-fold defaultstate="collapsed" desc="SE CREA EL ENCABEZADO Y EL PIE DE PAGINA">
 
         //<editor-fold defaultstate="collapsed" desc="HEADER">
@@ -1868,8 +1858,10 @@ public class GeneracionResoluciones {
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_ENCARGO"))+" "+
                     (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la")+
                     " "+listaDatosDocentes.get("TIPO_VINCULACION")+
-                    " "+Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE"))+", "+
-                    "fue comisionado para ejercer un cargo de libre nombramiento y remoción dentro de la Institución como "+
+                    " ");
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE"))+", ", af10b);
+            p.add(c);
+            p.add("fue comisionado para ejercer un cargo de libre nombramiento y remoción dentro de la Institución como "+
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("CARGO"))+" "+
                     "de la Universidad del Magdalena, cargo del que tomó posesión mediante Acta N° "+
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("ACTA_POSESION"))+".\n");
@@ -1889,27 +1881,7 @@ public class GeneracionResoluciones {
         p.add("solicitó promoción en el escalafón docente de la categoría " + categoriaAnterior + " a la categoría " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + " de conformidad con lo prescrito por el Artículo 22 del Acuerdo Superior Nº 007 de 2003.\n");
         documento.add(p);
 
-        p = new Paragraph(10);
-        p.setAlignment(justificado);
-        p.setFont(af10);
-        try{
-        p.add("Que el Consejo de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FACULTAD")) + ", en sesión llevada a cabo el día " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FECHA_ACTA_CF")), 0)
-                + " contenida en Acta N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("ACTA_CONS_FACULTAD")) + ", estudió la solicitud y emitió concepto favorable de ascenso en el escalafón docente ante Comité Interno de Asignación y Reconocimiento de Puntaje.\n");
-        } catch (Exception ex) {
-                                Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
-                                respuesta.put("ESTADO", "ERROR");
-                                respuesta.put("MENSAJE", ""+ex.getMessage());
-                                respuesta.put("LINEA_ERROR_DOCENTE", ""+Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")));
-                                respuesta.put("LINEA_ERROR_PRODUCTO", ""+listaDatosDocentes.get("TIPO_PRODUCTO"));
-                                 if(listaDatosDocentes.get("NOMBRE_SOLICITUD").length()<=100){
-                                    respuesta.put("NOMBRE_PRODUCTO", ""+Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")));
-                                    }else{
-                                    respuesta.put("NOMBRE_PRODUCTO", ""+Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")).substring(0,100));
-                                    }
-                                return respuesta;
-                            }
-        documento.add(p);
-        }
+       } 
         else{
             p = new Paragraph(10);
         p.setAlignment(justificado);
@@ -1927,7 +1899,7 @@ public class GeneracionResoluciones {
         p.setFont(af10);
         try{
         p.add("Que el Consejo de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FACULTAD")) + ", en sesión llevada a cabo el día " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FECHA_ACTA_CF")), 0)
-                + " contenida en Acta N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("ACTA_CONS_FACULTAD")) + ", estudió la solicitud y emitió concepto favorable de ascenso en el escalafón docente ante Comité Interno de Asignación y Reconocimiento de Puntaje.\n");
+                + " contenida en Acta N° " + getNumeroDecimal(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("ACTA_CONS_FACULTAD"))) + ", estudió la solicitud y emitió concepto favorable de ascenso en el escalafón docente ante Comité Interno de Asignación y Reconocimiento de Puntaje.\n");
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -2167,14 +2139,14 @@ public class GeneracionResoluciones {
     }
 
     public Map<String, String> GenerarResolBonificacion(Document documento, String identificacion, String tipo_resolucion) throws BadElementException, IOException, DocumentException, Exception {
-        System.out.println("***********ENTRE A BONIFICACIONES");
+        
         int band = 0;
         Double totalPuntos = 0.0;
         Double totalPuntosxActas = 0.0;
         String item = "";
         Map<String, String> datos1 = new HashMap<>();
         List<Map<String, String>> listaDatosDocentes = data_list(3, listaDatos, new String[]{"TIPO_RESOLUCION<->" + tipo_resolucion, "CEDULA<->" + identificacion});
-        System.out.println("########## cedula " + identificacion + " ###### Tipo Resolucion " + tipo_resolucion);
+        
         List<Map<String, String>> listaActas = data_list(1, listaDatosDocentes, new String[]{"ACTA"});
 
         int cantidaddeProductos = listaDatosDocentes.size();
@@ -2223,7 +2195,7 @@ public class GeneracionResoluciones {
         int centrado = Paragraph.ALIGN_CENTER;
         int derecha = Paragraph.ALIGN_RIGHT;
 //</editor-fold>
-        System.out.println("''''''''''''entre a encabezado");
+        
                 //<editor-fold defaultstate="collapsed" desc="SE CREA EL ENCABEZADO Y EL PIE DE PAGINA">
 
         //<editor-fold defaultstate="collapsed" desc="HEADER">
@@ -2347,7 +2319,7 @@ public class GeneracionResoluciones {
         p = new Paragraph(10);
         justificado = Paragraph.ALIGN_JUSTIFIED;
         centrado = Paragraph.ALIGN_CENTER;
-        System.out.println("CUERPo RESOLUCION");
+        
         p.setAlignment(justificado);
         p.setFont(af10);
         p.add("El Rector de la Universidad del Magdalena ");
@@ -2381,16 +2353,11 @@ public class GeneracionResoluciones {
             documento.add(p);
         }
 
-        
-        
-//       
-        System.out.println("$$$$$$$$$$$$$ listado de docentes" + listaDatosDocentes.size() + "$$$$");
+       
+       
         for (int i = 0; i < listaDatosDocentes.size(); i++) {
             totalPuntos += Double.parseDouble(listaDatosDocentes.get(i).get("PUNTOS").replace(",", "."));
         }
-//            if (band == 0) {
-
-        System.out.println("&&&&&&&&&&&6ingreso a escritura de considerandos");
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
@@ -2467,7 +2434,7 @@ public class GeneracionResoluciones {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
                                         respuesta.put("MENSAJE", ""+ex.getMessage());
-                                        System.out.println("MENSAJE MENSAJE "+ex.getMessage());
+                                        
                                         respuesta.put("LINEA_ERROR_DOCENTE", ""+Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")));
                                         respuesta.put("LINEA_ERROR_PRODUCTO", ""+listadatosxActasxTp.get(k).get("TIPO_PRODUCTO"));
                                         if(Utilidades.Utilidades.decodificarElemento(listadatosxActasxTp.get(j).get("NOMBRE_SOLICITUD")).length()<=100){
@@ -2479,13 +2446,13 @@ public class GeneracionResoluciones {
                         } 
                 
                     norma +=(norma.equals("")?"":", ")+ Utilidades.Utilidades.decodificarElemento(listadatosxActasxTp.get(k).get("NORMA"));
-                 System.out.println("norma--->"+norma);
+                 
                 } else if (Utilidades.Utilidades.decodificarElemento(listadatosxActasxTp.get(k).get("TIPO_PRODUCTO")).equals("Direccion_de_Tesis")) {
                     try{
                     numerales += (numerales.equals("")?"":", ")+"ítem "+ 
                             getPosicionesNumeral(listadatosxActasTP)+
                             " del numeral "+listadatosxActasxTp.get(k).get("NUMERAL_ACTA_CIARP");
-                     System.out.println("RETORNA DE GETPOSICION ACTA en la resolucion"+numerales+" ///// "+listadatosxActasxTp.get(k).get("TIPO_PRODUCTO"));
+                     
                     }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
@@ -2501,19 +2468,19 @@ public class GeneracionResoluciones {
                                         return respuesta;  
                         } 
                     String[] tipoTesis = Utilidades.Utilidades.decodificarElemento(listadatosxActasxTp.get(k).get("NOMBRE_SOLICITUD")).replace("\"", "").split(":");
-                    System.out.println("tipoTesis-->"+tipoTesis[0]);
+                    
                     if (tipoTesis[0].equalsIgnoreCase("Tesis de Maestria")) {
                         norma +=(norma.equals("")?"":", ")+ "ítem 1 literal h. numeral II, Artículo 20 del Decreto 1279 del 2002";
                     } else if (tipoTesis[0].equalsIgnoreCase("Tesis de Doctorado")) {
                         norma += (norma.equals("")?"":", ")+ "ítem 2 literal h. numeral II, Artículo 20 del Decreto 1279 del 2002";
                     }
-                    System.out.println("norma--->"+norma);
+                    
                 } else {
                     numerales += (numerales.equals("")?"":", ")+"ítem "+ 
                             getPosicionesNumeral(listadatosxActasTP)+
                             " del numeral "+listadatosxActasxTp.get(k).get("NUMERAL_ACTA_CIARP");
                     norma +=(norma.equals("")?"":", ")+ getNormaProducto(listadatosxActasxTp.get(k).get("TIPO_PRODUCTO"));
-                    System.out.println("RETORNA DE GETPOSICION ACTA en la resolucion"+numerales+" ///// "+listadatosxActasxTp.get(k).get("TIPO_PRODUCTO"));
+                    
                 }
 
             }
@@ -2543,12 +2510,12 @@ public class GeneracionResoluciones {
                             }
             try{
             c = new Chunk(getNumeroDecimal(""+totalPuntosxActas) + " (" + ValidarNumeroDec(""+totalPuntosxActas) + ") puntos de bonificación ", af10b);
-                System.out.println("TOTAL PUNTOS X aCTAS LETRAS"+getNumeroDecimal(""+totalPuntosxActas)+ "TOTAL PUNTOS NUMERO "+ ValidarNumeroDec(""+totalPuntosxActas));
+                
             }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
                                         respuesta.put("MENSAJE", ""+ex.getMessage());
-                                        System.out.println("MENSAJE MENSJAE MEJANE,MASJNUHDJA" + ex.getMessage());
+                                        
                                         respuesta.put("LINEA_ERROR_DOCENTE", ""+listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"));
                                         respuesta.put("LINEA_ERROR_PRODUCTO", ""+listadatosxActasxTp.get(j).get("TIPO_PRODUCTO"));
                                         if(listadatosxActasxTp.get(j).get("NOMBRE_SOLICITUD").length()<=100){
@@ -2622,12 +2589,12 @@ public class GeneracionResoluciones {
         }
         try{
         c = new Chunk(getNumeroDecimal(""+totalPuntos) + " (" + ValidarNumeroDec(""+totalPuntos) + ") puntos de bonificación", af10b);
-            System.out.println("LETRAS   "+getNumeroDecimal(""+totalPuntos)+" NUMEROOOOOOS "+ValidarNumeroDec(""+totalPuntos));
+            
          }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
                                         respuesta.put("MENSAJE", ""+ex.getMessage());
-                                        System.out.println("MENSAJE MENSJAE MEJANE,MASJNUHDJA" + ex.getMessage());
+                                        
                                         respuesta.put("LINEA_ERROR_DOCENTE", ""+listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"));
                                         respuesta.put("LINEA_ERROR_PRODUCTO", ""+listaDatosDocentes.get(0).get("TIPO_PRODUCTO"));
                                         if(listaDatosDocentes.get(0).get("NOMBRE_SOLICITUD").length()<=100){
@@ -2637,7 +2604,7 @@ public class GeneracionResoluciones {
                                         }
                                         return respuesta;  
             }
-        System.out.println("TOTAL PUNTOS DESPUES DE "+ totalPuntos);
+        
         p.add(c);
         p.add(" por la productividad académica que se relaciona en la siguiente tabla:\n");
         documento.add(p);
@@ -2726,7 +2693,7 @@ public class GeneracionResoluciones {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
                                         respuesta.put("MENSAJE", ""+ex.getMessage());
-                                        System.out.println("MENSAJE MENSJAE MEJANE,MASJNUHDJA" + ex.getMessage());
+                                        
                                         respuesta.put("LINEA_ERROR_DOCENTE", ""+listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"));
                                         respuesta.put("LINEA_ERROR_PRODUCTO", ""+listaDatosDocentes.get(i).get("TIPO_PRODUCTO"));
                                         if(listaDatosDocentes.get(i).get("NOMBRE_SOLICITUD").length()<=100){
@@ -2759,7 +2726,7 @@ public class GeneracionResoluciones {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
                                         respuesta.put("MENSAJE", ""+ex.getMessage());
-                                        System.out.println("MENSAJE MENSJAE MEJANE,MASJNUHDJA" + ex.getMessage());
+                                        
                                         respuesta.put("LINEA_ERROR_DOCENTE", ""+listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"));
                                         respuesta.put("LINEA_ERROR_PRODUCTO", ""+listaDatosDocentes.get(0).get("TIPO_PRODUCTO"));
                                         if(listaDatosDocentes.get(0).get("NOMBRE_SOLICITUD").length()<=100){
@@ -2858,7 +2825,7 @@ public class GeneracionResoluciones {
         p.setFont(af10);
         p.add(" Dada en la ciudad de Santa Marta, D. T. C. H., a los \n\n\n");
         documento.add(p);
-System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57");
+
         p = new Paragraph(10);
         p.setAlignment(centrado);
         p.setFont(af10b);
@@ -2896,7 +2863,7 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
 
     private Map <String, String> GenerarResolConvalidacion(Document documento, Map<String, String> listaDatosDocentes) throws BadElementException, IOException, DocumentException {
         try{
-        System.out.println("***********ENTRE A CONVALIDACION");
+        
         int band = 0;
         int totalPuntos = 0;
         int totalPuntosxActas = 0;
@@ -2955,7 +2922,7 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
         int centrado = Paragraph.ALIGN_CENTER;
         int derecha = Paragraph.ALIGN_RIGHT;
 //</editor-fold>
-        System.out.println("''''''''''''entre a encabezado");
+        
                 //<editor-fold defaultstate="collapsed" desc="SE CREA EL ENCABEZADO Y EL PIE DE PAGINA">
 
         //<editor-fold defaultstate="collapsed" desc="HEADER">
@@ -3524,7 +3491,7 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
         //</editor-fold>
         
         }catch(Exception e){
-            System.out.println("e--->"+e.toString());
+            
             e.printStackTrace();
         }
     return respuesta;
@@ -3584,7 +3551,7 @@ System.out.println("PROBANDO  AVERI SI LLEGA ACA RECUERDAME BORRARTE DESPUES57")
         int centrado = Paragraph.ALIGN_CENTER;
         int derecha = Paragraph.ALIGN_RIGHT;
 //</editor-fold>
-        System.out.println("''''''''''''entre a encabezado");
+        
                 //<editor-fold defaultstate="collapsed" desc="SE CREA EL ENCABEZADO Y EL PIE DE PAGINA">
 
         //<editor-fold defaultstate="collapsed" desc="HEADER">
@@ -4778,20 +4745,20 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
     private String getNumeroDecimal(String numero) throws Exception{
         String retorno = "";
-        System.out.println("numero----->"+numero);
+        
         if(numero.indexOf(",") > -1){
             
             numero = numero.replace(",", ".");
         }
         
         if (numero.indexOf(".") > -1) {
-            System.out.println("numero------>"+numero);
+            
             Double dat = Double.parseDouble(numero);
-            System.out.println("dat------>"+dat);
+            
             DecimalFormat df = new DecimalFormat("#.0");
-            System.out.println("df.format(dat)------>"+df.format(dat));
+            
             numero = df.format(dat);
-            System.out.println("numero------>"+numero);
+            
             numero = numero.replace(".", ",");
         }
         
@@ -4998,12 +4965,12 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         DecimalFormat formateador = new DecimalFormat("#.#");
         
         for(Map<String, String> datos:listadatosxActas){
-            System.out.println("datos.get(\"PUNTOS\")-->"+datos.get("PUNTOS"));
+            
             suma +=Double.parseDouble(datos.get("PUNTOS").replace(",", "."));
         }
-        System.out.println("suma->"+suma);
+        
         suma = Double.parseDouble(formateador.format(suma).replace(",", "."));
-        System.out.println("suma->"+suma);
+        
         return suma;
     }
     
@@ -5086,13 +5053,13 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         }
         
         if (numero.indexOf(".") > -1) {
-            System.out.println("numero------>"+numero);
+            
             Double dat = Double.parseDouble(numero);
-            System.out.println("dat------>"+dat);
+            
             DecimalFormat df = new DecimalFormat("#.0");
-            System.out.println("df.format(dat)------>"+df.format(dat));
+            
             numero = df.format(dat);
-            System.out.println("numero------>"+numero);
+            
             numero = numero.replace(".", ",");
         }
 
@@ -5163,10 +5130,10 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
    
     public String ValidarNumeroDec(String valor)throws Exception{
 
- System.out.println("************************ValidarNumeroDec****************************");
+ 
 
         String retorno = "";
-        System.out.println("numero----->"+valor);
+        
         if(valor.indexOf(",") > -1){
             
             valor = valor.replace(",", ".");
@@ -5177,23 +5144,23 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         
         if (valor.indexOf(".") > -1) {
             
-            System.out.println("numero------>"+valor);
+            
             Double dat = Double.parseDouble(valor);
-            System.out.println("dat------>"+dat);
+            
             DecimalFormat df = new DecimalFormat("0.0");
-            System.out.println("df.format(dat)------>"+df.format(dat));
+            
             valor = df.format(dat);
-            System.out.println("numero------>"+valor);
+            
             valor = valor.replace(".", ",");
             String[] daot= valor.split(",");
-            System.out.println("DAOT [0]" +daot[0]);
+            
 
             if(daot[1].equals("0")){
                 retorno = daot[0];
             }else{
                 retorno = valor;
             }
-            System.out.println("numero final------>"+retorno);
+            
         }
         return retorno;
  
