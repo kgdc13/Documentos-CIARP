@@ -7,6 +7,7 @@ package RTF;
 
 import Excel.ControlArchivoExcel;
 import Excel.gestorInformes;
+import Utilidades.Fonts;
 import static RTF.GeneracionActas.DatosNumeralesActa;
 import static RTF.GeneracionActas.Datosacta;
 import static RTF.GeneracionActas.URL;
