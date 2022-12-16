@@ -50,7 +50,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
- * @author MERRY
+ * @author rjulio, rramos, kdelosreyes
  */
 public class GeneracionCuadros {
     public String rutaDocentes;
@@ -89,7 +89,7 @@ public class GeneracionCuadros {
         }
         
 //</editor-fold>
-        System.out.println("listaInfoDocentes-->"+listaInfoDocentes.size());
+        
         //<editor-fold defaultstate="collapsed" desc="Lectura Puntos Todos">
         String extP = rutaPuntos.substring(rutaPuntos.lastIndexOf(".") + 1);
         System.out.println("************************FUERA LECTURA DE DOCENTES\n EMPIEZA LECTURA de PUNTOS TODOS");
@@ -117,18 +117,16 @@ public class GeneracionCuadros {
         String ext = "xlsx";
         String ext1 = "xls";
         String documento = "";
-        System.out.println("listaInfoPuntos--->"+listaInfoPuntos.size());
-        System.out.println("listaInfoDocentes-->"+listaInfoDocentes.size());
+        
         
         formatoCedula();
         
         for(Map<String, String> docente : listaInfoDocentes){
-            System.out.println("************************************************************************************************");
-            System.out.println("*************************DOCENTE*******************"+docente.get("CEDULA")+"**************");
+            
 
             List<Map<String, String>> listaDatosDocente = new ArrayList<>();
             listaDatosDocente = data_list(3, listaInfoPuntos, new String[]{"CEDULA<->" + docente.get("CEDULA")});
-            System.out.println("-----------------------------listaDatosDocente.size()-->"+listaDatosDocente.size()+"------------------------------------------------------");
+            
             
             nombreArchivo = Capitalize(util.decodificarElemento(docente.get("NOMBRE_DEL_DOCENTE")));
            
@@ -171,19 +169,19 @@ public class GeneracionCuadros {
                 }
             
             }
-            System.out.println("-----------------------------listaDatosDocente.size()-->"+listaDatosDocente.size()+"------------------------------------------------------");
+            
             for(int i=0;i <listaDatosDocente.size();i++){
-            System.out.println("lista daos puntos" + listaDatosDocente.get(i).get("PUNTOS"));
+            
             }
         }
         
-        System.out.println("**************+FIN DE CREACION DE HOJA PARA LOS DOCENTES");
+        
         JOptionPane.showMessageDialog(null, "Finalizó la creación de cuadros");
     return respuesta;
     }
     
     public void prueba6() throws FileNotFoundException, IOException{
-        System.out.println("*******************INICIO PRUEBA***************************");
+        
         String ruta = "C:\\CIARP\\CUADROS\\";
         String carpetaCiarp = "C:\\CIARP\\";
         String docente = "Acosta Salazar Diana Patriciaa";
@@ -195,12 +193,12 @@ public class GeneracionCuadros {
         double puntajeAntetior = 301;
         double puntajeanio = 51;
         ValidarArchivo(ruta, docente, ext);
-        System.out.println("ANTES DE ARCHIVO");
+        
         FileInputStream Archivo = new FileInputStream(ruta+documento);
-        System.out.println("DESPUES DE ARCHIVO");
+        
         FileInputStream escudo = new FileInputStream(carpetaCiarp+"escudo.png");
         
-        System.out.println("ARCHIVO-tam-->"+Archivo.available());
+        
         
         XSSFWorkbook libro = new XSSFWorkbook(Archivo);
         
@@ -243,7 +241,6 @@ public class GeneracionCuadros {
         CrearCeldasBlanco(newrow, 3, 12, 2, CellStyle.BORDER_MEDIUM, IndexedColors.BLACK.index, CellStyle.ALIGN_CENTER, fontBold, libro);
         hojaNueva.addMergedRegion(new CellRangeAddress(8, 8, 2, 11));   
         
-        //LimpiarBordes(style);
         numfila++;
         newrow = hojaNueva.createRow(numfila);
         EstiloBorde(5, CellStyle.BORDER_MEDIUM, IndexedColors.BLACK.index, style);
@@ -630,7 +627,7 @@ public class GeneracionCuadros {
          salida.close();
         
         
-        System.out.println("******************END METHOD***************************");
+        
         
         
     }
@@ -727,7 +724,6 @@ public class GeneracionCuadros {
         CellStyle style = libro.createCellStyle();
         style.setFont(font);
         style.setAlignment(aling);
-//        style.setWrapText(true);
         
         EstiloBorde(borde, tipoBorde, color, style);
         XSSFCell celda = fila.createCell(col);
@@ -788,7 +784,6 @@ public class GeneracionCuadros {
     }
 
     private ArrayList<String> getDatosHojaAnterior(XSSFSheet hojaAnterior, String Dato1, String Dato2) {
-        //System.out.println("****************************getDatosHojaAnterior***********************************+");
         ArrayList<String> retorno =  new ArrayList<>();
         int[] filas = getFilasEntreItem(hojaAnterior, Dato1, Dato2);
         for(int i = filas[0]; i <= filas[1]; i++){
@@ -802,7 +797,6 @@ public class GeneracionCuadros {
     }
 
     private ArrayList<String> getDatosHojaAnteriorOld(Sheet hojaAnterior, String Dato1, String Dato2) {
-        //System.out.println("****************************getDatosHojaAnterior***********************************+");
         ArrayList<String> retorno =  new ArrayList<>();
         int[] filas = getFilasEntreItemOld(hojaAnterior, Dato1, Dato2);
         for(int i = filas[0]; i <= filas[1]; i++){
@@ -815,9 +809,7 @@ public class GeneracionCuadros {
     }
     
     private int[] getFilasEntreItem(XSSFSheet hojaAnterior, String Dato1, String Dato2) {
-//        System.out.println("***********getFilasEntreItem****************"+hojaAnterior);
-        System.out.println("Dato1-RSRD-<"+Dato1+">--");
-        System.out.println("Dato2-RSRD-<"+Dato2+">--");
+
         int[] filas = new int[2];
         int filaRef = 15;
         boolean encontroPrimera = false;
@@ -828,7 +820,7 @@ public class GeneracionCuadros {
             Cell celda  = fila.getCell(cel);
             
             if(celda != null){
-                System.out.println("celda.getStringCellValue()--<"+celda.getStringCellValue());
+                
                 if(celda.getStringCellValue().equals(Dato1)){
                     encontroPrimera = true;
                     filas[0] = filaRef+1;
@@ -836,27 +828,22 @@ public class GeneracionCuadros {
             }
             filaRef++;
         }
-//        System.out.println("******************------------------------------------********************");
+
         while(!encontroSegunda){
             Row fila = hojaAnterior.getRow(filaRef);
             Cell celda  = fila.getCell(2);
-//            System.out.println("celda.getStringCellValue()--<"+celda.getStringCellValue());
+
             if(celda.getStringCellValue().equals(Dato2)){
                 encontroSegunda = true;
                 filas[1] = filaRef-1;
             }
             filaRef++;
         }
-//        System.out.println("fila[0]-->"+filas[0]);
-//        System.out.println("fila[1]-->"+filas[1]);
-//        
-//        System.out.println("***********END getFilasEntreItem****************");
-        
-        return filas;
+      return filas;
     }
 
     private int[] getFilasEntreItemOld(Sheet hojaAnterior, String Dato1, String Dato2) {
-        //System.out.println("***********getFilasEntreItem****************");
+        
         int[] filas = new int[2];
         int filaRef = 15;
         boolean encontroPrimera = false;
@@ -880,11 +867,7 @@ public class GeneracionCuadros {
             }
             filaRef++;
         }
-//        System.out.println("fila[0]-->"+filas[0]);
-//        System.out.println("fila[1]-->"+filas[1]);
-//        
-//        System.out.println("***********END getFilasEntreItem****************");
-        
+ 
         return filas;
     }
     
@@ -987,22 +970,19 @@ public class GeneracionCuadros {
                 }
 
                 case 3: { //para listar los datos por los datos enviados de de la siguiente forma
-                    //k<->val, k<->val       
-                    System.out.println("lista---->"+lista.size());
+                   
                     for (Map<String, String> lis : lista) {
                         int coincidencias = 0;
                         for (String prm : datos) {
                             String[] item = prm.split("<->");
-//                            System.out.println("prm....>"+prm);
-//                            System.out.println("lis.get(item[0])--->"+lis.get(item[0]));
-//                            System.out.println("item[1]-->"+item[1]+"//");
+
                             if (lis.get(item[0]).equals(item[1])) {
-//                                System.out.println("if");
+
                                 coincidencias++;
                                 
                             }
                         }
-//                        System.out.println("coincidencias--->"+coincidencias);
+
                         if (coincidencias == datos.length) {
                             rlista.add(lis);
                         }
@@ -1099,20 +1079,19 @@ public class GeneracionCuadros {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("ERROR data_list-->" + e.toString());
+            
         }
         return rlista;
     }
 
     private boolean ValidarArchivo(String ruta, String nombre, String ext) throws FileNotFoundException, IOException {
-        System.out.println("******ValidarArchivo*****");
-        System.out.println("*"+ruta+nombre+ext);
+        
         File file = new File(ruta+nombre+"."+ext);
         if (file.exists()) {// si el archivo existe se elimina
-            System.out.println("Archivo Encontrado");
+            
             return true;
         }
-        System.out.println(" Archivo NO Encontrado");
+        
         
         return false;
     }
@@ -1138,8 +1117,7 @@ public class GeneracionCuadros {
     }
 
     private void AgregarCuadroAnioXlsx(Map<String, String> docente, List<Map<String, String>> listaDatosDocente, String ruta, String nombreArchivo, String ext) throws FileNotFoundException, IOException, Exception {
-        System.out.println("*******************AgregarCuadroAnioXlsx***************************");
-        System.out.println("*************************************************"+docente.get("NOMBRE_DEL_DOCENTE")+"**********************************************");
+        
         String carpetaCiarp = "C:\\CIARP\\";
         String documento = nombreArchivo+"."+ext;
         
@@ -1153,16 +1131,6 @@ public class GeneracionCuadros {
         List<Map<String, String>> listaCargAcad = data_list(3, listaDatosDocente, new String[]{"TIPO_RESOLUCION<->Cargo_acad_admin"});
         
         
-//       if(listaDatosDocente.size()>0){
-//        for(int i=0;i>=listaDatosDocente.size();i++){
-//            System.out.println("DATOS DE PUNTOS DE LISTA SALARIALS"+Double.parseDouble(listaDatosDocente.get(i).get("PUNTOS")));
-//        }
-//        }
-        System.out.println("listaSalarial--->"+listaSalarial.size());
-        System.out.println("listaTitulacion--->"+listaTitulacion.size());
-        System.out.println("listaTitulacionCarg--->"+listaTitulacionCarg.size());
-        System.out.println("listaAscensoCarg--->"+listaAscensoCarg.size());
-        System.out.println("listaCargAcad--->"+listaCargAcad.size());
         if(listaTitulacionCarg.size()>0){
             listaTitulacion.addAll(listaTitulacionCarg);
         }
@@ -1178,9 +1146,7 @@ public class GeneracionCuadros {
                      indx += (indx.equals("")?"":"<::>")+""+i;
                                         
                 }
-//                else if(listaCargAcad.get(i).get("TIPO_PRODUCTO").equals("Ascenso_en_el_Escalafon_Docente")){
-//                    indx += (indx.equals("")?"":"<::>")+""+i;
-//                }
+
             }
             if(!indx.equals("")){
                 String[] ind = indx.split("<::>");
@@ -1195,8 +1161,7 @@ public class GeneracionCuadros {
             }
         } 
       
-        System.out.println("listaSalarial--->"+listaSalarial.size());
-        System.out.println("listaTitulacion--->"+listaTitulacion.size());
+       
        
         
         
@@ -1204,27 +1169,27 @@ public class GeneracionCuadros {
         double puntajeanio = getPuntaje(listaSalarial, listaTitulacion, categoria);
         
         
-//        String antiguedad = getAntiguedad(docente.get("DIAVIN")+"-"+docente.get("MESVIN")+"-"+docente.get("AÑOVIN"));
+
         FileInputStream Archivo = new FileInputStream(ruta+documento);
         FileInputStream escudo = new FileInputStream(carpetaCiarp+"escudo.png");
-        System.out.println("RUTA + DOCUMENTO----"+ruta+documento);
+        
         
         XSSFWorkbook libro = new XSSFWorkbook(Archivo);
          
         String nameHoja = "EVAL. 2019";
-        System.out.println("libro.getNumberOfSheets()--->"+libro.getNumberOfSheets());
+        
         if(libro.getNumberOfSheets()>1){
             nameHoja = "EVAL. "+(Integer.parseInt(anio)-1);
         }else{
             nameHoja = "EVAL. Inicial";
         }
-        System.out.println("name-<"+nameHoja);
+        
         XSSFSheet hojaAnterior = libro.getSheet(nameHoja);
         
         if(libro.getSheetIndex("EVAL. "+anio)>-1){
             libro.removeSheetAt(libro.getSheetIndex("EVAL. "+anio));
         }
-        System.out.println("elimando hoja -- EVAL. "+anio );
+        
         
         XSSFSheet hojaNueva = libro.createSheet("EVAL. "+anio);
         String uno = "1. ESTUDIOS PROFESIONALES";
@@ -1250,21 +1215,20 @@ public class GeneracionCuadros {
             puntajeAntetior = celdaAnterior.getNumericCellValue();
         }else{
             String p = celdaAnterior.getStringCellValue();
-            System.out.println("p--->"+p);
+            
             puntajeAntetior = Double.parseDouble(p);
         }
         
-        System.out.println("puntajeAntetior--->"+puntajeAntetior);
-        System.out.println("puntajeanio--->"+puntajeanio);
+        
         String puntajeTotal = ""+(puntajeAntetior+puntajeanio);
         String ValorPesoPunto = ValidarNumeroDec(InfoParametros.get("PESO_PUNTO"));
-        System.out.println("punt--->"+ValorPesoPunto);
+        
         double salario = Double.parseDouble(ValorPesoPunto) * Double.parseDouble(puntajeTotal);
-        System.out.println("Salario--->"+salario+"<<<<");
+        
         String salarioF = ValidarNumeroDec(""+salario);
-        System.out.println("puntajeTotal--->"+puntajeTotal);
+        
         puntajeTotal = ValidarNumeroDec(puntajeTotal);
-        System.out.println("puntajeTotal--->"+puntajeTotal);
+        
         Font fontBold = libro.createFont();
         fontBold.setBoldweight(Font.BOLDWEIGHT_BOLD);
         Font fontNormal = libro.createFont();
@@ -1756,11 +1720,11 @@ public class GeneracionCuadros {
          salida.close();
         
         
-        System.out.println("******************END METHOD***************************");
+        
     }
 
     private void CrearArchivoCruadroXlsx(Map<String, String> docente, List<Map<String, String>> listaDatosDocente, String ruta, String nombreArchivo, String ext) throws FileNotFoundException, IOException, Exception {
-        System.out.println("*******************CrearArchivoCruadroXlsx***************"+docente.get("NOMBRE_DEL_DOCENTE")+"************");
+        
         String carpetaCiarp = "C:\\CIARP\\";
         String documento = nombreArchivo+"."+ext;
         
@@ -2238,11 +2202,11 @@ public class GeneracionCuadros {
          salida.close();
         
         
-        System.out.println("******************END METHOD***************************");
+       
     }
 
     private void AgregarCuadroAnioXls(Map<String, String> docente, List<Map<String, String>> listaDatosDocente, String ruta, String nombreArchivo, String ext) throws FileNotFoundException, IOException, Exception {
-        System.out.println("*******************AgregarCuadroAnioXls***********"+docente.get("NOMBRE_DEL_DOCENTE")+"****************");
+       
         String carpetaCiarp = "C:\\CIARP\\";
         String documento = nombreArchivo+"."+ext;
         
@@ -2259,7 +2223,7 @@ public class GeneracionCuadros {
         String ValorPesoPunto = "1234567";
         double salario = Double.parseDouble(ValorPesoPunto) * puntajeanio;
         
-//        String antiguedad = getAntiguedad(docente.get("DIAVIN")+"-"+docente.get("MESVIN")+"-"+docente.get("AÑOVIN"));
+
         FileInputStream Archivo = new FileInputStream(ruta+documento);
         FileInputStream escudo = new FileInputStream(carpetaCiarp+"escudo.jpg");
                    
@@ -2738,15 +2702,14 @@ public class GeneracionCuadros {
          salida.close();
         
         
-        System.out.println("******************END METHOD***************************");
+        
     }
 
     
 
     private String getAntiguedady(String fechaVinculacion) {
         String fechaEvaluacion = "31-12-"+anio;
-        System.out.println("antiguedad*********************************************");
-        System.out.println("*"+fechaVinculacion+"*");
+        
         if(fechaVinculacion.equals("_-_-_")){
             return "";
         }
@@ -2854,18 +2817,7 @@ public class GeneracionCuadros {
 
 
     public String ValidarNumeroDec(String valor){
-//        String ret = formateador.format(""+valor);
-//        System.out.println("************************ValidarNumeroDec****************************");
-//        System.out.println("valorform---->"+ret);
-//        if(valor.indexOf(".")>-1){
-//            String[] dat = valor.replace(".", ":").split(":");
-//            if(dat[1].equals("00")){
-//                ret = dat[0];
-//            }else{
-//                ret = ret.replace(".", ",");
-//            }
-//        }
-//        System.out.println("ret--------->"+ret);
+
         String retorno = "";
         System.out.println("numero----->"+valor);
         if(valor.indexOf(",") > -1){
@@ -2876,53 +2828,34 @@ public class GeneracionCuadros {
         
         if (valor.indexOf(".") > -1) {
             
-            System.out.println("numero------>"+valor);
+           
             Double dat = Double.parseDouble(valor);
-            System.out.println("dat------>"+dat);
+            
             DecimalFormat df = new DecimalFormat("0.00");
-            System.out.println("df.format(dat)------>"+df.format(dat));
+            
             valor = df.format(dat);
-            System.out.println("numero------>"+valor);
+            
             valor = valor.replace(".", ",");
             String[] daot= valor.split(",");
-            System.out.println("DAOT [0]" +daot[0]);
-//            if (daot[0].equals("")){
-//                daot[0]= "0";
-//                valor = daot[0]+valor;
-//                System.out.println("DAO[0] = "+daot[0]);
-//                System.out.println("DAO[1] = "+daot[1]);
-//            }
+            
+
             if(daot[1].equals("00")){
                 retorno = daot[0];
             }else{
                 retorno = valor;
             }
-            System.out.println("numero final------>"+retorno);
+            
         }
         
-//        if (!numero.equals("N/A")) {
-//            if (numero.indexOf(",") > -1) {
-//                String[] numrs = numero.replace(",", "::").split("::");
-//                retorno = numeroEnLetras(Integer.parseInt(numrs[0].equals("")?"0":numrs[0]));
-//                if(Integer.parseInt(numrs[1]) > 0){
-//                    retorno += " coma ";
-//                    retorno += numeroEnLetras(Integer.parseInt(numrs[1]));// + " (" + numero + ")";
-//                }
-//            } else {
-//                retorno = numeroEnLetras(Integer.parseInt(numero));// + "(" + numero + ")";
-//            }
-//        }
-
         return retorno;
  
-//        return ret;
     }
 
     private void formatoCedula() {
         for(int i = 0; i < listaInfoPuntos.size(); i++){
             Map<String, String> dat = listaInfoPuntos.get(i);
             String d = ""+(long)Double.parseDouble(dat.get("CEDULA").replace(",", "."));
-//            System.out.println("d-->"+d);
+
             dat.put("CEDULA", d);
             listaInfoPuntos.set(i, dat);
         }
@@ -2931,14 +2864,7 @@ public class GeneracionCuadros {
      private String getNOMBREPRODUCTO(Map<String, String> datos) {
         String datosProducto = "";
         switch (datos.get("TIPO_PRODUCTO")) {
-//            case "Ingreso_a_la_Carrera_Docente":
-//                datosSoporte = ComillasSoporte(listadatosdocentexTipoProducto.get(k).get("SOPORTES"));
-//                respuestaSoporte = datosSoporte;
-//                break;
-//            case "Ascenso_en_el_Escalafon_Docente":
-//                datosSoporte = ComillasSoporte(listadatosdocentexTipoProducto.get(k).get("SOPORTES"));
-//                respuestaSoporte = datosSoporte;
-//                break;
+
             case "Articulo":
                 datosProducto =  " "+Utilidades.decodificarElemento(datos.get("NOMBRE_SOLICITUD"))
                         + "; de la revista " + Utilidades.decodificarElemento(datos.get("REVISTA/EVENTO/EDITORIAL"))

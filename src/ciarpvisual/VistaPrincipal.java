@@ -23,7 +23,7 @@ import javax.swing.UIManager;
 
 /**
  *
- * @author MERRY
+ * @author rjulio, rramos, kdelosreyes
  */
 public class VistaPrincipal extends javax.swing.JFrame {
     private int x, y;
@@ -762,7 +762,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void btnGenerarCartasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCartasActionPerformed
         try {
             GenerarCartas();
-            System.out.println("Me FUI A GENERAR");
         }catch(DocumentException e){
           
         }catch(IOException e){
@@ -785,7 +784,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectArchivoDocentes1ActionPerformed
 
     private void cbAnioCartasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAnioCartasActionPerformed
-        System.out.println("cb--->"+cbAnioCartas.getSelectedItem());
         if(cbAnioCartas.getItemCount()>0){
             lblAnio.setText(""+cbAnioCartas.getSelectedItem());
         }
@@ -878,14 +876,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void Generar() throws DocumentException, IOException {
         String tipo = cbTid.getSelectedItem().toString();
         String ruta = txtURL.getText().trim();
-        System.out.println("tipo-->"+tipo);
-        System.out.println("ruta-->"+ruta);
         
         if(tipo.equals("Acta")){
            GeneracionActas gen = new GeneracionActas();
             Map<String, String> respuestaerr = gen.GenerarActas(ruta);
             
-            System.out.println("ERROR EN PRINCIPAL "+respuestaerr.get("MENSAJE"));
             if(respuestaerr.get("ESTADO").equals("ERROR")){
             JOptionPane.showMessageDialog(this, "posible error de digitación "+Utilidades.Utilidades.decodificarElemento(respuestaerr.get("MENSAJE"))+
                     "\nPara el docente: "+Utilidades.Utilidades.decodificarElemento(respuestaerr.get("LINEA_ERROR_DOCENTE"))+
@@ -903,7 +898,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
             GeneracionResoluciones gen = new GeneracionResoluciones();
             Map<String, String> respuesta = gen.CrearResoluciones(ruta, semestre);
             
-            System.out.println("ERROR EN PRINCIPAL "+respuesta.get("MENSAJE"));
             if(respuesta.get("ESTADO").equals("ERROR")){
             JOptionPane.showMessageDialog(this, "posible error de digitación "+Utilidades.Utilidades.decodificarElemento(respuesta.get("MENSAJE"))+
                     "\nPara el docente: "+Utilidades.Utilidades.decodificarElemento(respuesta.get("LINEA_ERROR_DOCENTE"))+
