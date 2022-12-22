@@ -7,6 +7,7 @@ package RTF;
 
 import Excel.ControlArchivoExcel;
 import Excel.gestorInformes;
+import Utilidades.Fonts;
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Cell;
 import com.lowagie.text.Chunk;
@@ -58,7 +59,7 @@ public class GeneracionActas {
     public int indxgrado2 = 0;
     public int indxgrado3 = 0;
     Map<String, String> respuestaerr = new HashMap<>();
-    BaseFont arialfont;
+    BaseFont arialFont;
 
     public GeneracionActas() {
         URL = "C:\\CIARP\\acta_.rtf";
@@ -294,8 +295,7 @@ public class GeneracionActas {
     }
 
     private Map<String, String> GeneracionDocumentoActa(List<Map<String, String>> listaDatos, Document documento) throws FileNotFoundException, BadElementException, IOException, DocumentException {
-        BaseFont calibriFont = BaseFont.createFont("C:\\windows\\Fonts\\CALIBRI.TTF", "Cp1252", true);
-        BaseFont arialFont = BaseFont.createFont("C:\\windows\\Fonts\\ARIAL.TTF", "Cp1252", true);
+        arialFont = BaseFont.createFont("C:\\windows\\Fonts\\ARIAL.TTF", "Cp1252", true);
         RtfWriter2.getInstance(documento, new FileOutputStream(URL));
 
         documento.open();
@@ -303,24 +303,8 @@ public class GeneracionActas {
         List<Map<String, String>> listaProposiciones = data_list(3, listaDatos, new String[]{"TIPO_PRODUCTO<->" + "Proposiciones_y_varios"});
         List<Map<String, String>> listaColciencias = data_list(3, listaDatos, new String[]{"TIPO_PRODUCTO<->" + "Art_Col"});
         //<editor-fold defaultstate="collapsed" desc="SE CREA EL ENCABEZADO Y EL PIE DE PAGINA">
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(11);
-        fh3.setColor(Color.BLACK);
-
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(9);
-        fh4.setColor(Color.BLACK);
-        //fh2.setStyle("bold");
+        Fonts f = new Fonts(arialFont);
+      
         Paragraph p = new Paragraph();
         int justificado = Paragraph.ALIGN_JUSTIFIED;
         int centrado = Paragraph.ALIGN_CENTER;
@@ -335,7 +319,7 @@ public class GeneracionActas {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("COMITÉ INTERNO DE ASIGNACIÓN Y RECONOCIMIENTO DE PUNTAJE\n", fh1));
+        celda = new Cell(new Paragraph("COMITÉ INTERNO DE ASIGNACIÓN Y RECONOCIMIENTO DE PUNTAJE\n", Fonts.SetFontTwoStyle(Color.black, 11, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -354,7 +338,7 @@ public class GeneracionActas {
         footertable.setWidths(tam);
 
         try {
-            celda = new Cell(new Paragraph("Acta N° " + listaDatosacta.get("No_ACTA") + " del " + fechaEnletras(listaDatosacta.get("FECHA_ACTA"), 0), fh4));
+            celda = new Cell(new Paragraph("Acta N° " + listaDatosacta.get("No_ACTA") + " del " + fechaEnletras(listaDatosacta.get("FECHA_ACTA"), 0), Fonts.SetFont(Color.black, 9, Fonts.BOLD)));
         } catch (Exception ex) {
             Logger.getLogger(GeneracionActas.class.getName()).log(Level.SEVERE, null, ex);
             respuestaerr.put("ESTADO", "ERROR");
@@ -367,21 +351,21 @@ public class GeneracionActas {
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setBorderWidthTop(2);
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 9, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_TOP);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setBorderWidthTop(2);
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("/", fh4));
+        celda = new Cell(new Paragraph("/", Fonts.SetFont(Color.black, 9, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_LEFT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setBorderWidthTop(2);
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 9, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_LEFT);
         celda.setBorderWidthTop(2);
@@ -393,7 +377,7 @@ public class GeneracionActas {
 
         documento.setHeader(header);
         documento.setFooter(footer);
-        //documento.setFooter(footer);
+       
         //</editor-fold>
 
         p = new Paragraph(10);
@@ -401,7 +385,7 @@ public class GeneracionActas {
         centrado = Paragraph.ALIGN_CENTER;
 
         p.setAlignment(centrado);
-        p.setFont(fh2);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.BOLD));
 
         String[] año = listaDatosacta.get("FECHA_ACTA").split("/");
         p.add("\nACTA " + listaDatosacta.get("No_ACTA") + " DE " + año[2]);
@@ -409,13 +393,13 @@ public class GeneracionActas {
         documento.add(p);
 
         p = new Paragraph(10);
-        p.setFont(fh1);
+        p.setFont(Fonts.SetFontTwoStyle(Color.black, 11, Fonts.BOLD));
         p.setAlignment(centrado);
         p.add("\n");
         documento.add(p);
 
         p = new Paragraph(10);
-        p.setFont(fh3);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
         p.setAlignment(justificado);
         try {
             p.add("En Santa Marta, a los " + fechaEnletras(listaDatosacta.get("FECHA_ACTA"), 1) + ", se reunieron en sesión ordinaria los miembros del ");
@@ -427,7 +411,7 @@ public class GeneracionActas {
             respuestaerr.put("DEFINICION_FORMATO", "El formato de fecha debe ser dd/mm/aaaa");
 
         }
-        Chunk c = new Chunk("COMITÉ INTERNO DE ASIGNACIÓN Y RECONOCIMIENTO DE PUNTAJE ", fh2);
+        Chunk c = new Chunk("COMITÉ INTERNO DE ASIGNACIÓN Y RECONOCIMIENTO DE PUNTAJE ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
         String orden = "convocados por el Presidente de éste órgano colegiado, para tratar el siguiente orden del día:\n"
                 + "\n"
@@ -459,16 +443,16 @@ public class GeneracionActas {
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        c = new Chunk("DESARROLLO\n", fh2);
+        c = new Chunk("DESARROLLO\n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
 
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(fh3);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
         p.add("\n Se da inicio a la sesión, en el despacho del Vicerrector Académico, siendo las " + listaDatosacta.get("HORA_INICIO") + "\n \n");
-        c = new Chunk("1. VERIFICACIÓN DEL QUÓRUM ", fh2);
+        c = new Chunk("1. VERIFICACIÓN DEL QUÓRUM ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
         p.add("se verifica el quórum para deliberar contando con los siguientes asistentes:\n"
                 + "\n"
@@ -484,11 +468,11 @@ public class GeneracionActas {
                 + "\n"
                 + "Considerando lo establecido en el artículo 5to del Acuerdo Superior N° 021 de 2009, que dispone la composición y requisitos de los miembros del Comité Interno de Asignación y Reconocimiento de Puntaje atendiendo los principios de eficacia, economía y celeridad que enmarcan todas las actuaciones administrativas, éste órgano colegiado, decide por unanimidad designar a la Profesional Especializado de la Vicerrectoría Académica Karen Gishelle Buelvas Ferreira, como secretaria técnica para que se encargue de la parte operativa del CIARP.  \n"
                 + "\n");
-        c = new Chunk("2. APROBACIÓN DEL ORDEN DEL DÍA ", fh2);
+        c = new Chunk("2. APROBACIÓN DEL ORDEN DEL DÍA ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
         p.add("se aprueba el orden del día.\n"
                 + "\n");
-        c = new Chunk("3. LECTURA Y APROBACIÓN DEL ACTA ANTERIOR ", fh2);
+        c = new Chunk("3. LECTURA Y APROBACIÓN DEL ACTA ANTERIOR ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
         try {
             p.add("leída el Acta N° " + listaDatosacta.get("ACTA_ANTERIOR") + " de fecha " + fechaEnletras(listaDatosacta.get("FECHA_ACTA_ANTERIOR"), 0) + " es aprobada por unanimidad por los miembros del Comité.  \n"
@@ -509,14 +493,14 @@ public class GeneracionActas {
         if (listaCorrespondencia.size() > 0) {
             indxgrado1++;
             p = new Paragraph(10);
-            c = new Chunk(indxgrado1 + ". ESTUDIO DE LA CORRESPONDENCIA: \n", fh2);
+            c = new Chunk(indxgrado1 + ". ESTUDIO DE LA CORRESPONDENCIA: \n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
             p.add(c);
             documento.add(p);
             indxgrado2 = 1;
             for (int l = 0; l < listaCorrespondencia.size(); l++) {
 
                 p = new Paragraph(10);
-                p.setFont(fh3);
+                p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                 p.setAlignment(justificado);
                 String numeral = indxgrado1 + "." + (indxgrado2++);
 
@@ -533,10 +517,10 @@ public class GeneracionActas {
                 datos2.add(datos1);
                 //</editor-fold>
 
-                c = new Chunk(numeral + ". ", fh2);
+                c = new Chunk(numeral + ". ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                 p.add(c);
                 p.add(ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listaCorrespondencia.get(l).get("NOMBRE_SOLICITUD"))) + " \n");
-                c = new Chunk("Decisión: ", fh2);
+                c = new Chunk("Decisión: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                 p.add(c);
                 p.add(ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listaCorrespondencia.get(l).get("DECISION"))) + ".\n");
                 documento.add(p);
@@ -547,7 +531,7 @@ public class GeneracionActas {
         indxgrado1++;
 
         p = new Paragraph(10);
-        c = new Chunk(indxgrado1 + ". ESTUDIO DE LAS SOLICITUDES DE DOCENTES: \n", fh2);
+        c = new Chunk(indxgrado1 + ". ESTUDIO DE LAS SOLICITUDES DE DOCENTES: \n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
         documento.add(p);
         indxgrado2 = 0;
@@ -558,7 +542,7 @@ public class GeneracionActas {
                 Datosacta.put("NUMACTA", listadatosxTipoProducto.get(0).get("ACTA"));
                 indxgrado2++;
                 p = new Paragraph(10);
-                p.setFont(fh2);
+                p.setFont(Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                 p.setAlignment(justificado);
                 p.add(indxgrado1 + "." + indxgrado2 + ". Estudio de solicitudes por " + jerarquiaProducto.get(i).get("NPRODUCTO") + ":\n");
                 documento.add(p);
@@ -569,15 +553,15 @@ public class GeneracionActas {
                     List<Map<String, String>> listadatosdocentexTipoProducto = data_list(3, listadatosxTipoProducto, new String[]{"No._IDENTIFICACION<->" + listadocentexTipoProducto.get(j).get("No._IDENTIFICACION")});
                     indxgrado3 += 1;
                     p = new Paragraph(10);
-                    p.setFont(fh3);
+                    p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                     p.setAlignment(justificado);
                     String numeral = indxgrado1 + "." + indxgrado2 + "." + indxgrado3;
-                    c = new Chunk(numeral + ". " + Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("NOMBRE_DOCENTE")) + ":\n", fh2);
+                    c = new Chunk(numeral + ". " + Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("NOMBRE_DOCENTE")) + ":\n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                     p.add(c);
-                    c = new Chunk("Identificación: ", fh2);
+                    c = new Chunk("Identificación: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                     p.add(c);
                     p.add(FormatoCedula(listadocentexTipoProducto.get(j).get("No._IDENTIFICACION")) + "\n" + Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("FACULTAD")) + ".\n");
-                    c = new Chunk("Categoría: ", fh2);
+                    c = new Chunk("Categoría: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                     p.add(c);
                     try {
                         p.add(listadocentexTipoProducto.get(j).get("CATEGORIA_DOCENTE") + " - " + listadocentexTipoProducto.get(j).get("TIPO_VINCULACION") + " desde el " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("FECHA_INGRESO")), 0) + ".\n");
@@ -588,7 +572,7 @@ public class GeneracionActas {
                         respuestaerr.put("LINEA_ERROR_FECHA", "En la fecha de vinculación del docente " + Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("NOMBRE_DOCENTE")));
                         respuestaerr.put("DEFINICION_FORMATO", "El formato de fecha debe ser dd/mm/aaaa");
                     }
-                    c = new Chunk("Tipo de solicitud: ", fh2);
+                    c = new Chunk("Tipo de solicitud: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                     p.add(c);
 
                     p.add((Utilidades.Utilidades.decodificarElemento(listadatosxTipoProducto.get(0).get("TIPO_PRODUCTO")).equals("Ascenso_en_el_Escalafon_Docente") || Utilidades.Utilidades.decodificarElemento(listadatosxTipoProducto.get(0).get("TIPO_PRODUCTO")).equals("Ingreso_a_la_Carrera_Docente")
@@ -612,12 +596,12 @@ public class GeneracionActas {
                         datos2.add(datos1);
                         //</editor-fold>
 
-                        p.setFont(fh3);
+                        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                         p.setAlignment(justificado);
                         c = new Chunk("Soporte" + (listadatosdocentexTipoProducto.size() > 1
                                 ? (" " + getNombreNumero(k + 1, jerarquiaProducto.get(i).get("ARTICULO")) + " " + jerarquiaProducto.get(i).get("NPRODUCTO") + ": ")
                                 : ": "),
-                                 fh2);
+                                 Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                         p.add(c);
                         String soportes = getSoportes(listadatosdocentexTipoProducto, k);
                         p.add(soportes + "\n");
@@ -627,9 +611,9 @@ public class GeneracionActas {
                     String decision;
                     try {
                         decision = getDecision(listadatosdocentexTipoProducto);
-                        p.setFont(fh3);
+                        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                         p.setAlignment(justificado);
-                        c = new Chunk("Decisión: ", fh2);
+                        c = new Chunk("Decisión: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                         p.add(c);
                         p.add("Revisada la documentación y después de analizar lo establecido en las normas, el Comité decide " + decision + "\n");
 
@@ -649,9 +633,9 @@ public class GeneracionActas {
                     }
 
                     if (!Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("NOTA")).equals("N/A")) {
-                        p.setFont(fh3);
+                        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                         p.setAlignment(justificado);
-                        c = new Chunk("Nota: ", fh2);
+                        c = new Chunk("Nota: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                         p.add(c);
                         p.add(ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadocentexTipoProducto.get(j).get("NOTA"))) + "\n");
 
@@ -667,7 +651,7 @@ public class GeneracionActas {
             List<Map<String, String>> listadocentexArticuloColciencias = data_list(1, listaColciencias, new String[]{"No._IDENTIFICACION"});
             indxgrado1++;
             p = new Paragraph(10);
-            c = new Chunk(indxgrado1 + ". REVISIÓN Y ASIGNACIÓN DE PUNTOS A LOS DOCENTES CUYOS ARTÍCULOS QUEDARON PENDIENTES POR HOMOLOGACIÓN DE COLCIENCIAS PARA EL AÑO 2019: \n", fh2);
+            c = new Chunk(indxgrado1 + ". REVISIÓN Y ASIGNACIÓN DE PUNTOS A LOS DOCENTES CUYOS ARTÍCULOS QUEDARON PENDIENTES POR HOMOLOGACIÓN DE COLCIENCIAS PARA EL AÑO 2019: \n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
             p.add(c);
             documento.add(p);
             indxgrado2 = 1;
@@ -677,7 +661,7 @@ public class GeneracionActas {
                     + " y hacer el pago de estos una vez se conozca la categoría en que se encuentra la revista; y de igual manera pagarse los meses transcurridos"
                     + " a partir del estudio de la solicitud?\n");
             p = new Paragraph(10);
-            c = new Chunk("RESPUESTA:", fh2);
+            c = new Chunk("RESPUESTA:", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
             p.add(c);
             p = new Paragraph(10);
             p.add("“En este caso se reconoce provisionalmente el puntaje hasta tanto se publique por Colciencias por la clasificación de las revistas, se aclara que no hay retroactividad,"
@@ -693,10 +677,10 @@ public class GeneracionActas {
             for (int l = 0; l < listadocentexArticuloColciencias.size(); l++) {
                 List<Map<String, String>> listainfoDocentesColciencias = data_list(3, listaColciencias, new String[]{"No._IDENTIFICACION<->" + listadocentexArticuloColciencias.get(l).get("No._IDENTIFICACION")});
                 p = new Paragraph(10);
-                p.setFont(fh3);
+                p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                 p.setAlignment(justificado);
                 String numeral = indxgrado1 + "." + (indxgrado2++);
-                c = new Chunk(numeral + ". DOCENTE: " + listadocentexArticuloColciencias.get(l).get("NOMBRE_DOCENTE") + "\n", fh2);
+                c = new Chunk(numeral + ". DOCENTE: " + listadocentexArticuloColciencias.get(l).get("NOMBRE_DOCENTE") + "\n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                 p.add(c);
 
                 for (int k = 0; k < listainfoDocentesColciencias.size(); k++) {
@@ -713,16 +697,16 @@ public class GeneracionActas {
                     datos2.add(datos1);
                     //</editor-fold>
 
-                    p.setFont(fh3);
+                    p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                     p.setAlignment(justificado);
-                    c = new Chunk("Artículo " + (listainfoDocentesColciencias.size() > 1 ? "N° " + (k + 1) + ": " : ": "), fh2);
+                    c = new Chunk("Artículo " + (listainfoDocentesColciencias.size() > 1 ? "N° " + (k + 1) + ": " : ": "), Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                     p.add(c);
                     String soportes = getSoportesColciencias(listainfoDocentesColciencias, k);
                     p.add(soportes + "");
 
                 }
 
-                c = new Chunk("DECISIÓN: ", fh2);
+                c = new Chunk("DECISIÓN: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                 p.add(c);
 
                 try {
@@ -746,9 +730,9 @@ public class GeneracionActas {
                 documento.add(p);
 
                 if (!Utilidades.Utilidades.decodificarElemento(listadocentexArticuloColciencias.get(l).get("NOTA")).equals("N/A")) {
-                    p.setFont(fh3);
+                    p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
                     p.setAlignment(justificado);
-                    c = new Chunk("Nota: ", fh2);
+                    c = new Chunk("Nota: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                     p.add(c);
                     p.add(ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listadocentexArticuloColciencias.get(l).get("NOTA"))) + "\n");
 
@@ -761,14 +745,14 @@ public class GeneracionActas {
             indxgrado1++;
             indxgrado2 = 0;
             p = new Paragraph(10);
-            p.setFont(fh3);
+            p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
             p.setAlignment(justificado);
-            c = new Chunk(indxgrado1 + ". PROPOSICIONES Y VARIOS: \n\n", fh2);
+            c = new Chunk(indxgrado1 + ". PROPOSICIONES Y VARIOS: \n\n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
             p.add(c);
             for (int y = 0; y < listaProposiciones.size(); y++) {
                 indxgrado2++;
                 p.add(indxgrado1 + "." + indxgrado2 + " " + ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listaProposiciones.get(y).get("NOMBRE_SOLICITUD"))) + "\n");
-                c = new Chunk("Decisión: ", fh2);
+                c = new Chunk("Decisión: ", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
                 p.add(c);
                 p.add(ComillasSoporte(Utilidades.Utilidades.decodificarElemento(listaProposiciones.get(y).get("DECISION"))) + "\n");
             }
@@ -778,9 +762,9 @@ public class GeneracionActas {
         DatosNumeralesActa.add(datos2);
         indxgrado1++;
         p = new Paragraph(10);
-        p.setFont(fh3);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
         p.setAlignment(justificado);
-        c = new Chunk(indxgrado1 + ". CIERRE: \n\n", fh2);
+        c = new Chunk(indxgrado1 + ". CIERRE: \n\n", Fonts.SetFont(Color.black, 11, Fonts.BOLD));
         p.add(c);
         p.add(" Siendo las " + listaDatosacta.get("HORA_FIN") + " se da por terminada la sesión");
         documento.add(p);
