@@ -46,4 +46,12 @@ public class Fonts extends Font{
         fuente.setStyle(estilo);
         return fuente;
     }
+    public static Font SetFontTwoStyle(Color color, float tamanio, int estilo){
+        Font fuente = new Font(arialFont);
+        fuente.setColor(color);
+        fuente.setSize(tamanio);
+        fuente.setStyle(estilo);
+        fuente.setStyle("underlined");
+        return fuente;
+    }
 }
