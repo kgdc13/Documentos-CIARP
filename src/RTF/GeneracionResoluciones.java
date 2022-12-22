@@ -682,43 +682,9 @@ public class GeneracionResoluciones {
 
         //<editor-fold defaultstate="collapsed" desc="SE CREA EL ENCABEZADO Y EL PIE DE PAGINA">
        
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(11);
-        fh3.setColor(Color.BLACK);
-
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(8);
-        fh4.setColor(Color.BLACK);
-        fh4.setStyle("bold");
-     
-
-        Font af10 = new Font(arialFont);
-        af10.setSize(10);
-        af10.setColor(Color.BLACK);
-
-        Font af10b = new Font(arialFont);
-        af10b.setSize(10);
-        af10b.setColor(Color.BLACK);
-        af10b.setStyle("bold");
-
-        Font af7 = new Font(arialFont);
-        af7.setSize(7);
-        af7.setColor(Color.BLACK);
-
-        Font af7b = new Font(arialFont);
-        af7b.setSize(7);
-        af7b.setColor(Color.BLACK);
-        af7b.setStyle("bold");
+        Fonts f = new Fonts(arialFont);
+        
+        
 
         Paragraph p = new Paragraph();
         int justificado = Paragraph.ALIGN_JUSTIFIED;
@@ -742,11 +708,11 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", fh4));
+        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", fh4));
+        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -762,7 +728,7 @@ public class GeneracionResoluciones {
             datos2.add(datos1);
         //</editor-fold>
 
-        celda = new Cell(new Paragraph(resolucion+ "”", fh4));
+        celda = new Cell(new Paragraph(resolucion+ "”", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_JUSTIFIED);
         headerTable.addCell(celda);
@@ -777,7 +743,7 @@ public class GeneracionResoluciones {
         headerTableTxt.setWidth(100);
        
 
-        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", fh4));
+        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         headerTableTxt.addCell(celda);
         celda = new Cell(imgM);
@@ -800,27 +766,27 @@ public class GeneracionResoluciones {
 
         footertable.setWidths(tam);
 
-        celda = new Cell(new Paragraph("Página ", fh4));
+        celda = new Cell(new Paragraph("Página ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
       
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
      
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("de", fh4));
+        celda = new Cell(new Paragraph("de", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
       
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
@@ -850,44 +816,44 @@ public class GeneracionResoluciones {
         centrado = Paragraph.ALIGN_CENTER;
 
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("El Rector de la Universidad del Magdalena ");
-        Chunk c = new Chunk("“UNIMAGDALENA”", af10b);
+        Chunk c = new Chunk("“UNIMAGDALENA”", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", en ejercicio de sus funciones legales y en especial las que le confiere el Estatuto General, el Estatuto Docente de la Universidad, y\n");
         documento.add(p);
 
         p = new Paragraph(10);
-        p.setFont(fh3);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
         p.setAlignment(centrado);
-        c = new Chunk("CONSIDERANDO:\n", af10b);
+        c = new Chunk("CONSIDERANDO:\n", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         if(listaDatosDocentes.get(0).get("TIPO_VINCULACION").toUpperCase().equals("DOCENTE OCASIONAL DE TIEMPO COMPLETO") || 
             listaDatosDocentes.get(0).get("TIPO_VINCULACION").toUpperCase().equals("DOCENTE OCASIONAL DE MEDIO TIEMPO")    ){
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que el Artículo 70 del Acuerdo Superior N° 007 de 2003 establece las condiciones para la valoración de la productividad académica de los docentes ocasionales. \n");
             documento.add(p);
         }
         
         p = new Paragraph(10);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.setAlignment(justificado);
         p.add("Que el Capítulo III del Decreto N° 1279 de 2002, establece los factores y criterios a tener en cuenta para la modificación de puntos salariales de los docentes amparados por dicho régimen, siendo la productividad académica, uno de los factores incidentes en este proceso, según lo establecido en el Literal C., del Artículo 12 y el Artículo 16 de la disposición en cita.\n");
         documento.add(p);
 
         p = new Paragraph(10);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.setAlignment(justificado);
         p.add("Que el Comité Interno de Asignación y Reconocimiento de Puntaje – CIARP, ha considerado para la asignación de puntaje de los docentes de planta, los criterios de evaluación y asignación que para el efecto ha establecido el Grupo de Seguimiento del Régimen Salarial y Prestacional de los Profesores Universitarios mediante el Acuerdo N° 001 de 04 de marzo de 2004.\n");
         documento.add(p);
         
         if(listaDatosDocentesCargoAcad.size()>0){
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que por otra parte, el Artículo 17 del referido decreto, establece los criterios a tener en cuenta para la modificación de salario "+
                     "de los docentes que realizan actividades académico-administrativas, disponiéndose, en igual sentido, en el Artículo 62 de la mencionada "+
@@ -897,7 +863,7 @@ public class GeneracionResoluciones {
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que en consulta realizada al Grupo de Seguimiento al Régimen Salarial y Prestacional de los Profesores Universitarios, bajo Radicado N° 2011ER62358 "+
                     "sobre el reconocimiento de puntos por productividad académica para los docentes que asuman cargos académico-administrativos, este "+
@@ -906,13 +872,13 @@ public class GeneracionResoluciones {
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que mediante Resolución Rectoral Nº "+
                     listaDatosDocentes.get(0).get("RESOL_ENCARGO")+" "+
                     (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "el" : "la")+
                     " "+listaDatosDocentes.get(0).get("TIPO_VINCULACION"));
-            c = new Chunk(" "+Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE)+", ",af10b);
+            c = new Chunk(" "+Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE)+", ",Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
                     
             p.add("fue "+(listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "comisionado" : "comisionada")+" para ejercer un cargo de libre nombramiento y remoción dentro de la Institución como "+
@@ -925,10 +891,10 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                 + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", presentó solicitud de asignación de puntos salariales por" + (listaDatosDocentes.size()==1?" un":numeroEnLetras(listaDatosDocentes.size())) + " (" + listaDatosDocentes.size() + ")");
         
@@ -989,7 +955,7 @@ public class GeneracionResoluciones {
         if (listaDatosDocentesAux.size() > 0) {
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             if(listaDatosDocentesAux.get(0).get("RETROACTIVIDAD").length()==10){
                 try{
             p.add("Que la base de datos de COLCIENCIAS para Revistas Internacionales fue actualizada el día " + fechaEnletras(listaDatosDocentesAux.get(0).get("RETROACTIVIDAD"),0) + ", según la página web www.colciencias.gov.co.\n");
@@ -1113,7 +1079,7 @@ public class GeneracionResoluciones {
             }
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
 
             String numeroletras = getNumeroDecimal(""+listadatosxActas.size());
@@ -1137,7 +1103,7 @@ public class GeneracionResoluciones {
                                     }
                                 return respuesta;
                             }
-            c = new Chunk(NOM_DOCENTE+ " ",af10b);
+            c = new Chunk(NOM_DOCENTE+ " ",Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             try{
             p.add(
@@ -1166,30 +1132,30 @@ public class GeneracionResoluciones {
         }
             
         p = new Paragraph(10);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.setAlignment(justificado);
         p.add("Que mediante acto administrativo motivado expedido por el Rector de UNIMAGDALENA, se determina dos (2) veces al año el total de puntos que corresponde a cada docente, conforme lo señala el Artículo 55 del Decreto 1279 de 2002.\n");
         documento.add(p);
         p = new Paragraph(10);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.setAlignment(justificado);
         p.add("En mérito de lo anterior,\n");
         documento.add(p);
 
         p = new Paragraph(10);
-        p.setFont(fh3);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
         p.setAlignment(centrado);
-        c = new Chunk("RESUELVE:\n", af10b);
+        c = new Chunk("RESUELVE:\n", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO PRIMERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO PRIMERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Reconocer y pagar "+(listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al " : "a la ")+listaDatosDocentes.get(0).get("TIPO_VINCULACION")+" ");
-        c = new Chunk("" + NOM_DOCENTE + ",", af10b);
+        c = new Chunk("" + NOM_DOCENTE + ",", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
        
         p.add((listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? " identificado con " : " identificada con "));
@@ -1201,7 +1167,7 @@ public class GeneracionResoluciones {
             p.add("pasaporte N° " + FormatoCedula(listaDatosDocentes.get(0).get("CEDULA")) + ", ");
         }
         try{
-        c = new Chunk("" + getNumeroDecimal(("" + totalpuntos).replace(".", ",")) + " (" + ValidarNumeroDec("" + totalpuntos) + ") puntos salariales, ", af10b);
+        c = new Chunk("" + getNumeroDecimal(("" + totalpuntos).replace(".", ",")) + " (" + ValidarNumeroDec("" + totalpuntos) + ") puntos salariales, ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -1233,37 +1199,37 @@ public class GeneracionResoluciones {
         TableProductos.setWidths(tamy);
         TableProductos.setWidth(100);
 
-        Cell celdaProductos = new Cell(new Paragraph("N°", af7b));
+        Cell celdaProductos = new Cell(new Paragraph("N°", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
-        celdaProductos = new Cell(new Paragraph("Producto", af7b));
+        celdaProductos = new Cell(new Paragraph("Producto", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
-        celdaProductos = new Cell(new Paragraph("Nombre del Producto", af7b));
-        celdaProductos.setBorder(15);
-        celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
-        TableProductos.addCell(celdaProductos);
-
-        celdaProductos = new Cell(new Paragraph("N° Acta", af7b));
+        celdaProductos = new Cell(new Paragraph("Nombre del Producto", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
-        celdaProductos = new Cell(new Paragraph("Puntos Reconocidos", af7b));
+        celdaProductos = new Cell(new Paragraph("N° Acta", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
+        celdaProductos.setBorder(15);
+        celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
+        celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
+        TableProductos.addCell(celdaProductos);
+
+        celdaProductos = new Cell(new Paragraph("Puntos Reconocidos", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
         if (listaDatosDocentesCargoAcad.size() == 0) {
-            celdaProductos = new Cell(new Paragraph("Fecha a partir de la cual surten efectos fiscales", af7b));
+            celdaProductos = new Cell(new Paragraph("Fecha a partir de la cual surten efectos fiscales", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
@@ -1271,13 +1237,13 @@ public class GeneracionResoluciones {
         }
 
         for (int i = 0; i < listaDatosDocentes.size(); i++) {
-            celdaProductos = new Cell(new Paragraph("" + (i + 1), af7b));
+            celdaProductos = new Cell(new Paragraph("" + (i + 1), Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
 
-            celdaProductos = new Cell(new Paragraph("" + (Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(i).get("TIPO_PRODUCTO")).equals("Art_Col") ? "Artículo" : listaDatosDocentes.get(i).get("TIPO_PRODUCTO").replace("_", " ")), af7b));
+            celdaProductos = new Cell(new Paragraph("" + (Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(i).get("TIPO_PRODUCTO")).equals("Art_Col") ? "Artículo" : listaDatosDocentes.get(i).get("TIPO_PRODUCTO").replace("_", " ")), Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
@@ -1288,20 +1254,20 @@ public class GeneracionResoluciones {
             } else {
                 nombresolicitud = getNOMBREPRODUCTO(listaDatosDocentes.get(i));
             }
-            celdaProductos = new Cell(new Paragraph("" + nombresolicitud, af7));
+            celdaProductos = new Cell(new Paragraph("" + nombresolicitud, Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
 
-            celdaProductos = new Cell(new Paragraph("" + listaDatosDocentes.get(i).get("ACTA"), af7));
+            celdaProductos = new Cell(new Paragraph("" + listaDatosDocentes.get(i).get("ACTA"), Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
             
             try{
-            celdaProductos = new Cell(new Paragraph("" + getNumeroDecimal(listaDatosDocentes.get(i).get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get(i).get("PUNTOS")) + ") puntos", af7b));
+            celdaProductos = new Cell(new Paragraph("" + getNumeroDecimal(listaDatosDocentes.get(i).get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get(i).get("PUNTOS")) + ") puntos", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
             } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -1322,7 +1288,7 @@ public class GeneracionResoluciones {
             if (listaDatosDocentesCargoAcad.size() == 0) {
                 if(listaDatosDocentes.get(i).get("RETROACTIVIDAD").length()==10){
                     try{
-                    celdaProductos = new Cell(new Paragraph("" + fechaEnletras(listaDatosDocentes.get(i).get("RETROACTIVIDAD"),0), af7));
+                    celdaProductos = new Cell(new Paragraph("" + fechaEnletras(listaDatosDocentes.get(i).get("RETROACTIVIDAD"),0), Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
                 } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -1337,7 +1303,7 @@ public class GeneracionResoluciones {
                                 return respuesta;
                             }
                     }else{
-                    celdaProductos = new Cell(new Paragraph("" , af7));
+                    celdaProductos = new Cell(new Paragraph("" , Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
                 }
                 celdaProductos.setBorder(15);
                 celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
@@ -1351,9 +1317,9 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("\n");
-        c = new Chunk("Parágrafo Único: ", af10b);
+        c = new Chunk("Parágrafo Único: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Los puntos salariales asignados en el recuadro anterior, se establecen según lo dispuesto en el "
                 + "aparte de “Decisión” ");
@@ -1374,7 +1340,7 @@ public class GeneracionResoluciones {
                 p.add("en el numeral "+listadatosxActasxnumerales.get(j).get("NUMERAL_ACTA_CIARP"));
             }
             try{
-            c = new Chunk(" del Acta N° " + listaActas.get(i).get("ACTA") + " de " + fechaEnletras(listaActas.get(i).get("FECHA_ACTA"),0) + "", af10);
+            c = new Chunk(" del Acta N° " + listaActas.get(i).get("ACTA") + " de " + fechaEnletras(listaActas.get(i).get("FECHA_ACTA"),0) + "", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -1402,13 +1368,13 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEGUNDO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEGUNDO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión "
                 + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " "
                 + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk("" + Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE) + ". ", af10b);
+        c = new Chunk("" + Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE) + ". ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para tal efecto, envíesele la correspondiente comunicación al correo electrónico de notificación"
                 + ", haciéndole saber que contra la misma procede recurso de reposición ante el mismo funcionario "
@@ -1420,8 +1386,8 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales, "
                 + "a fin de que procedan a realizar el trámite correspondiente. Envíese copia de esta resolución al Comité Interno "
@@ -1429,68 +1395,68 @@ public class GeneracionResoluciones {
 
         p.add((listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " "
                 + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk("" + Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE) + ".", af10b);
+        c = new Chunk("" + Utilidades.Utilidades.decodificarElemento(NOM_DOCENTE) + ".", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("La presente resolución rige a partir del término de su ejecutoria.");
         p.add("\n");
         documento.add(p);
 
         p = new Paragraph(10);
-        p.setFont(fh3);
+        p.setFont(Fonts.SetFont(Color.black, 11, Fonts.NORMAL));
         p.setAlignment(centrado);
-        c = new Chunk("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n", af10b);
+        c = new Chunk("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
 
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Dada en la ciudad de Santa Marta, D. T. C. H., a los");
         p.add("\n \n \n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("PABLO VERA SALAZAR");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Rector ");
         p.add("\n\n");
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(left);
-        p.setFont(af7);
-        c = new Chunk("Proyectó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Proyectó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add("" + listaProyecto.get("PROYECTO") + "____");
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(left);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add("" + listaProyecto.get("REVISO") + "____");
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(left);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add("" + listaProyecto.get("REVISO_JEFE") + "____\n");
         documento.add(p);
@@ -1511,53 +1477,8 @@ public class GeneracionResoluciones {
         String[] numeralActas = {};
 
         //<editor-fold defaultstate="collapsed" desc="estilo">
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(8);
-        fh3.setColor(Color.BLACK);
+        Fonts f = new Fonts(arialFont);
         
-        Font fh3c = new Font(arialFont);
-        fh3c.setSize(8);
-        fh3c.setColor(Color.BLACK);
-        fh3c.setStyle("italic");
-        
-        Font fh3b = new Font(arialFont);
-        fh3b.setSize(8);
-        fh3b.setColor(Color.BLACK);
-        fh3b.setStyle("bold");
-
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(8);
-        fh4.setColor(Color.BLACK);
-        fh4.setStyle("bold");
-
-        Font af10 = new Font(arialFont);
-        af10.setSize(10);
-        af10.setColor(Color.BLACK);
-
-        Font af10b = new Font(arialFont);
-        af10b.setSize(10);
-        af10b.setColor(Color.BLACK);
-        af10b.setStyle("bold");
-
-        Font af7 = new Font(arialFont);
-        af7.setSize(7);
-        af7.setColor(Color.BLACK);
-
-        Font af7b = new Font(arialFont);
-        af7b.setSize(7);
-        af7b.setColor(Color.BLACK);
-        af7b.setStyle("bold");
-
         Paragraph p = new Paragraph();
         int justificado = Paragraph.ALIGN_JUSTIFIED;
         int centrado = Paragraph.ALIGN_CENTER;
@@ -1585,11 +1506,11 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", fh4));
+        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", fh4));
+        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -1602,7 +1523,7 @@ public class GeneracionResoluciones {
             datos1.put("RESOLUCION", ""+resolucion);
             datos2.add(datos1);
         //</editor-fold>
-        celda = new Cell(new Paragraph(resolucion+"", fh4));
+        celda = new Cell(new Paragraph(resolucion+"", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
 
         celda.setHorizontalAlignment(Cell.ALIGN_JUSTIFIED);
@@ -1618,7 +1539,7 @@ public class GeneracionResoluciones {
         headerTableTxt.setWidth(100);
        
 
-        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", fh4));
+        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         headerTableTxt.addCell(celda);
         celda = new Cell(imgM);
@@ -1641,28 +1562,28 @@ public class GeneracionResoluciones {
 
         footertable.setWidths(tam);
 
-        celda = new Cell(new Paragraph("Página ", fh4));
+        celda = new Cell(new Paragraph("Página ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
        
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("de", fh4));
+        celda = new Cell(new Paragraph("de", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
        
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
@@ -1690,22 +1611,22 @@ public class GeneracionResoluciones {
         centrado = Paragraph.ALIGN_CENTER;
 
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("El Rector de la Universidad del Magdalena ");
-        Chunk c = new Chunk("“UNIMAGDALENA”", af10b);
+        Chunk c = new Chunk("“UNIMAGDALENA”", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", en ejercicio de sus funciones legales y en especial las que le confiere el Estatuto General, el Estatuto Docente de la Universidad, y\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("CONSIDERANDO:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el Artículo 20 del Acuerdo Superior N° 007 de 2003 establece los criterios para la clasificación en el escalafón"
                 + " del personal docente de la Universidad del Magdalena, aplicables a quienes se encuentren amparados por el Decreto N° 1279 de 2002, o las normas que lo modifiquen o sustituyan."
                 + "\n");
@@ -1714,7 +1635,7 @@ public class GeneracionResoluciones {
                 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el artículo 24 del citado Acuerdo, señala los requerimientos para promover a un profesor en la carrera docente."
                 + "\n");
         documento.add(p);
@@ -1723,7 +1644,7 @@ public class GeneracionResoluciones {
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que por su parte, el artículo 27 ibidem señala los requisitos que deben cumplir los profesores nombrados en planta para ser promovidos en el escalafón"
                     + ", indicando para la categoría de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + " los siguientes: \n");
             documento.add(p);
@@ -1765,12 +1686,12 @@ public class GeneracionResoluciones {
             p.setAlignment(justificado);
             p.setIndentationLeft(13);
             p.setIndentationRight(12);
-            p.setFont(fh3c);
-            c = new Chunk("\"... ARTÍCULO 27. ",fh3b );
+            p.setFont(Fonts.SetFont(Color.black, 8, Fonts.ITALIC));
+            c = new Chunk("\"... ARTÍCULO 27. ",Fonts.SetFont(Color.black, 8, Fonts.BOLD) );
             p.add(c);
             p.add("Los profesores nombrados en planta según la categoría deben cumplir los siguientes requisitos: \n"
             +"... \n");
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD"))+"\n",fh3b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD"))+"\n",Fonts.SetFont(Color.black, 8, Fonts.BOLD));
             p.add(c);
             p.add( requisitosxCategoria + "\n");
             documento.add(p);
@@ -1778,7 +1699,7 @@ public class GeneracionResoluciones {
         else{
             p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el Artículo 14 del Acuerdo Superior N° 007 de 2021 establece los requisitos mínimos que debe cumplir un profesor de planta"
                 + " para ser clasificado al momento de su vinculación en una de las categorías establecidas por el Decreto 1279 de 2002,"
                 + " determinando para la categoría de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD"))+" lo siguiente: \n");
@@ -1806,9 +1727,9 @@ public class GeneracionResoluciones {
             p.setAlignment(justificado);
             p.setIndentationLeft(13);
             p.setIndentationRight(12);
-            p.setFont(fh3c);
+            p.setFont(Fonts.SetFont(Color.black, 8, Fonts.ITALIC));
             p.add("\"");
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD"))+"\n \n",fh3b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD"))+"\n \n",Fonts.SetFont(Color.black, 8, Fonts.BOLD));
             p.add(c);
             p.add( requisitosxCategoria + "\n");
             documento.add(p);
@@ -1816,7 +1737,7 @@ public class GeneracionResoluciones {
         
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que la categoría dentro del escalafón docente es uno de los factores que incide en la modificación de puntos salariales de los docentes de planta,"
                 + " de acuerdo con lo establecido en el Literal b. del artículo 12 del Decreto 1279 de 2002.\n"
                 + "\n"
@@ -1834,7 +1755,7 @@ public class GeneracionResoluciones {
 
         if(listaDatosDocentes.get("TIPO_RESOLUCION").equals("Cargo_acad_admin")){
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que por otra parte, el Artículo 17 del referido decreto, establece los criterios a tener en cuenta para la modificación de salario "+
                     "de los docentes que realizan actividades académico-administrativas, disponiéndose, en igual sentido, en el artículo 62 de la mencionada "+
@@ -1844,7 +1765,7 @@ public class GeneracionResoluciones {
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que en consulta realizada al Grupo de Seguimiento al Régimen Salarial y Prestacional de los Profesores Universitarios, bajo Radicado N° 2011ER62358 "+
                     "sobre el reconocimiento de puntos por productividad académica para los docentes que asuman cargos académico-administrativos, este "+
@@ -1853,14 +1774,14 @@ public class GeneracionResoluciones {
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que mediante Resolución Rectoral Nº "+
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_ENCARGO"))+" "+
                     (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la")+
                     " "+listaDatosDocentes.get("TIPO_VINCULACION")+
                     " ");
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE"))+", ", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE"))+", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add("fue comisionado para ejercer un cargo de libre nombramiento y remoción dentro de la Institución como "+
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("CARGO"))+" "+
@@ -1874,10 +1795,10 @@ public class GeneracionResoluciones {
         if(!Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("AS_ANTIGUO")).equals("N/A")){
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                 + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("solicitó promoción en el escalafón docente de la categoría " + categoriaAnterior + " a la categoría " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + " de conformidad con lo prescrito por el Artículo 22 del Acuerdo Superior Nº 007 de 2003.\n");
         documento.add(p);
@@ -1886,10 +1807,10 @@ public class GeneracionResoluciones {
         else{
             p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                 + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("solicitó promoción en el escalafón docente de la categoría " + categoriaAnterior + " a la categoría " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + " de conformidad con lo prescrito por el Artículo 14 del Acuerdo Superior Nº 007 de 2021.\n");
         documento.add(p);
@@ -1897,7 +1818,7 @@ public class GeneracionResoluciones {
         
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         try{
         p.add("Que el Consejo de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FACULTAD")) + ", en sesión llevada a cabo el día " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FECHA_ACTA_CF")), 0)
                 + " contenida en Acta N° " + getNumeroDecimal(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("ACTA_CONS_FACULTAD"))) + ", estudió la solicitud y emitió concepto favorable de ascenso en el escalafón docente ante Comité Interno de Asignación y Reconocimiento de Puntaje.\n");
@@ -1918,7 +1839,7 @@ public class GeneracionResoluciones {
         
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         try{
         p.add("Que mediante Acta N° " + listaDatosDocentes.get("ACTA") + " de " + fechaEnletras(listaDatosDocentes.get("FECHA_ACTA"),0) + ", tal y como quedo establecido en el ítem " + listaDatosDocentes.get("NUMERAL_ACTA_CIARP")
                 +", el Comité Interno de Asignación y Reconocimiento de Puntaje decidió promover en el escalafón docente "+ (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al profesor" : "a la profesora"));
@@ -1936,11 +1857,11 @@ public class GeneracionResoluciones {
                                     }
                                 return respuesta;
                             }
-        c = new Chunk(" " +Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(" " +Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("a la categoría de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + ", por cumplir con los requisitos fijados para ello y, asignó ");
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
          } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -1960,7 +1881,7 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que conforme lo dispuesto en el artículo 31 del Acuerdo Superior N° 007 de 2003,"
                 + " el Rector expedirá la Resolución de ascenso, previa recomendación motivada del Comité Interno de Asignación y Reconocimiento de Puntaje.\n"
                 + "\n"
@@ -1970,23 +1891,23 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("En mérito de lo anterior,\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("RESUELVE:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO PRIMERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO PRIMERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Promover en el escalafón " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
         if (listaDatosDocentes.get("TIPO_DOC").equals("CC")) {
@@ -2001,12 +1922,12 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEGUNDO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEGUNDO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Autorizar el reconocimiento y pago de ");
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales ", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
@@ -2022,15 +1943,15 @@ public class GeneracionResoluciones {
                                 }
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("correspondientes a su promoción de Categoría de " + categoriaAnterior + " a Categoría de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + ".\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         
         p.add("Los puntos salariales");
@@ -2038,10 +1959,10 @@ public class GeneracionResoluciones {
         if(listaDatosDocentes.get("TIPO_RESOLUCION").equals("Cargo_acad_admin")){
             p.add(" surtirán efectos fiscales una vez "+(listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la")+" docente finalice la comisión para desempeñar el cargo de libre nombramiento y remoción que le ha sido otorgado.\n");
         }else{
-            if(listaDatosDocentes.get("RETROACTIVIDAD").length()==10){
+            if(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RETROACTIVIDAD")).length()==10){
                 try{
             p.add(" surtirán efectos fiscales a partir del día "
-                + fechaEnletras(listaDatosDocentes.get("RETROACTIVIDAD"),0) + ", fecha en la cual se expidió el acto formal de "+
+                + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RETROACTIVIDAD")),0) + ", fecha en la cual se expidió el acto formal de "+
                 "reconocimiento según consta en Acta N° " + listaDatosDocentes.get("ACTA") + ".\n");
             } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -2062,11 +1983,11 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para tal efecto envíesele la correspondiente comunicación al correo electrónico de notificación, haciéndole saber que contra la misma procede"
                 + " recurso de reposición ante el mismo funcionario que la expide, el cual deberá presentar y sustentar por escrito dentro de los diez (10) días"
@@ -2076,62 +1997,62 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO QUINTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO QUINTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales a fin de que procedan a realizar"
                 + " el trámite correspondiente. Envíese copia de esta resolución al Comité Interno de Asignación y Reconocimiento de Puntaje y a la hoja de vida");
         p.add(" " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEXTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEXTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" La presente resolución rige a partir del término de su ejecutoria.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(" Dada en la ciudad de Santa Marta, D. T. C. H., a los \n\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(listaProyecto.get("RECTOR").toUpperCase() + "\n");
-        c = new Chunk("Rector\n\n", af10);
+        c = new Chunk("Rector\n\n", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Proyectó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Proyectó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("PROYECTO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO_JEFE") + "____");
         documento.add(p);
@@ -2154,42 +2075,7 @@ public class GeneracionResoluciones {
         String[] numeralActas = {};
 
         //<editor-fold defaultstate="collapsed" desc="estilo">
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(11);
-        fh3.setColor(Color.BLACK);
-
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(8);
-        fh4.setColor(Color.BLACK);
-        fh4.setStyle("bold");
-
-        Font af10 = new Font(arialFont);
-        af10.setSize(10);
-        af10.setColor(Color.BLACK);
-
-        Font af10b = new Font(arialFont);
-        af10b.setSize(10);
-        af10b.setColor(Color.BLACK);
-        af10b.setStyle("bold");
-
-        Font af7 = new Font(arialFont);
-        af7.setSize(7);
-        af7.setColor(Color.BLACK);
-
-        Font af7b = new Font(arialFont);
-        af7b.setSize(7);
-        af7b.setColor(Color.BLACK);
-        af7b.setStyle("bold");
+        Fonts f = new Fonts(arialFont);
 
         Paragraph p = new Paragraph(10);
         int justificado = Paragraph.ALIGN_JUSTIFIED;
@@ -2214,11 +2100,11 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", fh4));
+        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", fh4));
+        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -2234,7 +2120,7 @@ public class GeneracionResoluciones {
             datos2.add(datos1);
         //</editor-fold>
 
-        celda = new Cell(new Paragraph(resolucion+ "", fh4));
+        celda = new Cell(new Paragraph(resolucion+ "", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_JUSTIFIED);
         headerTable.addCell(celda);
@@ -2249,7 +2135,7 @@ public class GeneracionResoluciones {
         headerTableTxt.setWidth(100);
        
 
-        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", fh4));
+        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         headerTableTxt.addCell(celda);
         celda = new Cell(imgM);
@@ -2273,27 +2159,27 @@ public class GeneracionResoluciones {
 
         footertable.setWidths(tam);
 
-        celda = new Cell(new Paragraph("Página ", fh4));
+        celda = new Cell(new Paragraph("Página ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
       
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("de", fh4));
+        celda = new Cell(new Paragraph("de", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
        
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
@@ -2322,22 +2208,22 @@ public class GeneracionResoluciones {
         centrado = Paragraph.ALIGN_CENTER;
         
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("El Rector de la Universidad del Magdalena ");
-        Chunk c = new Chunk("“UNIMAGDALENA”", af10b);
+        Chunk c = new Chunk("“UNIMAGDALENA”", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", en ejercicio de sus funciones legales y en especial las que le confiere el Estatuto General, el Estatuto Docente de la Universidad, y\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("CONSIDERANDO:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el Artículo 19 del Decreto N° 1279 de 2002, consagra las bonificaciones como reconocimientos monetarios no salariales, que se reconocen por una sola vez, correspondientes a actividades específicas de productividad académica y no contemplan pagos genéricos indiscriminados.\n"
                 + "\n"
                 + "Que en el Artículo 20 de la disposición anterior, se establecieron los criterios para el reconocimiento de bonificaciones productividad académica, siendo determinados en igual sentido y en consonancia con esta disposición, en los Artículos 51 y 52 del Acuerdo Superior N° 007 de 2003.\n"
@@ -2348,7 +2234,7 @@ public class GeneracionResoluciones {
         if(listaDatosDocentes.get(0).get("TIPO_VINCULACION").toUpperCase().equals("DOCENTE OCASIONAL DE TIEMPO COMPLETO") || 
             listaDatosDocentes.get(0).get("TIPO_VINCULACION").toUpperCase().equals("DOCENTE OCASIONAL DE MEDIO TIEMPO")    ){
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que el Artículo 71 del Acuerdo Superior N° 007 de 19 de marzo de 2003, establece que los Docentes Ocasionales participan de las bonificaciones por productividad académica (Capítulo VI del Decreto 1279 de 19 de junio de 2002), por actividades realizadas durante el periodo en que tienen vinculación.\n");
             documento.add(p);
@@ -2362,15 +2248,15 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                 + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
 
         p.add(", presentó solicitud de asignación de puntos de bonificación por ");
 
-        c = new Chunk((listaDatosDocentes.size()==1 ? "un " :numeroEnLetras(listaDatosDocentes.size())) + " (" + listaDatosDocentes.size() + ")", af10b);
+        c = new Chunk((listaDatosDocentes.size()==1 ? "un " :numeroEnLetras(listaDatosDocentes.size())) + " (" + listaDatosDocentes.size() + ")", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add((listaDatosDocentes.size()>1 ? " productos, debidamente clasificados y categorizados ": " producto, debidamente clasificado y categorizado "));
         
@@ -2392,7 +2278,7 @@ public class GeneracionResoluciones {
                 
             }
             try{
-            c = new Chunk(" del Acta N° " + listaActas.get(i).get("ACTA") + " de " + fechaEnletras(listaActas.get(i).get("FECHA_ACTA"),0) + "", af10);
+            c = new Chunk(" del Acta N° " + listaActas.get(i).get("ACTA") + " de " + fechaEnletras(listaActas.get(i).get("FECHA_ACTA"),0) + "", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -2491,7 +2377,7 @@ public class GeneracionResoluciones {
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             try{
             p.add("Que en virtud de lo anterior y teniendo en cuenta lo señalado en el " + norma + " el Comité Interno de Asignación y Reconocimiento de Puntaje,"
                     + " en sesión realizada el día " + fechaEnletras(listaActas.get(j).get("FECHA_ACTA"),0) + " contenida en el Acta N° " + listaActas.get(j).get("ACTA")
@@ -2510,7 +2396,7 @@ public class GeneracionResoluciones {
                                 return respuesta;
                             }
             try{
-            c = new Chunk(getNumeroDecimal(""+totalPuntosxActas) + " (" + ValidarNumeroDec(""+totalPuntosxActas) + ") puntos de bonificación ", af10b);
+            c = new Chunk(getNumeroDecimal(""+totalPuntosxActas) + " (" + ValidarNumeroDec(""+totalPuntosxActas) + ") puntos de bonificación ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
                 
             }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -2528,7 +2414,7 @@ public class GeneracionResoluciones {
             }
             p.add(c);
             p.add((listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al docente " : "a la docente "));
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"))+",", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE"))+",", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add(" distribuidos en " + (listaDatosDocentes.size() > 1 ? "los" : "el") + " " + (listaDatosDocentes.size() > 1 ? "productos presentados" : "producto presentado")
                     + ", según el orden establecido en el apartado \"Decisión\" del ");
@@ -2555,30 +2441,30 @@ public class GeneracionResoluciones {
         }
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que mediante acto administrativo motivado expedido por el Rector de UNIMAGDALENA se determina dos (2) veces al año el total de puntos"
                 + " que corresponde a cada docente, conforme lo señala el Artículo 55 del Decreto 1279 de 2002.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("En mérito de lo anterior,\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("RESUELVE:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO PRIMERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO PRIMERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Reconocer y pagar " + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add((listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
         if (listaDatosDocentes.get(0).get("TIPO_DOC").equals("CC")) {
@@ -2589,7 +2475,7 @@ public class GeneracionResoluciones {
             p.add("pasaporte N° " + FormatoCedula(listaDatosDocentes.get(0).get("CEDULA")) + ", ");
         }
         try{
-        c = new Chunk(getNumeroDecimal(""+totalPuntos) + " (" + ValidarNumeroDec(""+totalPuntos) + ") puntos de bonificación", af10b);
+        c = new Chunk(getNumeroDecimal(""+totalPuntos) + " (" + ValidarNumeroDec(""+totalPuntos) + ") puntos de bonificación", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             
          }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -2617,49 +2503,49 @@ public class GeneracionResoluciones {
         TableProductos.setWidths(tamy);
         TableProductos.setWidth(100);
 
-        Cell celdaProductos = new Cell(new Paragraph("N°", af7b));
+        Cell celdaProductos = new Cell(new Paragraph("N°", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
-        celdaProductos = new Cell(new Paragraph("Producto", af7b));
+        celdaProductos = new Cell(new Paragraph("Producto", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
-        celdaProductos = new Cell(new Paragraph("Nombre del Producto", af7b));
-        celdaProductos.setBorder(15);
-        celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
-        celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
-        TableProductos.addCell(celdaProductos);
-
-        celdaProductos = new Cell(new Paragraph("N° Acta", af7b));
+        celdaProductos = new Cell(new Paragraph("Nombre del Producto", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
-        celdaProductos = new Cell(new Paragraph("Fecha de Acta", af7b));
+        celdaProductos = new Cell(new Paragraph("N° Acta", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
-        celdaProductos = new Cell(new Paragraph("Puntos Reconocidos", af7b));
+        celdaProductos = new Cell(new Paragraph("Fecha de Acta", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
+        celdaProductos.setBorder(15);
+        celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
+        celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
+        TableProductos.addCell(celdaProductos);
+
+        celdaProductos = new Cell(new Paragraph("Puntos Reconocidos", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
         celdaProductos.setBorder(15);
         celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
         TableProductos.addCell(celdaProductos);
 
         for (int i = 0; i < listaDatosDocentes.size(); i++) {
-            celdaProductos = new Cell(new Paragraph("" + (i + 1), af7b));
+            celdaProductos = new Cell(new Paragraph("" + (i + 1), Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
 
-            celdaProductos = new Cell(new Paragraph(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(i).get("TIPO_PRODUCTO")).replace("_", " "), af7b));
+            celdaProductos = new Cell(new Paragraph(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(i).get("TIPO_PRODUCTO")).replace("_", " "), Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
@@ -2670,26 +2556,26 @@ public class GeneracionResoluciones {
             } else {
                 nombresolicitud = getNOMBREPRODUCTO(listaDatosDocentes.get(i));
             }
-            celdaProductos = new Cell(new Paragraph("" + nombresolicitud, af7));
+            celdaProductos = new Cell(new Paragraph("" + nombresolicitud, Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
 
-            celdaProductos = new Cell(new Paragraph("" + listaDatosDocentes.get(i).get("ACTA"), af7));
+            celdaProductos = new Cell(new Paragraph("" + listaDatosDocentes.get(i).get("ACTA"), Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
 
-            celdaProductos = new Cell(new Paragraph("" + fechaEnletras(listaDatosDocentes.get(i).get("FECHA_ACTA"),0), af7));
+            celdaProductos = new Cell(new Paragraph("" + fechaEnletras(listaDatosDocentes.get(i).get("FECHA_ACTA"),0), Fonts.SetFont(Color.black, 7, Fonts.NORMAL)));
             celdaProductos.setBorder(15);
             celdaProductos.setHorizontalAlignment(Cell.ALIGN_CENTER);
             celdaProductos.setVerticalAlignment(Cell.ALIGN_CENTER);
             TableProductos.addCell(celdaProductos);
             
             try{
-            celdaProductos = new Cell(new Paragraph("" + getNumeroDecimal(listaDatosDocentes.get(i).get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get(i).get("PUNTOS")) + ") puntos", af7b));
+            celdaProductos = new Cell(new Paragraph("" + getNumeroDecimal(listaDatosDocentes.get(i).get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get(i).get("PUNTOS")) + ") puntos", Fonts.SetFont(Color.black, 7, Fonts.BOLD)));
              }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
@@ -2716,13 +2602,13 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("\nParágrafo:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("\nParágrafo:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
          
         p.add(" Los ");
         try{
-        c = new Chunk(getNumeroDecimal(""+totalPuntos) + " (" + ValidarNumeroDec(""+totalPuntos) + ") puntos de bonificación", af10b);
+        c = new Chunk(getNumeroDecimal(""+totalPuntos) + " (" + ValidarNumeroDec(""+totalPuntos) + ") puntos de bonificación", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
@@ -2757,7 +2643,7 @@ public class GeneracionResoluciones {
                 
             }
             try{
-            c = new Chunk(" del Acta N° " + listaActas.get(i).get("ACTA") + " de " + fechaEnletras(listaActas.get(i).get("FECHA_ACTA"),0) + "", af10);
+            c = new Chunk(" del Acta N° " + listaActas.get(i).get("ACTA") + " de " + fechaEnletras(listaActas.get(i).get("FECHA_ACTA"),0) + "", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             
             } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -2776,18 +2662,18 @@ public class GeneracionResoluciones {
         
         
         p.add(" los cuales, se reconocerán y pagarán por una sola vez" + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? " al" : " a la") + " "+ listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", de conformidad con lo dispuesto en el ARTÍCULO 19 del Decreto 1279 de 19 de junio de 2002.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEGUNDO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEGUNDO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión " + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")) + ". ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")) + ". ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para tal efecto envíesele la correspondiente comunicación al correo electrónico de notificación, haciéndole saber que contra la misma procede"
                 + " recurso de reposición ante el mismo funcionario que la expide, el cual deberá presentar y sustentar por escrito dentro de los diez (10) días"
@@ -2797,62 +2683,62 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales a fin de que procedan a realizar"
                 + " el trámite correspondiente. Envíese copia de esta resolución al Comité Interno de Asignación y Reconocimiento de Puntaje y a la hoja de vida");
         p.add(" " + (listaDatosDocentes.get(0).get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get(0).get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")) + ".\n ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get(0).get("NOMBRE_DEL_DOCENTE")) + ".\n ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" La presente resolución rige a partir del término de su ejecutoria.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(" Dada en la ciudad de Santa Marta, D. T. C. H., a los \n\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(listaProyecto.get("RECTOR").toUpperCase() + "\n");
-        c = new Chunk("Rector\n\n", af10);
+        c = new Chunk("Rector\n\n", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Proyectó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Proyectó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("PROYECTO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         
         p.add(c);
         p.add(listaProyecto.get("REVISO_JEFE") + "____\n");
@@ -2876,48 +2762,8 @@ public class GeneracionResoluciones {
         tituloCorto = Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("TITULO")).split(",");
 
         //<editor-fold defaultstate="collapsed" desc="estilo">
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(8);
-        fh3.setColor(Color.BLACK);
+        Fonts f = new Fonts(arialFont);
         
-        Font fh3c = new Font(arialFont);
-        fh3c.setSize(8);
-        fh3c.setStyle("italic");
-        fh3c.setColor(Color.BLACK);
-
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(8);
-        fh4.setColor(Color.BLACK);
-        fh4.setStyle("bold");
-
-        Font af10 = new Font(arialFont);
-        af10.setSize(10);
-        af10.setColor(Color.BLACK);
-
-        Font af10b = new Font(arialFont);
-        af10b.setSize(10);
-        af10b.setColor(Color.BLACK);
-        af10b.setStyle("bold");
-
-        Font af7 = new Font(arialFont);
-        af7.setSize(7);
-        af7.setColor(Color.BLACK);
-
-        Font af7b = new Font(arialFont);
-        af7b.setSize(7);
-        af7b.setColor(Color.BLACK);
-        af7b.setStyle("bold");
-
         Paragraph p = new Paragraph();
         int justificado = Paragraph.ALIGN_JUSTIFIED;
         int centrado = Paragraph.ALIGN_CENTER;
@@ -2942,11 +2788,11 @@ public class GeneracionResoluciones {
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", fh4));
+        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", fh4));
+        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -2961,7 +2807,7 @@ public class GeneracionResoluciones {
             datos2.add(datos1);
         //</editor-fold>
         
-        celda = new Cell(new Paragraph(resolucion + "", fh4));
+        celda = new Cell(new Paragraph(resolucion + "", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
 
         celda.setHorizontalAlignment(Cell.ALIGN_JUSTIFIED);
@@ -2977,7 +2823,7 @@ public class GeneracionResoluciones {
         headerTableTxt.setWidth(100);
        
 
-        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", fh4));
+        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         headerTableTxt.addCell(celda);
         celda = new Cell(imgM);
@@ -3000,27 +2846,27 @@ public class GeneracionResoluciones {
 
         footertable.setWidths(tam);
 
-        celda = new Cell(new Paragraph("Página ", fh4));
+        celda = new Cell(new Paragraph("Página ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
       
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("de", fh4));
+        celda = new Cell(new Paragraph("de", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
       
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
@@ -3049,22 +2895,22 @@ public class GeneracionResoluciones {
         centrado = Paragraph.ALIGN_CENTER;
 
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("El Rector de la Universidad del Magdalena ");
-        Chunk c = new Chunk("“UNIMAGDALENA”", af10b);
+        Chunk c = new Chunk("“UNIMAGDALENA”", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", en ejercicio de sus funciones legales y en especial las que le confiere el Estatuto General, el Estatuto Docente de la Universidad, y\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("CONSIDERANDO:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el artículo 62 del Decreto 1279 de junio de 2002, establece que el Grupo de Seguimiento al régimen salarial y prestacional de los profesores universitarios,"
                 + " puede definir las directrices y criterios que garanticen la homogeneidad, universalidad y coherencia de la información a nivel nacional, y además adecuar los criterios"
                 + " y efectuar los ajustes a las metodologías de evaluación aplicadas por los Comités Internos de Asignación de Puntaje o los organismos que hagan sus veces.\n"
@@ -3079,7 +2925,7 @@ public class GeneracionResoluciones {
         p.setAlignment(justificado);
         p.setIndentationLeft(13);
         p.setIndentationRight(12);
-        p.setFont(fh3c);
+        p.setFont(Fonts.SetFont(Color.black, 8, Fonts.ITALIC));
         p.add("\"22. El Comité Interno de Asignación y Reconocimiento de Puntaje debe dar trámite a las solicitudes en la medida en que se vayan presentando; las modificaciones salariales tendrán efectos a partir de la fecha en que el Comité expida el acto formal de reconocimiento. \n"
                 +"…\n"
                 + "En cuanto la asignación de puntaje por títulos académicos obtenidos en el exterior es procedente aplicar lo dispuesto en el Artículo 12 del Decreto 861 de 2000, el cual señala"
@@ -3097,7 +2943,7 @@ public class GeneracionResoluciones {
         
         if(listaDatosDocentes.get("TIPO_RESOLUCION").equals("Cargo_acad_admin")){
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que por otra parte, el Artículo 17 del referido decreto, establece los criterios a tener en cuenta para la modificación de salario "+
                     "de los docentes que realizan actividades académico-administrativas, disponiéndose, en igual sentido, en el Artículo 62 de la mencionada "+
@@ -3107,7 +2953,7 @@ public class GeneracionResoluciones {
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que en consulta realizada al Grupo de Seguimiento al Régimen Salarial y Prestacional de los Profesores Universitarios, bajo Radicado N° 2011ER62358 "+
                     "sobre el reconocimiento de puntos por productividad académica para los docentes que asuman cargos académico-administrativos, este "+
@@ -3116,7 +2962,7 @@ public class GeneracionResoluciones {
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que mediante Resolución Rectoral Nº "+
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_ENCARGO"))+" "+
@@ -3134,17 +2980,17 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                 + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 8, Fonts.BOLD));
         p.add(c);
         p.add("realizó solicitud de asignación de puntos salariales por el título de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("TITULO")) + ".\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         try{
         p.add("Que el Comité Interno de Asignación y Reconocimiento de Puntaje, en sesión realizada el día " + fechaEnletras(listaDatosDocentes.get("FECHA_ACTA_CIARP_INICIAL"),0)
                 + " contenida en Acta N° " + listaDatosDocentes.get("ACTA") + ", asignó ");
@@ -3162,7 +3008,7 @@ public class GeneracionResoluciones {
                                 return respuesta;
                             }
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + getNumero(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales ", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + getNumero(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -3178,7 +3024,7 @@ public class GeneracionResoluciones {
                             }
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al " : "a la ") + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         try{
         p.add("por el título de " + listaDatosDocentes.get("TITULO") + ", que se pagarán con efectos a partir del "+ fechaEnletras(listaDatosDocentes.get("RETROACTIVIDAD"),0)+" al convalidar el título, para lo cual, el docente cuenta hasta el "+ fechaEnletras(listaDatosDocentes.get("FECHA_MAX_CONV"),0)+ ".\n");
@@ -3200,10 +3046,10 @@ public class GeneracionResoluciones {
         if (!Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RES_TIT_ANT")).equals("N/A")) {
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que mediante resolución rectoral N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RES_TIT_ANT")) + " se reconoce " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al " : "a la ") + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
            try{
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + " " + getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + " " + getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -3223,7 +3069,7 @@ public class GeneracionResoluciones {
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             if(listaDatosDocentes.get("RETROACTIVIDAD").length()==10){
                 try{
             p.add("Que en dicho acto administrativo se estableció que para la asignación y pago de los puntos, el docente debe cumplir con la convalidación del título dentro de los dos (2) años siguientes, "
@@ -3248,16 +3094,16 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el " : "la ") + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" presentó ante el Comité Interno de Asignación y Reconocimiento de Puntaje, copia de la " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + ".\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         try{
         p.add("Que el Comité Interno de Asignación y Reconocimiento de Puntaje, en sesión realizada el día " + fechaEnletras(listaDatosDocentes.get("FECHA_ACTA"),0)
                 + " contenida en Acta N° " + listaDatosDocentes.get("ACTA") + " punto "+ listaDatosDocentes.get("NUMERAL_ACTA_CIARP")+", determinó tener por cumplido el requisito de la convalidación del título,"
@@ -3276,7 +3122,7 @@ public class GeneracionResoluciones {
                                 return respuesta;
                             }
         try{
-        c = new Chunk(numeroEnLetras(Integer.parseInt(listaDatosDocentes.get("PUNTOS"))) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", af10b);
+        c = new Chunk(numeroEnLetras(Integer.parseInt(listaDatosDocentes.get("PUNTOS"))) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -3316,30 +3162,30 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que mediante acto administrativo motivado expedido por el Rector de UNIMAGDALENA se determina dos (2) veces al año el total de puntos que corresponde a cada"
                 + " docente, conforme lo señala el Artículo 55 del Decreto 1279 de 2002.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("En mérito de lo anterior,\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("RESUELVE:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO PRIMERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO PRIMERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Reconocer y pagar " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
         if (listaDatosDocentes.get("TIPO_DOC").equals("CC")) {
@@ -3350,7 +3196,7 @@ public class GeneracionResoluciones {
             p.add("pasaporte N° " + FormatoCedula(listaDatosDocentes.get("CEDULA")) + ", ");
         }
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
@@ -3370,12 +3216,12 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEGUNDO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEGUNDO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Los ");
         try{
-        c = new Chunk(numeroEnLetras(Integer.parseInt(listaDatosDocentes.get("PUNTOS"))) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", af10b);
+        c = new Chunk(numeroEnLetras(Integer.parseInt(listaDatosDocentes.get("PUNTOS"))) + " (" + listaDatosDocentes.get("PUNTOS") + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -3416,11 +3262,11 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para tal efecto envíesele la correspondiente comunicación al correo electrónico de notificación, haciéndole saber que contra la misma procede"
                 + " recurso de reposición ante el mismo funcionario que la expide, el cual deberá presentar y sustentar por escrito dentro de los diez (10) días"
@@ -3430,62 +3276,62 @@ public class GeneracionResoluciones {
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales a fin de que procedan a realizar"
                 + " el trámite correspondiente. Envíese copia de esta resolución al Comité Interno de Asignación y Reconocimiento de Puntaje y a la hoja de vida");
         p.add(" " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO QUINTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO QUINTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" La presente resolución rige a partir del término de su ejecutoria.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(" Dada en la ciudad de Santa Marta, D. T. C. H., a los \n\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(listaProyecto.get("RECTOR").toUpperCase() + "\n");
-        c = new Chunk("Rector\n\n", af10);
+        c = new Chunk("Rector\n\n", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Proyectó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Proyectó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("PROYECTO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO_JEFE") + "____");
         documento.add(p);
@@ -3510,43 +3356,8 @@ public class GeneracionResoluciones {
         String[] numeralActas = {};
 
         //<editor-fold defaultstate="collapsed" desc="estilo">
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(8);
-        fh3.setColor(Color.BLACK);
-
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(8);
-        fh4.setColor(Color.BLACK);
-        fh4.setStyle("bold");
-
-        Font af10 = new Font(arialFont);
-        af10.setSize(10);
-        af10.setColor(Color.BLACK);
-
-        Font af10b = new Font(arialFont);
-        af10b.setSize(10);
-        af10b.setColor(Color.BLACK);
-        af10b.setStyle("bold");
-
-        Font af7 = new Font(arialFont);
-        af7.setSize(7);
-        af7.setColor(Color.BLACK);
-
-        Font af7b = new Font(arialFont);
-        af7b.setSize(7);
-        af7b.setColor(Color.BLACK);
-        af7b.setStyle("bold");
-
+        Fonts f = new Fonts(arialFont);
+        
         Paragraph p = new Paragraph();
         int justificado = Paragraph.ALIGN_JUSTIFIED;
         int centrado = Paragraph.ALIGN_CENTER;
@@ -3571,11 +3382,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", fh4));
+        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", fh4));
+        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -3589,7 +3400,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             datos1.put("RESOLUCION", ""+resolucion);
             datos2.add(datos1);
         //</editor-fold>
-        celda = new Cell(new Paragraph(resolucion+"", fh4));
+        celda = new Cell(new Paragraph(resolucion+"", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
 
         celda.setHorizontalAlignment(Cell.ALIGN_JUSTIFIED);
@@ -3605,7 +3416,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         headerTableTxt.setWidth(100);
        
 
-        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", fh4));
+        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         headerTableTxt.addCell(celda);
         celda = new Cell(imgM);
@@ -3629,27 +3440,27 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         footertable.setWidths(tam);
 
-        celda = new Cell(new Paragraph("Página ", fh4));
+        celda = new Cell(new Paragraph("Página ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("de", fh4));
+        celda = new Cell(new Paragraph("de", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
@@ -3677,22 +3488,22 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         centrado = Paragraph.ALIGN_CENTER;
 
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("El Rector de la Universidad del Magdalena ");
-        Chunk c = new Chunk("“UNIMAGDALENA”", af10b);
+        Chunk c = new Chunk("“UNIMAGDALENA”", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", en ejercicio de sus funciones legales y en especial las que le confiere el Estatuto General, el Estatuto Docente de la Universidad, y\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("CONSIDERANDO:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que la Ley 30 de 1992 en su Artículo 28 reconoce a las Universidades en virtud del principio de autonomía universitaria,"
                 + " entre otros, el derecho a seleccionar a sus profesores.\n");
         documento.add(p);
@@ -3701,7 +3512,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que mediante Acuerdo Superior N° 025 de 2002, modificado por el Acuerdo Superior N° 008 de 2014, se adoptó el Programa de Formación Avanzada para la Docencia y la Investigación, "
                     + "disponiendo en su Artículo Séptimo la facultad del Rector de la Universidad del Magdalena para vincular a la planta de personal docente,"
                     + " a los beneficiarios de becas concedidas por organismos o entidades de reconocido prestigio nacional o internacional diferentes a esta institución.\n");
@@ -3709,9 +3520,9 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el señor " : "la señora "));
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
             if (listaDatosDocentes.get("TIPO_DOC").equals("CC")) {
@@ -3728,9 +3539,9 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que en ese orden, " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el señor " : "la señora "));
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add(" fue " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "nombrado " : "nombrada ") + "como " + listaDatosDocentes.get("TIPO_VINCULACION")
                     + " mediante Resolución Rectoral N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_INGRESO")) + ", cargo del cual tomó posesión mediante Acta N° "
@@ -3739,22 +3550,22 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que luego de haber finalizado los estudios, " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " docente en mención fue reincorporado al servicio como " + listaDatosDocentes.get("TIPO_VINCULACION")
                     + " de la Universidad a través de la Resolución Rectoral N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_REINTEGRO")) + ".\n");
             documento.add(p);
         } else if (!Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("INFO_CONCURSO_INICIO")).equals("N/A")) {
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que mediante Resolución Rectoral No. " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("INFO_CONCURSO_INICIO")) + ", se dio inicio a la convocatoria pública para proveer cargos docentes en dedicación de Tiempo Completo.\n");
             documento.add(p);
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que según Resolución Rectoral N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("INFO_CONCURSO_FIN")));
-            c = new Chunk(" " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+            c = new Chunk(" " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
             if (listaDatosDocentes.get("TIPO_DOC").equals("CC")) {
@@ -3770,11 +3581,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que mediante Resolución Rectoral N° " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_INGRESO") )+ " fue " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "nombrado " : "nombrada ")
                     + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el señor " : "la señora "));
 
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add(" en el cargo de " + listaDatosDocentes.get("TIPO_VINCULACION") + " de la Universidad del Magdalena, cargo del que tomó posesión mediante Acta N° "
                     + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("ACTA_INGRESO")) + ".\n");
@@ -3783,7 +3594,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el Acuerdo Superior N° 007 de 2003 establece en su Artículo 14, que los profesores aspirantes a la carrera docente se nombrarán de tiempo completo o medio tiempo por un periodo de prueba"
                 + " de un (1) año; vencido y aprobado el mismo, el profesor podrá solicitar su ingreso a la carrera ante el Comité de Asignación y Reconocimiento de Puntaje en la categoría que le corresponda en el escalafón.\n"
                 + "\n"
@@ -3797,7 +3608,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         if (listaDatosDocentes.get("PENDIENTE_INGLES").equalsIgnoreCase("SI")) {
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que mediante Acuerdo Superior N° 008 del 19 de mayo de 2008, se reglamentó el requisito de certificación de la prueba de suficiencia en el manejo del inglés para la provisión de cargos docentes en la Universidad.\n"
                     + "\n"
                     + "Que a través del Acuerdo Superior N° 009 del 03 de mayo de 2013, se modificó el Artículo 1 del Acuerdo Superior N° 008 de 2008, reglamentándose como mínimo un Nivel B2 según el Marco Común de Referencia Europeo"
@@ -3813,7 +3624,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             p.setAlignment(justificado);
             p.setIndentationLeft(13);
             p.setIndentationRight(12);
-            p.setFont(fh3);
+            p.setFont(Fonts.SetFont(Color.black, 8, Fonts.NORMAL));
             p.add("\"Parágrafo 2: El aspirante que no certifique el mínimo de suficiencia en el manejo del idioma inglés, podrá ser incluido en la lista de elegibles siempre y cuando haya obtenido "
                     + "el puntaje mínimo requerido del total de la calificación final en el proceso de selección. Si el aspirante es vinculado a la universidad, contará con un máximo de hasta veintidós (22)"
                     + " meses contados a partir de su vinculación para acreditar el manejo del idioma inglés so pena de impedirse su ascenso a la categoría de profesor asistente en el escalafón docente\"\n");
@@ -3821,7 +3632,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             try{
             p.add("Que el Consejo de " + listaDatosDocentes.get("FACULTAD") + " en sesión celebrada el día " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FECHA_ACTA_CF")), 0) + " contenida en Acta N° "
                     + listaDatosDocentes.get("ACTA_CONS_FACULTAD") + ", determinó que la evaluación del período de prueba " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " "
@@ -3839,17 +3650,17 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
                                     }
                                 return respuesta;
                             }
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add("fue superada de manera satisfactoria, realizando la claridad que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " docente debe cumplir con el requisito de manejo del idioma inglés.\n");
             documento.add(p);
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                     + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             try{
             p.add("solicitó ingreso a la carrera docente ante el Comité Interno de Asignación y Reconocimiento de Puntaje, órgano que en sesión realizada el día " + fechaEnletras(listaDatosDocentes.get("FECHA_ACTA"),0)
@@ -3871,7 +3682,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         } else {
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             try{
             p.add("Que el Consejo de " + listaDatosDocentes.get("FACULTAD") + " en sesión celebrada el día " + fechaEnletras(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("FECHA_ACTA_CF")), 0) + " contenida en Acta N° "
                     + listaDatosDocentes.get("ACTA_CONS_FACULTAD") + " , determinó que la evaluación del período de prueba " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " "
@@ -3889,17 +3700,17 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
                                     }
                                 return respuesta;
                             }
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add("fue superada de manera satisfactoria.\n");
             documento.add(p);
 
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                     + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             try{
             p.add("solicitó ingreso a la carrera docente ante el Comité Interno de Asignación y Reconocimiento de Puntaje, órgano que en sesión realizada el día " + fechaEnletras(listaDatosDocentes.get("FECHA_ACTA"),0)
@@ -3922,23 +3733,23 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("En mérito de lo anterior,\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("RESUELVE:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO PRIMERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO PRIMERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Autorizar el ingreso a la carrera " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
         if (listaDatosDocentes.get("TIPO_DOC").equals("CC")) {
@@ -3953,11 +3764,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEGUNDO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEGUNDO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("El ingreso a la carrera "+ (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         if(listaDatosDocentes.get("RETROACTIVIDAD").length()==10){
             try{
@@ -3981,11 +3792,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         if(listaDatosDocentes.get("PENDIENTE_INGLES").equalsIgnoreCase("SI")){
             p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para acreditar el manejo del idioma inglés, " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("tiene un plazo de veintidós (22) meses contados a partir de la fecha de reincorporación que se produjo mediante Resolución Rectoral N° "+Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_REINTEGRO"))
         +", so pena de impedirse su ascenso a la categoría de profesor asistente, conforme lo señala el artículo 1 del Acuerdo Superior N° 015 de 2016.\n");
@@ -3993,11 +3804,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
            
             p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para tal efecto envíesele la correspondiente comunicación al correo electrónico de notificación, haciéndole saber que contra la misma procede"
                 + " recurso de reposición ante el mismo funcionario que la expide, el cual deberá presentar y sustentar por escrito dentro de los diez (10) días"
@@ -4007,31 +3818,31 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO QUINTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO QUINTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales a fin de que procedan a realizar"
                 + " el trámite correspondiente. Envíese copia de esta resolución al Comité Interno de Asignación y Reconocimiento de Puntaje y a la hoja de vida");
         p.add(" " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEXTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEXTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" La presente resolución rige a partir del término de su ejecutoria.\n");
         documento.add(p);
        }else{
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ". ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Para tal efecto envíesele la correspondiente comunicación al correo electrónico de notificación, haciéndole saber que contra la misma procede"
                 + " recurso de reposición ante el mismo funcionario que la expide, el cual deberá presentar y sustentar por escrito dentro de los diez (10) días"
@@ -4041,20 +3852,20 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales a fin de que procedan a realizar"
                 + " el trámite correspondiente. Envíese copia de esta resolución al Comité Interno de Asignación y Reconocimiento de Puntaje y a la hoja de vida");
         p.add(" " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO QUINTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO QUINTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" La presente resolución rige a partir del término de su ejecutoria.\n");
         documento.add(p);
@@ -4062,42 +3873,42 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
        
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(" Dada en la ciudad de Santa Marta, D. T. C. H., a los \n\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(listaProyecto.get("RECTOR").toUpperCase() + "\n");
-        c = new Chunk("Rector\n\n", af10);
+        c = new Chunk("Rector\n\n", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Proyectó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Proyectó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("PROYECTO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 8, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO_JEFE") + "____");
         documento.add(p);
@@ -4118,48 +3929,8 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         tituloCorto = Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")).split(",");
 
         //<editor-fold defaultstate="collapsed" desc="estilo">
-        Font fh1 = new Font(arialFont);
-        fh1.setSize(11);
-        fh1.setStyle("bold");
-        fh1.setStyle("underlined");
-
-        Font fh2 = new Font(arialFont);
-        fh2.setSize(11);
-        fh2.setColor(Color.BLACK);
-        fh2.setStyle("bold");
-
-        Font fh3 = new Font(arialFont);
-        fh3.setSize(8);
-        fh3.setColor(Color.BLACK);
-        
-        Font fh4 = new Font(arialFont);
-        fh4.setSize(8);
-        fh4.setColor(Color.BLACK);
-        fh4.setStyle("bold");
-
-        Font fh3c = new Font(arialFont);
-        fh3c.setSize(9);
-        fh3c.setColor(Color.BLACK);
-        fh3c.setStyle("italic");
-             
-        Font af10 = new Font(arialFont);
-        af10.setSize(10);
-        af10.setColor(Color.BLACK);
-
-        Font af10b = new Font(arialFont);
-        af10b.setSize(10);
-        af10b.setColor(Color.BLACK);
-        af10b.setStyle("bold");
-
-        Font af7 = new Font(arialFont);
-        af7.setSize(7);
-        af7.setColor(Color.BLACK);
-
-        Font af7b = new Font(arialFont);
-        af7b.setSize(7);
-        af7b.setColor(Color.BLACK);
-        af7b.setStyle("bold");
-
+        Fonts f = new Fonts(arialFont);
+       
         Paragraph p = new Paragraph();
         int justificado = Paragraph.ALIGN_JUSTIFIED;
         int centrado = Paragraph.ALIGN_CENTER;
@@ -4187,11 +3958,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", fh4));
+        celda = new Cell(new Paragraph("DESPACHO DEL RECTOR\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
-        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", fh4));
+        celda = new Cell(new Paragraph("RESOLUCIÓN N°\n", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         headerTable.addCell(celda);
@@ -4207,7 +3978,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             datos2.add(datos1);
         //</editor-fold>
         
-        celda = new Cell(new Paragraph(resolucion+"", fh4));
+        celda = new Cell(new Paragraph(resolucion+"", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
 
         celda.setHorizontalAlignment(Cell.ALIGN_JUSTIFIED);
@@ -4222,7 +3993,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         headerTableTxt.setWidth(100);
        
 
-        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", fh4));
+        celda = new Cell(new Paragraph("\nUNIVERSIDAD DEL MAGDALENA - RECTORÍA – Resolución Nº ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         headerTableTxt.addCell(celda);
         celda = new Cell(imgM);
@@ -4247,27 +4018,27 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         footertable.setWidths(tam);
 
-        celda = new Cell(new Paragraph("Página ", fh4));
+        celda = new Cell(new Paragraph("Página ", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_RIGHT);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         footertable.addCell(celda);
-        celda = new Cell(new RtfPageNumber(fh4));
+        celda = new Cell(new RtfPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         
         footertable.addCell(celda);
 
-        celda = new Cell(new Paragraph("de", fh4));
+        celda = new Cell(new Paragraph("de", Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
         
         footertable.addCell(celda);
 
-        celda = new Cell(new RtfTotalPageNumber(fh4));
+        celda = new Cell(new RtfTotalPageNumber(Fonts.SetFont(Color.black, 8, Fonts.BOLD)));
         celda.setBorder(0);
         celda.setHorizontalAlignment(Cell.ALIGN_CENTER);
         celda.setVerticalAlignment(Cell.ALIGN_BOTTOM);
@@ -4295,22 +4066,22 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         centrado = Paragraph.ALIGN_CENTER;
 
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("El Rector de la Universidad del Magdalena ");
-        Chunk c = new Chunk("“UNIMAGDALENA”", af10b);
+        Chunk c = new Chunk("“UNIMAGDALENA”", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(", en ejercicio de sus funciones legales y en especial las que le confiere el Estatuto General, el Estatuto Docente de la Universidad, y\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("CONSIDERANDO:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el Capítulo III del Decreto 1279 de 19 de junio de 2002, establece los factores y criterios que inciden en la modificación de puntos salariales "
                 + "de los docentes amparados por este régimen.\n"
                 + "\n"
@@ -4339,7 +4110,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que el "+literal+" establece la asignación de puntaje por títulos universitarios de posgrado,"
                 + " disponiendo para el título de " + titulo + " lo siguiente: \n");
         documento.add(p);
@@ -4370,13 +4141,13 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         p.setAlignment(justificado);
         p.setIndentationLeft(13);
         p.setIndentationRight(12);
-        p.setFont(fh3c);
+        p.setFont(Fonts.SetFont(Color.black, 8, Fonts.ITALIC));
         p.add("\"" + requisitosxTitulo + "\"\n");
         documento.add(p);
         
         if(listaDatosDocentes.get("TIPO_RESOLUCION").equals("Cargo_acad_admin")){
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que por otra parte, el Artículo 17 del referido decreto, establece los criterios a tener en cuenta para la modificación de salario "+
                     "de los docentes que realizan actividades académico-administrativas, disponiéndose, en igual sentido, en el Artículo 62 de la mencionada "+
@@ -4386,7 +4157,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que en consulta realizada al Grupo de Seguimiento al Régimen Salarial y Prestacional de los Profesores Universitarios, bajo Radicado N° 2011ER62358 "+
                     "sobre el reconocimiento de puntos por productividad académica para los docentes que asuman cargos académico-administrativos, este "+
@@ -4395,7 +4166,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             documento.add(p);
             
             p = new Paragraph(10);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.setAlignment(justificado);
             p.add("Que mediante Resolución Rectoral Nº "+
                     Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("RESOL_ENCARGO"))+" "+
@@ -4414,9 +4185,9 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
         if (titulo.equals("PhD. o Doctorado") && !Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("TITULO_MAEST_PUNTAJE")).equals("N/A")) {
             p = new Paragraph(10);
             p.setAlignment(justificado);
-            p.setFont(af10);
+            p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
             p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " docente ");
-            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+            c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
             p.add(c);
             p.add("se le asignaron cuarenta (40) puntos salariales por el título de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("TITULO_MAEST_PUNTAJE"))+ ".\n");
             documento.add(p);
@@ -4424,17 +4195,17 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "el" : "la") + " "
                 + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("realizó solicitud de asignación de puntos salariales por titulación, aportando copia del diploma de " + Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_SOLICITUD")) + ".\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         try{
         p.add("Que el Comité Interno de Asignación y Reconocimiento de Puntaje, en sesión realizada el día " + fechaEnletras(listaDatosDocentes.get("FECHA_ACTA"),0)
                 + " contenida en el numeral "+ listaDatosDocentes.get("NUMERAL_ACTA_CIARP") +" del Acta N° " + listaDatosDocentes.get("ACTA") + ", asignó ");
@@ -4452,7 +4223,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
                                 return respuesta;
                             }
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales ", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         }catch (Exception ex) {
                                     Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                         respuesta.put("ESTADO", "ERROR");
@@ -4468,37 +4239,37 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
                                 }
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al " : "a la ") + listaDatosDocentes.get("TIPO_VINCULACION")+" ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ", ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("por el título de " + Utilidades.Utilidades.decodificarElemento(tituloCorto[0]) + ".\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("Que mediante acto administrativo motivado expedido por el Rector de UNIMAGDALENA se determina dos (2) veces al año el total de puntos que corresponde a cada"
                 + " docente, conforme lo señala el Artículo 55 del Decreto 1279 de 2002.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add("En mérito de lo anterior,\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("RESUELVE:\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO PRIMERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO PRIMERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Reconocer y pagar " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")), Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add((listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? ", identificado con " : ", identificada con "));
         if (listaDatosDocentes.get("TIPO_DOC").equals("CC")) {
@@ -4509,7 +4280,7 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
             p.add("pasaporte N° " + FormatoCedula(listaDatosDocentes.get("CEDULA")) + ", ");
         }
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -4529,12 +4300,12 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO SEGUNDO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO SEGUNDO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Los ");
         try{
-        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales", af10b);
+        c = new Chunk(getNumeroDecimal(listaDatosDocentes.get("PUNTOS")) + " (" + ValidarNumeroDec(listaDatosDocentes.get("PUNTOS")) + ") puntos salariales", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
        } catch (Exception ex) {
                                 Logger.getLogger(GeneracionCartas.class.getName()).log(Level.SEVERE, null, ex);
                                 respuesta.put("ESTADO", "ERROR");
@@ -4577,11 +4348,11 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO TERCERO: ", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO TERCERO: ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add("Notificar el contenido de la presente decisión " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "al" : "a la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Para tal efecto envíesele la correspondiente comunicación al correo electrónico de notificación, haciéndole saber que contra la misma procede"
                 + " recurso de reposición ante el mismo funcionario que la expide, el cual deberá presentar y sustentar por escrito dentro de los diez (10) días"
@@ -4591,62 +4362,62 @@ RtfHeaderFooterGroup headerDif= new RtfHeaderFooterGroup();
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO CUARTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO CUARTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" Comunicar la presente decisión a la Dirección de Talento Humano y al Grupo de Nómina y Prestaciones Sociales a fin de que procedan a realizar"
                 + " el trámite correspondiente. Envíese copia de esta resolución al Comité Interno de Asignación y Reconocimiento de Puntaje y a la hoja de vida");
         p.add(" " + (listaDatosDocentes.get("SEXO").equalsIgnoreCase("M") ? "del" : "de la") + " " + listaDatosDocentes.get("TIPO_VINCULACION") + " ");
-        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", af10b);
+        c = new Chunk(Utilidades.Utilidades.decodificarElemento(listaDatosDocentes.get("NOMBRE_DEL_DOCENTE")) + ".\n ", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
-        c = new Chunk("ARTÍCULO QUINTO:", af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
+        c = new Chunk("ARTÍCULO QUINTO:", Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(c);
         p.add(" La presente resolución rige a partir del término de su ejecutoria.\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add("NOTIFÍQUESE, COMUNÍQUESE Y CÚMPLASE\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(justificado);
-        p.setFont(af10);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(" Dada en la ciudad de Santa Marta, D. T. C. H., a los \n\n\n");
         documento.add(p);
 
         p = new Paragraph(10);
         p.setAlignment(centrado);
-        p.setFont(af10b);
+        p.setFont(Fonts.SetFont(Color.black, 10, Fonts.BOLD));
         p.add(listaProyecto.get("RECTOR").toUpperCase() + "\n");
-        c = new Chunk("Rector\n\n", af10);
+        c = new Chunk("Rector\n\n", Fonts.SetFont(Color.black, 10, Fonts.NORMAL));
         p.add(c);
         documento.add(p);
 
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Proyectó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Proyectó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("PROYECTO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO") + "____");
         documento.add(p);
         p = new Paragraph(8);
         p.setAlignment(justificado);
-        p.setFont(af7);
-        c = new Chunk("Revisó: ", af7b);
+        p.setFont(Fonts.SetFont(Color.black, 7, Fonts.NORMAL));
+        c = new Chunk("Revisó: ", Fonts.SetFont(Color.black, 7, Fonts.BOLD));
         p.add(c);
         p.add(listaProyecto.get("REVISO_JEFE") + "____");
         documento.add(p);
